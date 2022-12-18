@@ -156,5 +156,6 @@ wolf you are.
 
 - [ ] Documentation (and default keybindings info)
 - [ ] Supress errors on first run
+- [ ] Figure out a way for vim-plug to manage SigmaVimRc
 - [ ] Dynamic theme plugin
 - [ ] Better dashboard for Vim
