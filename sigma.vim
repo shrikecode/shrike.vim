@@ -262,7 +262,7 @@ endfunction
 function! SigmaInit()
     let s:count = 0
 
-    plug#begin()
+    call plug#begin()
 
     for [key, value] in items(g:sigma#plugins)
         if value != 0
@@ -275,7 +275,7 @@ function! SigmaInit()
         endif
     endfor
 
-    plug#end()
+    call plug#end()
     
     call SigmaConfig()
 
