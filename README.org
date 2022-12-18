@@ -65,7 +65,7 @@ Install SigmaVimRc:
 *** Vim
 
 #+begin_src sh
-mkdir ~/.vim/site/pack/plugins/start/
+mkdir -p ~/.vim/site/pack/plugins/start/
 git clone git@github.com:laniusone/SigmaVimRc.git \
     ~/.vim/site/pack/plugins/start/SigmaVimRc
 #+end_src
