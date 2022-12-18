@@ -265,13 +265,12 @@ function! sigma#init()
     call plug#begin()
 
     for [key, value] in items(g:sigma#plugins)
-        if value != 0
+        if type(value) == v:t_dict
             let s:count += 1
-            if type(value) == v:t_dict
-                Plug key, value
-            else
-                Plug key
-            endif
+            Plug key, value
+        elseif value == 1
+            let s:count += 1
+            Plug key
         endif
     endfor
 
@@ -285,7 +284,7 @@ endfunction
 function! sigma#run(command = '')
     if $TERM == 'xterm-kitty'
         execute "kitty @ launch " a:command getcwd()
-    else if $TMUX != ''
+    elseif $TMUX != ''
         execute "tmux split-window " a:command getcwd()
     else
         echoerr 'Vim must be run in kitty terminal or tmux for sigma#run to work'
