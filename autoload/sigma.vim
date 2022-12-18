@@ -14,14 +14,14 @@ let g:sigma#plugins = {
         \ 'eshion/vim-sync': 1,
         \ 'skywind3000/asyncrun.vim': 1,
         \ 'lambdalisue/suda.vim': 1,
-        \ 'lambtpope/vim-abolish': 1,
-        \ 'lambhonza/vim-snippets': 1,
-        \ 'lambdbeniamine/cheat.sh-vim': 1,
-        \ 'lambmcchrish/nnn.vim': 1,
-        \ 'lambleafOfTree/vim-project': 1,
-        \ 'lambneoclide/coc.nvim': {'branch': 'release'},
-        \ 'lambmbbill/undotree': 1,
-        \ 'lambjunegunn/fzf': 1
+        \ 'tpope/vim-abolish': 1,
+        \ 'honza/vim-snippets': 1,
+        \ 'dbeniamine/cheat.sh-vim': 1,
+        \ 'mcchrish/nnn.vim': 1,
+        \ 'leafOfTree/vim-project': 1,
+        \ 'neoclide/coc.nvim': {'branch': 'release'},
+        \ 'mbbill/undotree': 1,
+        \ 'junegunn/fzf': 1
       \ }
 
 function! sigma#remove(plugin)
