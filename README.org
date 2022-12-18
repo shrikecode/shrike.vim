@@ -42,6 +42,8 @@ in defualt plugins list.
 - nnn (unless you want to use some file-tree plugin)
 - nodejs (if you want to use coc.nvim for completion)
 - figlet (for vim-startify header)
+- kitty or tmux (for sigma#run support)
+- lazygit (optional for <leader>gg keybinding)
 
 ** Installation
 
@@ -152,6 +154,7 @@ wolf you are.
 
 ** Roadmap
 
+- [ ] Documentation (and default keybindings info)
 - [ ] Supress errors on first run
 - [ ] Dynamic theme plugin
 - [ ] Better dashboard for Vim
