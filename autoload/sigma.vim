@@ -8,7 +8,7 @@
 " Main SigmaVimRc functions
 
 let g:sigma#plugins = {
-        \ 'laniusone/sigma.vim': 1,
+        \ 'laniusone/SigmaVimRc': 1,
         \ 'laniusone/kyotonight.vim': 1,
         \ '907th/vim-auto-save': 1,
         \ 'eshion/vim-sync': 1,
