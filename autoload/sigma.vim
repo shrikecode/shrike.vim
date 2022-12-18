@@ -93,6 +93,10 @@ function! sigma#config()
     let g:nnn#replace_netrw = 1
     let g:nnn#command = 'nnn -a -Pp'
 
+    " kyotonight.vim
+    let g:kyotonight_italic = 1
+    let g:kyotonight_italic_comments = 1
+
     if has('nvim')
         " kyotonight.vim | lualine.nvim
         :lua require('sigma.theme')
@@ -102,9 +106,6 @@ function! sigma#config()
         :lua require('sigma.plugins')
     else
         " kyotonight.vim
-        let g:kyotonight_italic = 1
-        let g:kyotonight_italic_comments = 1
-
         colorscheme kyotonight
         " vim-airline
         let g:airline#extensions#branch#enabled = 1
@@ -167,7 +168,6 @@ function! sigma#config()
         nnoremap <leader>rg <Cmd>lua require('fzf-lua').live_grep({ cmd = "rg -g '!{.git,node_modules}/' --hidden --no-ignore", search = "", fzf_opts = { ['--nth'] = '2..' } })<CR>
         nnoremap <leader>cp <Cmd>FzfLua commands<CR>
         nnoremap <leader>ll <Cmd>FzfLua lines<CR>
-        nnoremap <leader>fg <Cmd>IconPickerNormal nerd_font<CR>
         nnoremap <leader>rr <Cmd>source ~/.config/nvim/init.vim<CR>
         nnoremap <leader>fP <Cmd>e ~/.config/nvim/init.vim<CR>
 
@@ -242,13 +242,6 @@ function! sigma#config()
 
     " close window
     nnoremap <leader>wc <C-w>c
-
-    " Magento 2 linters
-    nnoremap <silent><leader>md <Cmd>!phpmdm2 %<CR>
-    nnoremap <silent><leader>mc <Cmd>!phpcsm2 %<CR>
-    nnoremap <silent><leader>mb <Cmd>!phpcbfm2 %<CR>
-    nnoremap <silent><leader>mf <Cmd>!php-cs-fixer-m2 fix %<CR>
-    nnoremap <silent><leader>me <Cmd>!eslint %<CR>
 
     " Autocmd
     autocmd BufWritePost * :call SyncUploadFile()
