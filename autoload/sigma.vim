@@ -201,8 +201,8 @@ function! sigma#config()
     endif
 
     noremap <C-n> <Cmd>NnnPicker %:p:h<CR>
-    nnoremap <silent><leader>gg <Cmd>execute "!kitty @ launch lazygit -p" getcwd()<C-j><CR>
-    nnoremap <silent><leader>tt <Cmd>execute "!kitty @ launch" getcwd()<C-j><CR>
+    nnoremap <silent><leader>gg <Cmd>call sigma#run("lazygit -p")<CR>
+    nnoremap <silent><leader>tt <Cmd>call sigma#run()<CR>
     nnoremap <leader>uu <Cmd>UndotreeToggle<CR>
 
     " you've got some moves
@@ -276,9 +276,9 @@ endfunction
 
 function! sigma#run(command = '')
     if $TERM == 'xterm-kitty'
-        execute "kitty @ launch " a:command getcwd()
+        execute "!kitty @ launch " a:command getcwd()
     elseif $TMUX != ''
-        execute "tmux split-window " a:command getcwd()
+        execute "!tmux split-window " a:command getcwd()
     else
         echoerr 'Vim must be run in kitty terminal or tmux for sigma#run to work'
     endif
