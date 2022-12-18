@@ -24,7 +24,7 @@ let g:sigma#plugins = {
         \ 'lambjunegunn/fzf': 1
       \ }
 
-function! SigmaRemove(plugin)
+function! sigma#remove(plugin)
     for [key, value] in items(g:sigma#plugins)
         if a:plugin == key
             let g:sigma#plugins[key] = 0
@@ -32,7 +32,7 @@ function! SigmaRemove(plugin)
     endfor
 endfunction
 
-function! SigmaAdd(plugin, config = 1)
+function! sigma#add(plugin, config = 1)
     if type(a:config) == v:t_dict
         let g:sigma#plugins[a:plugin] = a:config
     else
@@ -40,7 +40,7 @@ function! SigmaAdd(plugin, config = 1)
     endif
 endfunction
 
-function! SigmaConfig()
+function! sigma#config()
     " General Config
     set termguicolors
     set guifont="SauceCodePro Nerd Font:h10"
@@ -259,7 +259,7 @@ function! SigmaConfig()
 endfunction
 
 
-function! SigmaInit()
+function! sigma#init()
     let s:count = 0
 
     call plug#begin()
@@ -277,41 +277,41 @@ function! SigmaInit()
 
     call plug#end()
     
-    call SigmaConfig()
+    call sigma#config()
 
     echo "烈VimRc loaded ".s:count." plugins.";
 endfunction
 
-function! SigmaRun(command = '')
+function! sigma#run(command = '')
     if $TERM == 'xterm-kitty'
         execute "kitty @ launch " a:command getcwd()
     else if $TMUX != ''
         execute "tmux split-window " a:command getcwd()
     else
-        echoerr 'Vim must be run in kitty terminal or tmux for SigmaRun to work'
+        echoerr 'Vim must be run in kitty terminal or tmux for sigma#run to work'
     endif
 endfunction
 
 if has('nvim')
-    call SigmaAdd('kyazdani42/nvim-web-devicons')
-    call SigmaAdd('romgrk/barbar.nvim')
-    call SigmaAdd('lewis6991/gitsigns.nvim')
-    call SigmaAdd('ibhagwan/fzf-lua', {'branch': 'main'})
-    call SigmaAdd('AckslD/nvim-neoclip.lua')
-    call SigmaAdd('kkharji/sqlite.lua', { 'as': 'sqlite' })
-    call SigmaAdd('numToStr/Comment.nvim')
-    call SigmaAdd('nvim-lualine/lualine.nvim')
-    call SigmaAdd('glepnir/dashboard-nvim')
-    call SigmaAdd('ThePrimeagen/vim-be-good')
-    call SigmaAdd('windwp/nvim-spectre')
-    call SigmaAdd('nvim-lua/plenary.nvim')
-    call SigmaAdd('norcalli/nvim-colorizer.lua')
+    call sigma#add('kyazdani42/nvim-web-devicons')
+    call sigma#add('romgrk/barbar.nvim')
+    call sigma#add('lewis6991/gitsigns.nvim')
+    call sigma#add('ibhagwan/fzf-lua', {'branch': 'main'})
+    call sigma#add('AckslD/nvim-neoclip.lua')
+    call sigma#add('kkharji/sqlite.lua', { 'as': 'sqlite' })
+    call sigma#add('numToStr/Comment.nvim')
+    call sigma#add('nvim-lualine/lualine.nvim')
+    call sigma#add('glepnir/dashboard-nvim')
+    call sigma#add('ThePrimeagen/vim-be-good')
+    call sigma#add('windwp/nvim-spectre')
+    call sigma#add('nvim-lua/plenary.nvim')
+    call sigma#add('norcalli/nvim-colorizer.lua')
 else
-    call SigmaAdd('vim-airline/vim-airline')
-    call SigmaAdd('ryanoasis/vim-devicons')
-    call SigmaAdd('scrooloose/nerdcommenter')
-    call SigmaAdd('junegunn/fzf.vim')
-    call SigmaAdd('mhinz/vim-startify')
-    call SigmaAdd('tpope/vim-fugitive',)
-    call SigmaAdd('mhinz/vim-signify')
+    call sigma#add('vim-airline/vim-airline')
+    call sigma#add('ryanoasis/vim-devicons')
+    call sigma#add('scrooloose/nerdcommenter')
+    call sigma#add('junegunn/fzf.vim')
+    call sigma#add('mhinz/vim-startify')
+    call sigma#add('tpope/vim-fugitive',)
+    call sigma#add('mhinz/vim-signify')
 endif
