@@ -97,8 +97,8 @@ git clone git@github.com:laniusone/SigmaVimRc.git \
 *** Neovim
 
 #+begin_src sh
-mkdir "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/plugins/opt
-git clone git@github.com:laniusone/SigmaVimRc.git \
+mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/plugins/opt
+git clone https://github.com/laniusone/SigmaVimRc.git \
     "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/plugins/opt/SigmaVimRc
 #+end_src
 

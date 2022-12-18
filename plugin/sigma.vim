@@ -24,30 +24,6 @@ let g:sigma#plugins = {
         \ 'lambjunegunn/fzf': 1
       \ }
 
-if has('nvim')
-    call SigmaAdd('kyazdani42/nvim-web-devicons')
-    call SigmaAdd('romgrk/barbar.nvim')
-    call SigmaAdd('lewis6991/gitsigns.nvim')
-    call SigmaAdd('ibhagwan/fzf-lua', {'branch': 'main'})
-    call SigmaAdd('AckslD/nvim-neoclip.lua')
-    call SigmaAdd('kkharji/sqlite.lua', { 'as': 'sqlite' })
-    call SigmaAdd('numToStr/Comment.nvim')
-    call SigmaAdd('nvim-lualine/lualine.nvim')
-    call SigmaAdd('glepnir/dashboard-nvim')
-    call SigmaAdd('ThePrimeagen/vim-be-good')
-    call SigmaAdd('windwp/nvim-spectre')
-    call SigmaAdd('nvim-lua/plenary.nvim')
-    call SigmaAdd('norcalli/nvim-colorizer.lua')
-else
-    call SigmaAdd('vim-airline/vim-airline')
-    call SigmaAdd('ryanoasis/vim-devicons')
-    call SigmaAdd('scrooloose/nerdcommenter')
-    call SigmaAdd('junegunn/fzf.vim')
-    call SigmaAdd('mhinz/vim-startify')
-    call SigmaAdd('tpope/vim-fugitive',)
-    call SigmaAdd('mhinz/vim-signify')
-endif
-
 function! SigmaRemove(plugin)
     for [key, value] in items(g:sigma#plugins)
         if a:plugin == key
@@ -96,3 +72,27 @@ function! SigmaRun(command = '')
         echoerr 'Vim must be run in kitty terminal or tmux for SigmaRun to work'
     endif
 endfunction
+
+if has('nvim')
+    call SigmaAdd('kyazdani42/nvim-web-devicons')
+    call SigmaAdd('romgrk/barbar.nvim')
+    call SigmaAdd('lewis6991/gitsigns.nvim')
+    call SigmaAdd('ibhagwan/fzf-lua', {'branch': 'main'})
+    call SigmaAdd('AckslD/nvim-neoclip.lua')
+    call SigmaAdd('kkharji/sqlite.lua', { 'as': 'sqlite' })
+    call SigmaAdd('numToStr/Comment.nvim')
+    call SigmaAdd('nvim-lualine/lualine.nvim')
+    call SigmaAdd('glepnir/dashboard-nvim')
+    call SigmaAdd('ThePrimeagen/vim-be-good')
+    call SigmaAdd('windwp/nvim-spectre')
+    call SigmaAdd('nvim-lua/plenary.nvim')
+    call SigmaAdd('norcalli/nvim-colorizer.lua')
+else
+    call SigmaAdd('vim-airline/vim-airline')
+    call SigmaAdd('ryanoasis/vim-devicons')
+    call SigmaAdd('scrooloose/nerdcommenter')
+    call SigmaAdd('junegunn/fzf.vim')
+    call SigmaAdd('mhinz/vim-startify')
+    call SigmaAdd('tpope/vim-fugitive',)
+    call SigmaAdd('mhinz/vim-signify')
+endif
