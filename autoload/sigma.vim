@@ -50,7 +50,7 @@ function! sigma#config()
         set signcolumn
         set laststatus=3
         set noshowmode
-        :lua require('e-resize-fix')
+        :lua require('sigma.e-resize-fix')
     else
         set laststatus=2
         let &t_SI = "\e[5 q"
