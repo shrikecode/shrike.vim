@@ -41,6 +41,7 @@ in defualt plugins list.
 - fzf (unless you want to disable fzf plugins and use Telescope)
 - nnn (unless you want to use some file-tree plugin)
 - nodejs (if you want to use coc.nvim for completion)
+- figlet (for vim-startify header)
 
 ** Installation
 
@@ -65,9 +66,10 @@ Install SigmaVimRc:
 *** Vim
 
 #+begin_src sh
-mkdir -p ~/.vim/site/pack/plugins/start/
+mkdir -p ~/.vim/tmp/
+mkdir -p ~/.vim/pack/plugins/start/
 git clone git@github.com:laniusone/SigmaVimRc.git \
-    ~/.vim/site/pack/plugins/start/SigmaVimRc
+    ~/.vim/pack/plugins/start/SigmaVimRc
 #+end_src
 
 *** Neovim
@@ -117,8 +119,7 @@ These functions need to be called *BEFORE* sigma#init.
 
 *** Extra functions
 
-- sigma#run - opens a split in kitty or tmux, running a supplied command in
-current working directory, or no command is supplied it just opens the terminal.
+- sigma#run - opens a split in kitty or tmux, running a supplied command in current working directory, or no command is supplied it just opens the terminal.
 
 **** Examples
 
