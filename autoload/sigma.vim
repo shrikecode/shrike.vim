@@ -278,7 +278,7 @@ function! sigma#init()
     
     call sigma#config()
 
-    echo "烈VimRc loaded ".s:count." plugins.";
+    echo "烈VimRc loaded ".s:count." plugins."
 endfunction
 
 function! sigma#run(command = '')
