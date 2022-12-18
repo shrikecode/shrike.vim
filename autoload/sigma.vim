@@ -4,8 +4,8 @@
 "  ___/ / / /_/ / / / / / / /_/ /| |/ / / / / / / / _, _/ /__
 " /____/_/\__, /_/ /_/ /_/\__,_/ |___/_/_/ /_/ /_/_/ |_|\___/
 "        /____/
-" plugin/sigma.vim
-" Main SigmaVimRc functions
+" autoload/sigma.vim
+" Main SigmaVimRc file
 
 let g:sigma#plugins = {
         \ 'laniusone/kyotonight.vim': 1,
