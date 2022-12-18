@@ -89,9 +89,9 @@ Install SigmaVimRc:
 *** Vim
 
 #+begin_src sh
-mkdir ~/.vim/plugged
+mkdir ~/.vim/site/pack/plugins/start/
 git clone git@github.com:laniusone/SigmaVimRc.git \
-    ~/.vim/plugged/SigmaVimRc
+    ~/.vim/site/pack/plugins/start/SigmaVimRc
 #+end_src
 
 *** Neovim
