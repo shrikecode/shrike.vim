@@ -64,6 +64,7 @@ function! sigma#config()
     set nocompatible
     set mouse=a
 
+    let g:mapleader = " "
     syntax on
     set clipboard=unnamedplus
     set nu
