@@ -8,7 +8,6 @@
 " Main SigmaVimRc functions
 
 let g:sigma#plugins = {
-        \ 'laniusone/SigmaVimRc': 1,
         \ 'laniusone/kyotonight.vim': 1,
         \ '907th/vim-auto-save': 1,
         \ 'eshion/vim-sync': 1,
@@ -260,16 +259,12 @@ endfunction
 
 
 function! sigma#init()
-    let s:count = 0
-
     call plug#begin()
 
     for [key, value] in items(g:sigma#plugins)
         if type(value) == v:t_dict
-            let s:count += 1
             Plug key, value
         elseif value == 1
-            let s:count += 1
             Plug key
         endif
     endfor
@@ -277,8 +272,6 @@ function! sigma#init()
     call plug#end()
     
     call sigma#config()
-
-    echo "烈VimRc loaded ".s:count." plugins."
 endfunction
 
 function! sigma#run(command = '')
