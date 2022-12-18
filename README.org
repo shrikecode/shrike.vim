@@ -66,6 +66,13 @@ Sigma includes a few quality of life plugins, doesn't include a classic file
 tree plugin (it uses nnn.vim, which requires nnn file manager). More details
 in defualt plugins list.
 
+** Dependencies
+
+- SauceCodePro NerdFont (or any NerdFont)
+- fzf (unless you want to disable fzf plugins and use Telescope)
+- nnn (unless you want to use some file-tree plugin)
+- nodejs (if you want to use coc.nvim for completion)
+
 ** Installation
 
 Install vim-plug first:
