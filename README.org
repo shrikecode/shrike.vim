@@ -159,3 +159,4 @@ wolf you are.
 - [ ] Figure out a way for vim-plug to manage SigmaVimRc
 - [ ] Dynamic theme plugin
 - [ ] Better dashboard for Vim
+- [ ] Allow live reload of whole configuration
