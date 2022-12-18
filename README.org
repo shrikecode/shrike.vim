@@ -80,7 +80,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 *** Neovim
 
 #+begin_src sh
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/.local/share}"/nvim/site/pack/plugins/start/vim-plug/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 #+end_src
 
@@ -97,9 +97,9 @@ git clone git@github.com:laniusone/SigmaVimRc.git \
 *** Neovim
 
 #+begin_src sh
-mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/plugins/opt
+mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/plugins/start
 git clone https://github.com/laniusone/SigmaVimRc.git \
-    "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/plugins/opt/SigmaVimRc
+    "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/plugins/start/SigmaVimRc
 #+end_src
 
 ** Configuration
