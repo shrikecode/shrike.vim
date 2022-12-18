@@ -80,6 +80,16 @@ git clone https://github.com/laniusone/SigmaVimRc.git \
     "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/plugins/start/SigmaVimRc
 #+end_src
 
+*** First run
+
+You will see a bunch of errors, you need to run:
+
+#+begin_src
+:PlugInstall
+#+end_src
+
+Then restart Vim / Neovim.
+
 ** Configuration
 
 To use the default SigmaVimRc just add this line to your .vimrc or init.lua:
@@ -137,4 +147,11 @@ to avoid including large configuration file which you might not need in the
 end. So, you will need to add configuration yourself. It's available in
 coc.nvim [[https://github.com/neoclide/coc.nvim#example-vim-configuration][README]] file.
 
-You are also free to use whatever you want. Go your way like the lone wolf. 烈
+You are also free to use whatever you want. Go your way like the sigma lone 
+wolf you are.
+
+** Roadmap
+
+- [ ] Supress errors on first run
+- [ ] Dynamic theme plugin
+- [ ] Better dashboard for Vim
