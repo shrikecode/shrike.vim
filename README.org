@@ -154,9 +154,10 @@ wolf you are.
 
 ** Roadmap
 
+- [ ] Add screenshots
 - [ ] Documentation (and default keybindings info)
 - [ ] Supress errors on first run
-- [ ] Figure out a way for vim-plug to manage SigmaVimRc
+- [x] Figure out a way for vim-plug to manage SigmaVimRc or let it manage itself
 - [ ] Dynamic theme plugin
 - [ ] Better dashboard for Vim
 - [ ] Allow live reload of whole configuration

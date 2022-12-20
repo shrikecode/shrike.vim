@@ -159,7 +159,10 @@ function! sigma#config()
 
     nnoremap <Esc> <Cmd>noh<CR>
     nnoremap <leader>uc <Cmd>PlugClean<CR>
-    nnoremap <leader>up <Cmd>PlugUpdate<CR><Cmd>PlugUpgrade<CR>
+    nnoremap <leader>up <Cmd>PlugUpdate<CR>
+    nnoremap <leader>uv <Cmd>PlugUpgrade<CR>
+    nnoremap <leader>us <Cmd>SigmaUpdate<CR>
+
 
     if has('nvim')
         nnoremap <leader>ff <Cmd>FzfLua files<CR>
@@ -250,6 +253,15 @@ function! sigma#config()
 
 endfunction
 
+function! sigma#update()
+    let s:sigma_dir = '~/.vim/pack/plugins/start/SigmaVimRc'
+
+    if has('nvim')
+        let s:sigma_dir = '~/.local/share/nvim/site/pack/plugins/start/SigmaVimRc'
+    endif
+
+    execute "!cd ".s:sigma_dir." && git pull"
+endfunction
 
 function! sigma#init()
     call plug#begin()
@@ -265,6 +277,8 @@ function! sigma#init()
     call plug#end()
     
     call sigma#config()
+
+    command! SigmaUpdate :call sigma#update()
 endfunction
 
 function! sigma#run(command = '')
