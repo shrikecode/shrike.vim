@@ -49,6 +49,10 @@ then
             desc = 'Vim Be Good                             ',
             action = 'VimBeGood',
             shortcut = 'SPC b g'},
+        {icon = '烈 ',
+            desc = 'Update SigmaVimRc                       ',
+            action = 'SigmaUpdate',
+            shortcut = 'SPC u s'},
         {icon = '  ',
             desc = 'Update plugins                          ',
             action = 'PlugUpdate',
@@ -57,7 +61,6 @@ then
             desc = 'Configure                               ',
             action = 'e ~/.config/nvim/init.vim',
             shortcut = 'SPC f P'}
-
     }
 
     local function randomFooter()
