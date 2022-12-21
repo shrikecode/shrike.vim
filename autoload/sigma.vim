@@ -253,7 +253,7 @@ function! sigma#config()
     nnoremap <A-e> <C-w>=
 
     " Next/previous buffer
-    if type(g:sigma#plugins['romgrk/barbar.nvim']) == v:t_dict || g:sigma#plugins['romgrk/barbar.nvim'] == 1
+    if has('nvim')
         nnoremap <A-.> <Cmd>BufferNext<CR>
         nnoremap <A-,> <Cmd>BufferPrevious<CR>
     else
