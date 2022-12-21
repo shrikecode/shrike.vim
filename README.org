@@ -299,7 +299,7 @@ Some of them might've been borrowed from NvChad or ThePrimeagen.
 - Clipboard history (Neovim only)
 - Even better search and replace (Neovim only)
 - Color strings highlighting (Neovim only)
--
+
 ** Roadmap
 
 - [x] Add screenshots
