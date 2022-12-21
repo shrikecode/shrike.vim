@@ -308,10 +308,10 @@ function! sigma#run(command = '')
     endif
 endfunction
 
-let g:sigma#use_coc = get(g:, 'sigma#use_coc', 0);
-let g:sigma#use_lsp = get(g:, 'sigma#use_lsp', 0);
-let g:sigma#coc_default = get(g:, 'sigma#coc_default', 0);
-let g:sigma#lsp_default = get(g:, 'sigma#lsp_default', 0);
+let g:sigma#use_coc = get(g:, 'sigma#use_coc', 0)
+let g:sigma#use_lsp = get(g:, 'sigma#use_lsp', 0)
+let g:sigma#coc_default = get(g:, 'sigma#coc_default', 0)
+let g:sigma#lsp_default = get(g:, 'sigma#lsp_default', 0)
 
 if g:sigma#use_coc == 1
     call sigma#add('neoclide/coc.nvim', {'branch': 'release'})
