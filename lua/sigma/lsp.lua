@@ -45,18 +45,6 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
-local lsp_flags = {
-    -- This is the default in Nvim 0.7+
-    debounce_text_changes = 150,
-}
-
-for _,v in ipairs(vim.g['sigma#lsp_servers']) do
-    require('lspconfig')[v].setup({
-        on_attach = on_attach,
-        flags = lsp_flags,
-    })
-end
-
 -- Set up nvim-cmp.
 local cmp = require'cmp'
 
@@ -113,9 +101,16 @@ cmp.setup.cmdline(':', {
 })
 
 -- Set up lspconfig.
+local lsp_flags = {
+    -- This is the default in Nvim 0.7+
+    debounce_text_changes = 150,
+}
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 for _,v in ipairs(vim.g['sigma#lsp_servers']) do
     require('lspconfig')[v].setup({
-        capabilities = capabilities
+        capabilities = capabilities,
+        on_attach = on_attach,
+        flags = lsp_flags,
     })
 end
