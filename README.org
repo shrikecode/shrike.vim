@@ -210,10 +210,100 @@ overrides.init_options = {param = 'value'}
 require('lspconfig')['pyright'].setup(overrides)
 #+end_src
 
+** Default plugins
+
+*** Neovim with LSP enabled
+
+- cmp-buffer
+- cmp-path
+- cmp-cmdline
+- ultisnips
+- lualine.nvim
+- nvim-colorizer.lua
+- sqlite
+- mason-lspconfig.nvim
+- vim-snippets
+- vim-auto-save
+- Comment.nvim
+- nvim-cmp
+- nvim-web-devicons
+- mason.nvim
+- gitsigns.nvim
+- plenary.nvim
+- nvim-neoclip.lua
+- vim-abolish
+- vim-sync
+- nvim-spectre
+- nvim-lspconfig
+- kyotonight.vim
+- vim-project
+- dashboard-nvim
+- vim-be-good
+- suda.vim
+- fzf-lua
+- cheat.sh-vim
+- barbar.nvim
+- asyncrun.vim
+- nnn.vim
+- cmp-nvim-ultisnips
+- undotree
+- cmp-nvim-lsp
+
+*** Vim with coc.nvim enabled
+
+- vim-devicons
+- vim-startify
+- vim-airline
+- vim-signify
+- fzf.vim
+- vim-snippets
+- vim-auto-save
+- coc.nvim
+- vim-abolish
+- vim-sync
+- vim-fugitive
+- kyotonight.vim
+- vim-project
+- suda.vim
+- nerdcommenter
+- asyncrun.vim
+- nnn.vim
+- undotree
+- cheat.sh-vim
+
+** Keybindings
+
+Check [[https://github.com/laniusone/SigmaVimRc/blob/master/autoload/sigma.vim#L47][sigma#mappings()]] function, and also review some of the default mappings of listed plugins.
+
+Some of them might've been borrowed from NvChad or ThePrimeagen.
+
+** Features
+
+*** Dashboard with useful shortcuts
+*** Good looking, easy on the eyes theme
+*** Code commenting plugins
+*** Simple project management
+*** Privilege elevating when editing system config
+*** Fuzzy finder
+*** Fancy yet useful status and bufferline
+*** Autocompletion and snippets
+*** LSP support
+*** Undotree
+*** Nnn file manager integration
+*** Easy shortcuts to lazygit and full fledged terminal (kitty required)
+*** Auto-save
+*** Easy to configure remote sync
+*** Undotree
+*** Better search and replace
+*** Cheat.sh support
+*** Clipboard history (Neovim only)
+*** Even better search and replace (Neovim only)
+*** Color strings highlighting (Neovim only)
+
 ** Roadmap
 
-- [ ] Add screenshots
-- [ ] Documentation (and default keybindings info)
+- [x] Add screenshots
+- [x] Documentation (and default keybindings info)
 - [x] Figure out a way for vim-plug to manage SigmaVimRc or let it manage itself
+- [x] Features explanation
 - [ ] Dynamic theme plugin
-- [ ] Allow live reload of whole configuration
