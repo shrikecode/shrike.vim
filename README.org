@@ -1,5 +1,9 @@
 #+title: SigmaVimRC
 
+[[https://imgur.com/WLw4pvh.png]]
+
+[[https://imgur.com/6jwa7nk.png]]
+
 You might have already seen NvChad, but you use Vim or want a simpler config
 and be a Chad too? SigmaVimRC was made for you.
 
