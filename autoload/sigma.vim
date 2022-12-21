@@ -48,10 +48,10 @@ function! sigma#config()
     " General Config
     set termguicolors
     set guifont="SauceCodePro Nerd Font:h10"
+    set signcolumn=yes
 
     if has('nvim')
         set title
-        set signcolumn
         set laststatus=3
         set noshowmode
         :lua require('sigma.e-resize-fix')
@@ -225,9 +225,15 @@ function! sigma#config()
     nnoremap <silent><leader>tt <Cmd>call sigma#run()<C-j><CR>
     nnoremap <leader>uu <Cmd>UndotreeToggle<CR>
 
+    " stolen from ThePrimeagen
+    vnoremap J <Cmd>m '>+1<CR>gv=gv
+    vnoremap K <Cmd>m '<-2<CR>gv=gv
+
     " you've got some moves
     nnoremap <C-u> <C-u>zz
     nnoremap <C-d> <C-d>zz
+    nnoremap n nzzzv
+    nnoremap N Nzzzv
 
     " switch between windows
     nnoremap <leader>wh <C-w>h
@@ -247,8 +253,13 @@ function! sigma#config()
     nnoremap <A-e> <C-w>=
 
     " Next/previous buffer
-    nnoremap <A-.> <Cmd>bn<CR>
-    nnoremap <A-,> <Cmd>bp<CR>
+    if type(g:sigma#plugins['romgrk/barbar.nvim']) == v:t_dict || g:sigma#plugins['romgrk/barbar.nvim'] == 1
+        nnoremap <A-.> <Cmd>BufferNext<CR>
+        nnoremap <A-,> <Cmd>BufferPrevious<CR>
+    else
+        nnoremap <A-.> <Cmd>bn<CR>
+        nnoremap <A-,> <Cmd>bp<CR>
+    endif
 
     " Close buffer
     nnoremap <A-c> <Cmd>bd<CR>
