@@ -279,27 +279,27 @@ Some of them might've been borrowed from NvChad or ThePrimeagen.
 
 ** Features
 
-*** Dashboard with useful shortcuts
-*** Good looking, easy on the eyes theme
-*** Code commenting plugins
-*** Simple project management
-*** Privilege elevating when editing system config
-*** Fuzzy finder
-*** Fancy yet useful status and bufferline
-*** Autocompletion and snippets
-*** LSP support
-*** Undotree
-*** Nnn file manager integration
-*** Easy shortcuts to lazygit and full fledged terminal (kitty required)
-*** Auto-save
-*** Easy to configure remote sync
-*** Undotree
-*** Better search and replace
-*** Cheat.sh support
-*** Clipboard history (Neovim only)
-*** Even better search and replace (Neovim only)
-*** Color strings highlighting (Neovim only)
-
+- Dashboard with useful shortcuts
+- Good looking, easy on the eyes theme
+- Code commenting plugins
+- Simple project management
+- Privilege elevating when editing system config
+- Fuzzy finder
+- Fancy yet useful status and bufferline
+- Autocompletion and snippets
+- LSP support
+- Undotree
+- Nnn file manager integration
+- Easy shortcuts to lazygit and full fledged terminal (kitty required)
+- Auto-save
+- Easy to configure remote sync
+- Undotree
+- Better search and replace
+- Cheat.sh support
+- Clipboard history (Neovim only)
+- Even better search and replace (Neovim only)
+- Color strings highlighting (Neovim only)
+-
 ** Roadmap
 
 - [x] Add screenshots
