@@ -44,6 +44,113 @@ function! sigma#lsp_add(server)
     let g:sigma#lsp_servers += [ a:server ]
 endfunction
 
+function! sigma#mappings()
+    " Mappings
+    nnoremap <leader>pp <Cmd>ProjectList<CR>
+    nnoremap <leader>fb <Cmd>NnnPicker<CR>
+
+    nnoremap <Esc> <Cmd>noh<CR>
+    nnoremap <leader>uc <Cmd>PlugClean<CR>
+    nnoremap <leader>up <Cmd>PlugUpdate<CR>
+    nnoremap <leader>uv <Cmd>PlugUpgrade<CR>
+    nnoremap <leader>us <Cmd>SigmaUpdate<CR>
+
+
+    if has('nvim')
+        nnoremap <leader>ff <Cmd>FzfLua files<CR>
+        nnoremap <leader>bi <Cmd>FzfLua buffers<CR>
+        nnoremap <leader>fr <Cmd>FzfLua oldfiles<CR>
+        nnoremap <leader>rg <Cmd>lua require('fzf-lua').live_grep({ cmd = "rg -g '!{.git,node_modules}/' --hidden --no-ignore", search = "", fzf_opts = { ['--nth'] = '2..' } })<CR>
+        nnoremap <leader>cp <Cmd>FzfLua commands<CR>
+        nnoremap <leader>ll <Cmd>FzfLua lines<CR>
+        nnoremap <leader>gl <Cmd>FzfLua blines<CR>
+        nnoremap <leader>gj <Cmd>FzfLua jumps<CR>
+        nnoremap <leader>km <Cmd>FzfLua keymaps<CR>
+        nnoremap <leader>rr <Cmd>source ~/.config/nvim/init.vim<CR>
+        nnoremap <leader>fP <Cmd>e ~/.config/nvim/init.vim<CR>
+
+        " barbar.nvim
+        nnoremap <C-,> <Cmd>BufferMovePrevious<CR>
+        nnoremap <C-.> <Cmd>BufferMoveNext<CR>
+        nnoremap <A-p> <Cmd>BufferPin<CR>
+        nnoremap <A-C> <Cmd>BufferCloseAllButCurrentOrPinned<CR>
+
+        " Spectre
+        nnoremap <leader>S  <cmd>lua require('spectre').open()<CR>
+        nnoremap <leader>sw <cmd>lua require('spectre').open_visual({select_word=true})<CR>
+        vnoremap <leader>s  <esc>:lua require('spectre').open_visual()<CR>
+        nnoremap <leader>sp viw:lua require('spectre').open_file_search()<cr>
+
+        " Neoclip
+        nnoremap <leader>yy <Cmd>lua require('neoclip.fzf')()<CR>
+
+        " Vim Be Good
+        nnoremap <leader>bg <Cmd>VimBeGood<CR>
+    else
+        nnoremap <leader>rr <Cmd>source ~/.vimrc<CR>
+        nnoremap <leader>fP <Cmd>e ~/.vimrc<CR>
+        nnoremap <leader>S  <Cmd>ProjectFindInFiles<CR>
+        nnoremap <leader>ff <Cmd>Files<CR>
+        nnoremap <leader>bi <Cmd>Buffers<CR>
+        nnoremap <leader>fr <Cmd>History<CR>
+        nnoremap <leader>rg <Cmd>Rg<CR>
+        nnoremap <leader>cp <Cmd>Commands<CR>
+        nnoremap <leader>ll <Cmd>Lines<CR>
+        nnoremap <leader>gl <Cmd>BLines<CR>
+        nnoremap <leader>km <Cmd>Maps<CR>
+    endif
+
+    noremap <C-n> <Cmd>NnnPicker %:p:h<CR>
+    nnoremap <silent><leader>gg <Cmd>call sigma#run("lazygit -p")<C-j><CR>
+    nnoremap <silent><leader>tt <Cmd>call sigma#run()<C-j><CR>
+    nnoremap <leader>uu <Cmd>UndotreeToggle<CR>
+
+    " you've got some moves
+    nnoremap <C-u> <C-u>zz
+    nnoremap <C-d> <C-d>zz
+    nnoremap n nzzzv
+    nnoremap N Nzzzv
+
+    " switch between windows
+    nnoremap <leader>wh <C-w>h
+    nnoremap <leader>wl <C-w>l
+    nnoremap <leader>wj <C-w>j
+    nnoremap <leader>wk <C-w>k
+
+    " resize windows
+    nnoremap <A-h> <C-w>>
+    nnoremap <A-l> <C-w><
+    nnoremap <A-k> <C-w>+
+    nnoremap <A-j> <C-w>-
+    nnoremap <A-J> <C-w>_
+    nnoremap <A-K> <C-w>_
+    nnoremap <A-H> <C-w>|
+    nnoremap <A-L> <C-w>|
+    nnoremap <A-e> <C-w>=
+
+    " Next/previous buffer
+    if has('nvim')
+        nnoremap <A-.> <Cmd>BufferNext<CR>
+        nnoremap <A-,> <Cmd>BufferPrevious<CR>
+    else
+        nnoremap <A-.> <Cmd>bn<CR>
+        nnoremap <A-,> <Cmd>bp<CR>
+    endif
+
+    " Close buffer
+    nnoremap <A-c> <Cmd>bd<CR>
+
+    " greatest remap ever
+    xnoremap <leader>p "_dP
+
+    " split windows
+    nnoremap <leader>ws <C-w>s
+    nnoremap <leader>wv <C-w>v
+
+    " close window
+    nnoremap <leader>wc <C-w>c
+endfunction
+
 function! sigma#config()
     " General Config
     set termguicolors
@@ -156,12 +263,13 @@ function! sigma#config()
                     \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
                     \ ]
         let g:startify_commands = [
-                    \ ['  Open project     SPC p p', 'ProjectList'],
-                    \ ['  Recent files     SPC f r', 'History'],
-                    \ ['  Find files       SPC f f', 'Files'],
-                    \ ['  File browser     SPC f b', 'NnnPicker'],
-                    \ ['  Update plugins   SPC u p', 'PlugUpdate'],
-                    \ ['  Configure        SPC f P', 'e ~/.vimrc'],
+                    \ ['  Open project      SPC p p', 'ProjectList'],
+                    \ ['  Recent files      SPC f r', 'History'],
+                    \ ['  Find files        SPC f f', 'Files'],
+                    \ ['  File browser      SPC f b', 'NnnPicker'],
+                    \ ['烈 Update SigmaVimRc SPC u s', 'PlugUpdate'],
+                    \ ['  Update plugins    SPC u p', 'PlugUpdate'],
+                    \ ['  Configure         SPC f P', 'e ~/.vimrc'],
                     \ ]
 
         if g:sigma#use_coc == 1 && g:sigma#coc_default == 1
@@ -170,109 +278,7 @@ function! sigma#config()
 
     endif
 
-    " Mappings
-    nnoremap <leader>pp <Cmd>ProjectList<CR>
-    nnoremap <leader>fb <Cmd>NnnPicker<CR>
-
-    nnoremap <Esc> <Cmd>noh<CR>
-    nnoremap <leader>uc <Cmd>PlugClean<CR>
-    nnoremap <leader>up <Cmd>PlugUpdate<CR>
-    nnoremap <leader>uv <Cmd>PlugUpgrade<CR>
-    nnoremap <leader>us <Cmd>SigmaUpdate<CR>
-
-
-    if has('nvim')
-        nnoremap <leader>ff <Cmd>FzfLua files<CR>
-        nnoremap <leader>bi <Cmd>FzfLua buffers<CR>
-        nnoremap <leader>fr <Cmd>FzfLua oldfiles<CR>
-        nnoremap <leader>rg <Cmd>lua require('fzf-lua').live_grep({ cmd = "rg -g '!{.git,node_modules}/' --hidden --no-ignore", search = "", fzf_opts = { ['--nth'] = '2..' } })<CR>
-        nnoremap <leader>cp <Cmd>FzfLua commands<CR>
-        nnoremap <leader>ll <Cmd>FzfLua lines<CR>
-        nnoremap <leader>rr <Cmd>source ~/.config/nvim/init.vim<CR>
-        nnoremap <leader>fP <Cmd>e ~/.config/nvim/init.vim<CR>
-
-        " barbar.nvim
-        nnoremap <C-,> <Cmd>BufferMovePrevious<CR>
-        nnoremap <C-.> <Cmd>BufferMoveNext<CR>
-        nnoremap <A-p> <Cmd>BufferPin<CR>
-        nnoremap <A-C> <Cmd>BufferCloseAllButCurrentOrPinned<CR>
-
-        " Spectre
-        nnoremap <leader>S  <cmd>lua require('spectre').open()<CR>
-        nnoremap <leader>sw <cmd>lua require('spectre').open_visual({select_word=true})<CR>
-        vnoremap <leader>s  <esc>:lua require('spectre').open_visual()<CR>
-        nnoremap <leader>sp viw:lua require('spectre').open_file_search()<cr>
-
-        " Neoclip
-        nnoremap <leader>yy <Cmd>lua require('neoclip.fzf')()<CR>
-
-        " Vim Be Good
-        nnoremap <leader>bg <Cmd>VimBeGood<CR>
-    else
-        nnoremap <leader>rr <Cmd>source ~/.vimrc<CR>
-        nnoremap <leader>fP <Cmd>e ~/.vimrc<CR>
-        nnoremap <leader>S  <Cmd>ProjectFindInFiles<CR>
-        nnoremap <leader>ff <Cmd>Files<CR>
-        nnoremap <leader>bi <Cmd>Buffers<CR>
-        nnoremap <leader>fr <Cmd>History<CR>
-        nnoremap <leader>rg <Cmd>Rg<CR>
-        nnoremap <leader>cp <Cmd>Commands<CR>
-        nnoremap <leader>ll <Cmd>Lines<CR>
-    endif
-
-    noremap <C-n> <Cmd>NnnPicker %:p:h<CR>
-    nnoremap <silent><leader>gg <Cmd>call sigma#run("lazygit -p")<C-j><CR>
-    nnoremap <silent><leader>tt <Cmd>call sigma#run()<C-j><CR>
-    nnoremap <leader>uu <Cmd>UndotreeToggle<CR>
-
-    " stolen from ThePrimeagen
-    vnoremap J <Cmd>m '>+1<CR>gv=gv
-    vnoremap K <Cmd>m '<-2<CR>gv=gv
-
-    " you've got some moves
-    nnoremap <C-u> <C-u>zz
-    nnoremap <C-d> <C-d>zz
-    nnoremap n nzzzv
-    nnoremap N Nzzzv
-
-    " switch between windows
-    nnoremap <leader>wh <C-w>h
-    nnoremap <leader>wl <C-w>l
-    nnoremap <leader>wj <C-w>j
-    nnoremap <leader>wk <C-w>k
-
-    " resize windows
-    nnoremap <A-h> <C-w>>
-    nnoremap <A-l> <C-w><
-    nnoremap <A-k> <C-w>+
-    nnoremap <A-j> <C-w>-
-    nnoremap <A-J> <C-w>_
-    nnoremap <A-K> <C-w>_
-    nnoremap <A-H> <C-w>|
-    nnoremap <A-L> <C-w>|
-    nnoremap <A-e> <C-w>=
-
-    " Next/previous buffer
-    if has('nvim')
-        nnoremap <A-.> <Cmd>BufferNext<CR>
-        nnoremap <A-,> <Cmd>BufferPrevious<CR>
-    else
-        nnoremap <A-.> <Cmd>bn<CR>
-        nnoremap <A-,> <Cmd>bp<CR>
-    endif
-
-    " Close buffer
-    nnoremap <A-c> <Cmd>bd<CR>
-
-    " greatest remap ever
-    xnoremap <leader>p "_dP
-
-    " split windows
-    nnoremap <leader>ws <C-w>s
-    nnoremap <leader>wv <C-w>v
-
-    " close window
-    nnoremap <leader>wc <C-w>c
+    call sigma#mappings()
 
     " Autocmd
     autocmd BufWritePost * :call SyncUploadFile()
