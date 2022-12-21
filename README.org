@@ -144,13 +144,23 @@ nnoremap <silent><leader>tt <Cmd>call sigma#run()<CR>
 
 *** LSP
 
-Sigma by default includes coc.nvim for LSP support, but it is not configured
-to avoid including large configuration file which you might not need in the
-end. So, you will need to add configuration yourself. It's available in
-coc.nvim [[https://github.com/neoclide/coc.nvim#example-vim-configuration][README]] file.
+Sigma provides a choice to include selected LSP or LSP-like solutions.
 
-You are also free to use whatever you want. Go your way like the sigma lone 
-wolf you are.
+To use coc.nvim put these *BEFORE* `call sigma#init()`:
+
+#+begin_src vim
+let g:sigma#use_coc = 1
+let g:sigma#coc_default = 1 " or 0 to not configure it automatically
+#+end_src
+
+Or to use nvim-lspconfig:
+
+#+begin_src vim
+let g:sigma#use_lsp = 1
+let g:sigma#lsp_default = 1 " or 0 to not configure it automatically
+
+call sigma#lsp_add('pyright') " to add language server of choice
+#+end_src
 
 ** Roadmap
 

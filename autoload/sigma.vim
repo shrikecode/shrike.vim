@@ -18,10 +18,11 @@ let g:sigma#plugins = {
         \ 'dbeniamine/cheat.sh-vim': 1,
         \ 'mcchrish/nnn.vim': 1,
         \ 'leafOfTree/vim-project': 1,
-        \ 'neoclide/coc.nvim': {'branch': 'release'},
         \ 'mbbill/undotree': 1,
         \ 'junegunn/fzf': 1
       \ }
+
+let g:sigma#lsp_servers = [ 'vimls', 'sumneko_lua' ]
 
 function! sigma#remove(plugin)
     for [key, value] in items(g:sigma#plugins)
@@ -37,6 +38,10 @@ function! sigma#add(plugin, config = 1)
     else
         let g:sigma#plugins[a:plugin] = 1
     endif
+endfunction
+
+function! sigma#lsp_add(server)
+    let g:sigma#lsp_servers += [ a:server ]
 endfunction
 
 function! sigma#config()
@@ -104,6 +109,13 @@ function! sigma#config()
         :lua require('sigma.dashboard')
         " other lua plugins initialization
         :lua require('sigma.plugins')
+        " coc.nvim or lsp config
+        if g:sigma#use_lsp == 1 && g:sigma#lsp_default == 1
+            set completeopt=menu,menuone,noselect
+            :lua require('sigma.lsp')
+        elseif g:sigma#use_coc == 1 && g:sigma#coc_default == 1
+            call sigmacoc#config()
+        endif
     else
         " kyotonight.vim
         colorscheme kyotonight
@@ -151,6 +163,11 @@ function! sigma#config()
                     \ ['  Update plugins   SPC u p', 'PlugUpdate'],
                     \ ['  Configure        SPC f P', 'e ~/.vimrc'],
                     \ ]
+
+        if g:sigma#use_coc == 1 && g:sigma#coc_default == 1
+            call sigmacoc#config()
+        endif
+
     endif
 
     " Mappings
@@ -291,7 +308,32 @@ function! sigma#run(command = '')
     endif
 endfunction
 
+let g:sigma#use_coc = get(g:, 'sigma#use_coc', 0);
+let g:sigma#use_lsp = get(g:, 'sigma#use_lsp', 0);
+let g:sigma#coc_default = get(g:, 'sigma#coc_default', 0);
+let g:sigma#lsp_default = get(g:, 'sigma#lsp_default', 0);
+
+if g:sigma#use_coc == 1
+    call sigma#add('neoclide/coc.nvim', {'branch': 'release'})
+endif
+
 if has('nvim')
+
+    if g:sigma#use_lsp == 1
+        call sigma#add('williamboman/mason.nvim')
+        call sigma#add('williamboman/mason-lspconfig.nvim')
+        call sigma#add('neovim/nvim-lspconfig')
+        call sigma#add('hrsh7th/cmp-nvim-lsp')
+        call sigma#add('hrsh7th/cmp-buffer')
+        call sigma#add('hrsh7th/cmp-path')
+        call sigma#add('hrsh7th/cmp-cmdline')
+        call sigma#add('hrsh7th/nvim-cmp')
+        call sigma#add('SirVer/ultisnips')
+        call sigma#add('quangnguyen30192/cmp-nvim-ultisnips')
+    elseif g:sigma#use_coc == 1
+        call sigma#add('neoclide/coc.nvim', {'branch': 'release'})
+    endif
+
     call sigma#add('kyazdani42/nvim-web-devicons')
     call sigma#add('romgrk/barbar.nvim')
     call sigma#add('lewis6991/gitsigns.nvim')
@@ -306,6 +348,11 @@ if has('nvim')
     call sigma#add('nvim-lua/plenary.nvim')
     call sigma#add('norcalli/nvim-colorizer.lua')
 else
+
+    if g:sigma#use_coc == 1
+        call sigma#add('neoclide/coc.nvim', {'branch': 'release'})
+    endif
+
     call sigma#add('vim-airline/vim-airline')
     call sigma#add('ryanoasis/vim-devicons')
     call sigma#add('scrooloose/nerdcommenter')
