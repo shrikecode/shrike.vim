@@ -1,10 +1,45 @@
 #+title: SigmaVimRC
 
-*THIS SOFTWARE IS IN ALPHA, IT MIGHT JUST NOT WORK AS DESCRIBED*
-(even though it's also Sigma)
-
 You might have already seen NvChad, but you use Vim or want a simpler config
 and be a Chad too? SigmaVimRC was made for you.
+
+#+begin_src
+............................................................
+............................... ... ........................
+..................... ......'...,,.... .....................
+...................  ..'''''',''';;;;'......................
+................... ..',,;:::cclodxxdo;.....................
+..................  ...''',,,;:ccllllc;.....................
+..................   ...',;::::clllcc:,.....................
+................... .... ............','....................
+......................      ...      ..',,..................
+......................... ...:;.....',,'....................
+...................  .......'cl,.'......''..................
+...................    ...........'..  .....................
+...................             ....   .....................
+...................           ...  .    ....................
+.....................                 ......................
+.....................                .......................
+.....................               ...''...................
+....................               ....';::,................
+................'...              ....'';:clool:,...........
+..........',,''.....             ....',;:ccccloodddl;.......
+.......,;;;;,''......           ..',;:cloooooodoooodddl;'...
+',,,;;:::;;;;,''''....         ...';:clloloooooddoodxxxxdddd
+;:::::::::;;;,,,''...............';:cllllcllloooodddddddddoo
+;;;;;;;;;;;;;;,,,'''......'''....',;::cccccllllllllllllllllc
+,,,,,,,,,;;;;;;;,,,,,,,,,,,,;'...'',;:::ccllllllllccc::;;;;;
+....'',,,,,,;;;;;;;;;;;;;;;;;,..',,;;:::cclllccccc::;;,''.''
+......'''',,,,,;;;;;;;;;;;;::'..'',;;::::ccccc::::;,,,'.....
+. ........'''',,,;;;;;;;;,;;;....'',,,;;;;;;;;;;,,,''....   
+   ...........'',,,,,,;;;;;;;.....'''',,,,,,''''........    
+    ............''''''''''''.............'............
+#+end_src
+
+** Disclaimer
+
+Project is still in early stage, breaking changes might be introduced.
+Breaking as in requiring configuration changes to keep your current workflow.
 
 ** Why another Vim distribution
 
@@ -44,6 +79,7 @@ in defualt plugins list.
 - figlet (for vim-startify header)
 - kitty or tmux (for sigma#run support)
 - lazygit (optional for <leader>gg keybinding)
+- python3 (utlisnips for coc.nvim or nvim-cmp)
 
 ** Installation
 
@@ -146,7 +182,7 @@ nnoremap <silent><leader>tt <Cmd>call sigma#run()<CR>
 
 Sigma provides a choice to include selected LSP or LSP-like solutions.
 
-To use coc.nvim put these *BEFORE* `call sigma#init()`:
+To use coc.nvim put these *BEFORE* calling any /sigma#/ function:
 
 #+begin_src vim
 let g:sigma#use_coc = 1
@@ -162,12 +198,18 @@ let g:sigma#lsp_default = 1 " or 0 to not configure it automatically
 call sigma#lsp_add('pyright') " to add language server of choice
 #+end_src
 
+To reconfigure LSP server:
+
+#+begin_src lua
+local overrides = require('sigma.lsp.defaults')
+overrides.init_options = {param = 'value'}
+require('lspconfig')['pyright'].setup(overrides)
+#+end_src
+
 ** Roadmap
 
 - [ ] Add screenshots
 - [ ] Documentation (and default keybindings info)
-- [ ] Supress errors on first run
 - [x] Figure out a way for vim-plug to manage SigmaVimRc or let it manage itself
 - [ ] Dynamic theme plugin
-- [ ] Better dashboard for Vim
 - [ ] Allow live reload of whole configuration
