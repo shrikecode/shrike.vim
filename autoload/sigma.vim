@@ -101,8 +101,16 @@ function! sigma#mappings()
     endif
 
     noremap <C-n> <Cmd>NnnPicker %:p:h<CR>
-    nnoremap <silent><leader>gg <Cmd>call sigma#run("lazygit -p")<C-j><CR>
-    nnoremap <silent><leader>tt <Cmd>call sigma#run()<C-j><CR>
+
+    if $TERM == 'xterm-kitty' || $TMUX != ''
+        if $TMUX != ''
+            nnoremap <silent><leader>gg <Cmd>call sigma#run("lazygit")<C-j><CR>
+        else
+            nnoremap <silent><leader>gg <Cmd>call sigma#run("lazygit -p")<C-j><CR>
+        endif
+        nnoremap <silent><leader>tt <Cmd>call sigma#run()<C-j><CR>
+    endif
+
     nnoremap <leader>uu <Cmd>UndotreeToggle<CR>
 
     " you've got some moves
@@ -319,7 +327,7 @@ function! sigma#run(command = '')
     if $TERM == 'xterm-kitty'
         execute "!kitty @ launch " a:command getcwd()
     elseif $TMUX != ''
-        execute "!tmux split-window " a:command getcwd()
+        execute "!tmux split-window -c" getcwd() a:command
     else
         echoerr 'Vim must be run in kitty terminal or tmux for sigma#run to work'
     endif
