@@ -211,7 +211,7 @@ function! sigma#config()
     " nnn.vim
     let g:nnn#layout = { 'window': { 'width': 1, 'height': 1, 'border': 'none' } }
     let g:nnn#replace_netrw = 1
-    let g:nnn#command = 'nnn -a -Pp'
+    let g:nnn#command = 'nnn -a -Pp -p'
 
     " kyotonight.vim
     let g:kyotonight_italic = 1
