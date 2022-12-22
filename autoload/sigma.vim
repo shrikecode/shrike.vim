@@ -60,7 +60,7 @@ function! sigma#mappings()
         nnoremap <leader>ff <Cmd>FzfLua files<CR>
         nnoremap <leader>bi <Cmd>FzfLua buffers<CR>
         nnoremap <leader>fr <Cmd>FzfLua oldfiles<CR>
-        nnoremap <leader>rg <Cmd>lua require('fzf-lua').live_grep({ cmd = "rg -g '!{.git,node_modules}/' --hidden --no-ignore", search = "", fzf_opts = { ['--nth'] = '2..' } })<CR>
+        nnoremap <leader>rg <Cmd>lua require('fzf-lua').live_grep({ cmd = "rg -g '!{.git,node_modules}/' --hidden --no-ignore --column", search = "", fzf_opts = { ['--nth'] = '2..' } })<CR>
         nnoremap <leader>cp <Cmd>FzfLua commands<CR>
         nnoremap <leader>ll <Cmd>FzfLua lines<CR>
         nnoremap <leader>gl <Cmd>FzfLua blines<CR>
