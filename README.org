@@ -59,8 +59,6 @@ Sigma is meant to be simple. It uses vim-plug as plugin manager, which is also
 wrapped in sigma#add, sigma#remove and sigma#init functions, which allows full
 control what plugins from base set are actually used.
 
-Sigma itself is a plugin.
-
 Sigma comes with sane (or maybe opinionated?) defaults and utilities to make
 your vimrc (or init.vim) as small and readable as possible.
 
@@ -290,7 +288,7 @@ Some of them might've been borrowed from NvChad or ThePrimeagen.
 - LSP support
 - Undotree
 - Nnn file manager integration
-- Easy shortcuts to lazygit and full fledged terminal (kitty required)
+- Easy shortcuts to lazygit and full fledged terminal (kitty or tmux required)
 - Auto-save
 - Easy to configure remote sync
 - Undotree

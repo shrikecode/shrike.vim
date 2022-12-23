@@ -31,11 +31,11 @@ then
             action ='ProjectList'},
         {icon = '  ',
             desc = 'Find recent files                       ',
-            action = 'FzfLua oldfiles',
+            action = 'SigmaRecentFiles',
             shortcut = 'SPC f r'},
         {icon = '  ',
             desc = 'Find files                              ',
-            action = 'FzfLua files',
+            action = 'SigmaFiles',
             shortcut = 'SPC f f'},
         {icon = '  ',
             desc ='File browser                            ',
@@ -43,7 +43,7 @@ then
             shortcut = 'SPC f b'},
         {icon = '  ',
             desc = 'Find word                               ',
-            action = 'lua require(\'fzf-lua\').live_grep({ cmd = "rg -g \'!{.git,node_modules}/\' --hidden --no-ignore", search = "", fzf_opts = { [\'--nth\'] = \'2..\' } })',
+            action = 'SigmaRg',
             shortcut = 'SPC r g'},
         {icon = '  ',
             desc = 'Vim Be Good                             ',
@@ -59,7 +59,7 @@ then
             shortcut = 'SPC u p'},
         {icon = '  ',
             desc = 'Configure                               ',
-            action = 'e ~/.config/nvim/init.vim',
+            action = 'SigmaConfig',
             shortcut = 'SPC f P'}
     }
 

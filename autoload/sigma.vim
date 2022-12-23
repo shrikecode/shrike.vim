@@ -56,12 +56,13 @@ function! sigma#mappings()
     nnoremap <leader>uv <Cmd>PlugUpgrade<CR>
     nnoremap <leader>us <Cmd>SigmaUpdate<CR>
 
+    nnoremap <leader>ff <Cmd>SigmaFiles<CR>
+    nnoremap <leader>fr <Cmd>SigmaRecentFiles<CR>
+    nnoremap <leader>rg <Cmd>SigmaRg<CR>
+
 
     if has('nvim')
-        nnoremap <leader>ff <Cmd>FzfLua files<CR>
         nnoremap <leader>bi <Cmd>FzfLua buffers<CR>
-        nnoremap <leader>fr <Cmd>FzfLua oldfiles<CR>
-        nnoremap <leader>rg <Cmd>lua require('fzf-lua').live_grep({ cmd = "rg -g '!{.git,node_modules}/' --hidden --no-ignore --column", search = "", fzf_opts = { ['--nth'] = '2..' } })<CR>
         nnoremap <leader>cp <Cmd>FzfLua commands<CR>
         nnoremap <leader>ll <Cmd>FzfLua lines<CR>
         nnoremap <leader>gl <Cmd>FzfLua blines<CR>
@@ -91,10 +92,7 @@ function! sigma#mappings()
         nnoremap <leader>rr <Cmd>source ~/.vimrc<CR>
         nnoremap <leader>fP <Cmd>e ~/.vimrc<CR>
         nnoremap <leader>S  <Cmd>ProjectFindInFiles<CR>
-        nnoremap <leader>ff <Cmd>Files<CR>
         nnoremap <leader>bi <Cmd>Buffers<CR>
-        nnoremap <leader>fr <Cmd>History<CR>
-        nnoremap <leader>rg <Cmd>Rg<CR>
         nnoremap <leader>cp <Cmd>Commands<CR>
         nnoremap <leader>ll <Cmd>Lines<CR>
         nnoremap <leader>gl <Cmd>BLines<CR>
@@ -279,13 +277,14 @@ function! sigma#config()
                     \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
                     \ ]
         let g:startify_commands = [
-                    \ ['  Open project      SPC p p', 'ProjectList'],
-                    \ ['  Recent files      SPC f r', 'History'],
-                    \ ['  Find files        SPC f f', 'Files'],
-                    \ ['  File browser      SPC f b', 'NnnPicker'],
-                    \ ['烈 Update SigmaVimRc SPC u s', 'PlugUpdate'],
-                    \ ['  Update plugins    SPC u p', 'PlugUpdate'],
-                    \ ['  Configure         SPC f P', 'e ~/.vimrc'],
+                    \ {'p': ['  Open project      SPC p p', 'ProjectList']},
+                    \ {'r': ['  Recent files      SPC f r', 'SigmaRecentFiles']},
+                    \ {'f': ['  Find files        SPC f f', 'SigmaFiles']},
+                    \ {'n': ['  File browser      SPC f b', 'NnnPicker']},
+                    \ {'z': ['  Find word         SPC r g', 'SigmaRg']},
+                    \ {'s': ['烈 Update SigmaVimRc SPC u s', 'SigmaUpdate']},
+                    \ {'u': ['  Update plugins    SPC u p', 'PlugUpdate']},
+                    \ {'c': ['  Configure         SPC f P', 'SigmaConfig']},
                     \ ]
 
         if g:sigma#use_coc == 1 && g:sigma#coc_default == 1
@@ -329,6 +328,18 @@ function! sigma#init()
     call sigma#config()
 
     command! SigmaUpdate :call sigma#update()
+
+    if has('nvim')
+        command! SigmaRecentFiles :FzfLua oldfiles
+        command! SigmaFiles :FzfLua files
+        command! SigmaRg :lua require(\'fzf-lua\').live_grep({ cmd = "rg -g \'!{.git,node_modules}/\' --hidden --no-ignore --column", search = "", fzf_opts = { [\'--nth\'] = \'2..\' } })
+        command! SigmaConfig :e ~/.config/nvim/init.vim
+    else
+        command! SigmaRecentFiles :History
+        command! SigmaFiles :Files
+        command! SigmaRg :Rg
+        command! SigmaConfig :e ~/.vimrc
+    endif
 endfunction
 
 function! sigma#run(command = '')
