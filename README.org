@@ -224,7 +224,7 @@ require('lspconfig')['pyright'].setup(overrides)
 - [[https://github.com/quangnguyen30192/cmp-nvim-ultisnips][]]
 - [[https://github.com/SirVer/ultisnips][SirVer/ultisnips]]
 - lualine.nvim
-- [[https://github.com/BourgeoisBear/clrzr][BourgeoisBear/clrzr]]
+- [[https://github.com/norcalli/nvim-colorizer.lua][norcalli/nvim-colorizer.lua]]
 - vim-snippets
 - vim-auto-save
 - [[https://github.com/tpope/vim-commentary][tpope/vim-commentary]]

@@ -20,7 +20,6 @@ let g:sigma#plugins = {
         \ 'leafOfTree/vim-project': 1,
         \ 'mbbill/undotree': 1,
         \ 'junegunn/fzf': 1,
-        \ 'BourgeoisBear/clrzr': 1,
         \ 'tpope/vim-commentary': 1
       \ }
 
@@ -379,6 +378,7 @@ if has('nvim')
     call sigma#add('ThePrimeagen/vim-be-good')
     call sigma#add('windwp/nvim-spectre')
     call sigma#add('nvim-lua/plenary.nvim')
+    call sigma#add('norcalli/nvim-colorizer.lua')
 else
 
     if g:sigma#use_coc == 1
@@ -391,4 +391,5 @@ else
     call sigma#add('mhinz/vim-startify')
     call sigma#add('tpope/vim-fugitive',)
     call sigma#add('mhinz/vim-signify')
+    call sigma#add('BourgeoisBear/clrzr')
 endif
