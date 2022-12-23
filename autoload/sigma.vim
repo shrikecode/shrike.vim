@@ -261,8 +261,15 @@ function! sigma#config()
                     \ ]
 
         " startify
-        let g:startify_custom_header = 
-                    \ startify#pad(split(system('figlet -f slant "SigmaVimRc"'), '\n'))
+        let g:startify_custom_header = [
+                    \ "    _____ _                      _    ___           ____      ",
+                    \ "   / ___/(_)___ _____ ___  ____ | |  / (_)___ ___  / __ \\_____",
+                    \ "   \\__ \\/ / __ `/ __ `__ \\/ __ `/ | / / / __ `__ \\/ /_/ / ___/",
+                    \ "  ___/ / / /_/ / / / / / / /_/ /| |/ / / / / / / / _, _/ /__  ",
+                    \ " /____/_/\\__, /_/ /_/ /_/\\__,_/ |___/_/_/ /_/ /_/_/ |_|\\___/  ",
+                    \ "        /____/                                                ",
+                    \ " 烈VIM                                                        "
+                    \ ]
         let g:startify_custom_footer = 
                     \ startify#pad(split(system('echo "In order to exit Vim, press and hold the Power button"'), '\n'))
         let g:startify_lists = [

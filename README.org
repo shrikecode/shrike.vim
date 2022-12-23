@@ -79,9 +79,8 @@ in defualt plugins list.
 - SauceCodePro NerdFont (or any NerdFont)
 - fzf (unless you want to disable fzf plugins and use Telescope)
 - nnn (unless you want to use some file-tree plugin)
-- nodejs (if you want to use coc.nvim for completion)
-- figlet (for vim-startify header)
-- kitty or tmux (for sigma#run support)
+- npm (for coc.nvim / lsp)
+- kitty or tmux (for sigma#run support / lazygit integration)
 - lazygit (optional for <leader>gg keybinding)
 - python3 (utlisnips for coc.nvim or nvim-cmp)
 
