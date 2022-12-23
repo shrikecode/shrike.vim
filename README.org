@@ -266,6 +266,7 @@ require('lspconfig')['pyright'].setup(overrides)
 - [[https://github.com/vim-airline/vim-airline][vim-airline/vim-airline]]
 - [[https://github.com/junnegunn/fzf.vim][junnegunn/fzf.vim]]
 - [[https://github.com/tpope/vim-fugitive][tpope/vim-fugitive]]
+- [[https://github.com/junegunn/vim-peekaboo][junegunn/vim-peekaboo]]
 - [[https://github.com/neoclide/coc.nvim][neoclide/coc.nvim]]
 
 ** Keybindings
@@ -294,7 +295,7 @@ Some of them might've been borrowed from NvChad or ThePrimeagen.
 - Better search and replace
 - Cheat.sh support
 - Color strings highlighting
-- Clipboard history picker (Neovim only)
+- Clipboard history picker
 
 ** Roadmap
 

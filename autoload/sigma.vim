@@ -403,4 +403,5 @@ else
     call sigma#add('tpope/vim-fugitive',)
     call sigma#add('mhinz/vim-signify')
     call sigma#add('BourgeoisBear/clrzr')
+    call sigma#add('junegunn/vim-peekaboo')
 endif
