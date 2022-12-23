@@ -231,7 +231,7 @@ require('lspconfig')['pyright'].setup(overrides)
 - [[https://github.com/hrsh7th/cmp-path][hrsh7th/cmp-path]]
 - [[https://github.com/hrsh7th/cmp-cmdline][hrsh7th/cmp-cmdline]]
 - [[https://github.com/hrsh7th/cmp-nvim-lsp][hrsh7th/cmp-nvim-lsp]]
-- [[https://github.com/quangnguyen30192/cmp-nvim-ultisnips][]]
+- [[https://github.com/quangnguyen30192/cmp-nvim-ultisnips][quangnguyen30192/cmp-nvim-ultisnips]]
 - [[https://github.com/SirVer/ultisnips][SirVer/ultisnips]]
 - [[https://github.com/norcalli/nvim-colorizer.lua][norcalli/nvim-colorizer.lua]]
 - [[https://github.com/nvim-lualine/lualine.nvim][nvim-lualine/lualine.nvim]]
@@ -295,7 +295,6 @@ Some of them might've been borrowed from NvChad or ThePrimeagen.
 - Cheat.sh support
 - Color strings highlighting
 - Clipboard history picker (Neovim only)
-- Even better search and replace (Neovim only)
 
 ** Roadmap
 
