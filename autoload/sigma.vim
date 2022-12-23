@@ -229,69 +229,69 @@ function! sigma#config()
     else
         " kyotonight.vim
         colorscheme kyotonight
-        " vim-airline
-        let g:airline#extensions#branch#enabled = 1
-        let g:airline#extensions#tabline#enabled = 1
-        let g:airline#extensions#tabline#left_sep = ' '
-        let g:airline#extensions#tabline#left_alt_sep = ''
-        let g:airline_left_sep=''
-        let g:airline_left_alt_sep=''
-        let g:airline_right_sep=''
-        let g:airline_right_alt_sep=''
-        let g:airline_detect_modified=1
-        let g:airline_detect_paste=1
-        let g:airline_detect_crypt=1
-        if !exists('g:airline_symbols')
-            let g:airline_symbols = {}
-        endif
-        let g:airline_symbols.branch = ''
-        let g:airline_symbols.colnr = ' ℅:'
-        let g:airline_symbols.readonly = ''
-        let g:airline_symbols.linenr = ' :'
-        let g:airline_symbols.maxlinenr = '☰ '
-        let g:airline_symbols.dirty='⚡'
-        let g:airline#extensions#default#layout = [
-                    \ [ 'a', 'b',  'c'],
-                    \ [ 'x', 'warning', 'error', 'y', 'z']
-                    \ ]
+    endif
 
-        " startify
-        if has('nvim')
-            let s:sigmavim_line = " 烈NEOVIM                                                     "
-        else
-            let s:sigmavim_line = " 烈VIM                                                        "
-        endif
-        let g:startify_custom_header = [
-                    \ "    _____ _                      _    ___           ____      ",
-                    \ "   / ___/(_)___ _____ ___  ____ | |  / (_)___ ___  / __ \\_____",
-                    \ "   \\__ \\/ / __ `/ __ `__ \\/ __ `/ | / / / __ `__ \\/ /_/ / ___/",
-                    \ "  ___/ / / /_/ / / / / / / /_/ /| |/ / / / / / / / _, _/ /__  ",
-                    \ " /____/_/\\__, /_/ /_/ /_/\\__,_/ |___/_/_/ /_/ /_/_/ |_|\\___/  ",
-                    \ "        /____/                                                ",
-                    \ s:sigmavim_line
-                    \ ]
-        let g:startify_custom_footer = 
-                    \ startify#pad(split(system('echo "In order to exit Vim, press and hold the Power button"'), '\n'))
-        let g:startify_lists = [
-                    \ { 'type': 'files',     'header': ['   Recent Files']   },
-                    \ { 'type': 'commands',  'header': ['   Commands']       },
-                    \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-                    \ ]
-        let g:startify_commands = [
-                    \ {'p': ['  Open project      SPC p p', 'ProjectList']},
-                    \ {'r': ['  Recent files      SPC f r', 'SigmaRecentFiles']},
-                    \ {'f': ['  Find files        SPC f f', 'SigmaFiles']},
-                    \ {'n': ['  File browser      SPC f b', 'NnnPicker']},
-                    \ {'z': ['  Find word         SPC r g', 'SigmaRg']},
-                    \ {'s': ['烈 Update SigmaVimRc SPC u s', 'SigmaUpdate']},
-                    \ {'u': ['  Update plugins    SPC u p', 'PlugUpdate']},
-                    \ {'c': ['  Configure         SPC f P', 'SigmaConfig']},
-                    \ ]
+    " vim-airline
+    let g:airline#extensions#branch#enabled = 1
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#left_sep = ' '
+    let g:airline#extensions#tabline#left_alt_sep = ''
+    let g:airline_left_sep=''
+    let g:airline_left_alt_sep=''
+    let g:airline_right_sep=''
+    let g:airline_right_alt_sep=''
+    let g:airline_detect_modified=1
+    let g:airline_detect_paste=1
+    let g:airline_detect_crypt=1
+    if !exists('g:airline_symbols')
+        let g:airline_symbols = {}
+    endif
+    let g:airline_symbols.branch = ''
+    let g:airline_symbols.colnr = ' ℅:'
+    let g:airline_symbols.readonly = ''
+    let g:airline_symbols.linenr = ' :'
+    let g:airline_symbols.maxlinenr = '☰ '
+    let g:airline_symbols.dirty='⚡'
+    let g:airline#extensions#default#layout = [
+                \ [ 'a', 'b',  'c'],
+                \ [ 'x', 'warning', 'error', 'y', 'z']
+                \ ]
 
-        if g:sigma#use_coc == 1 && g:sigma#coc_default == 1
-            call sigmacoc#config()
-        endif
+    " startify
+    if has('nvim')
+        let s:sigmavim_line = " 烈NEOVIM                                                     "
+    else
+        let s:sigmavim_line = " 烈VIM                                                        "
+    endif
+    let g:startify_custom_header = [
+                \ "    _____ _                      _    ___           ____      ",
+                \ "   / ___/(_)___ _____ ___  ____ | |  / (_)___ ___  / __ \\_____",
+                \ "   \\__ \\/ / __ `/ __ `__ \\/ __ `/ | / / / __ `__ \\/ /_/ / ___/",
+                \ "  ___/ / / /_/ / / / / / / /_/ /| |/ / / / / / / / _, _/ /__  ",
+                \ " /____/_/\\__, /_/ /_/ /_/\\__,_/ |___/_/_/ /_/ /_/_/ |_|\\___/  ",
+                \ "        /____/                                                ",
+                \ s:sigmavim_line
+                \ ]
+    let g:startify_custom_footer = 
+                \ startify#pad(split(system('echo "In order to exit Vim, press and hold the Power button"'), '\n'))
+    let g:startify_lists = [
+                \ { 'type': 'files',     'header': ['   Recent Files']   },
+                \ { 'type': 'commands',  'header': ['   Commands']       },
+                \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+                \ ]
+    let g:startify_commands = [
+                \ {'p': ['  Open project      SPC p p', 'ProjectList']},
+                \ {'r': ['  Recent files      SPC f r', 'SigmaRecentFiles']},
+                \ {'f': ['  Find files        SPC f f', 'SigmaFiles']},
+                \ {'n': ['  File browser      SPC f b', 'NnnPicker']},
+                \ {'z': ['  Find word         SPC r g', 'SigmaRg']},
+                \ {'s': ['烈 Update SigmaVimRc SPC u s', 'SigmaUpdate']},
+                \ {'u': ['  Update plugins    SPC u p', 'PlugUpdate']},
+                \ {'c': ['  Configure         SPC f P', 'SigmaConfig']},
+                \ ]
 
+    if g:sigma#use_coc == 1 && g:sigma#coc_default == 1
+        call sigmacoc#config()
     endif
 
     call sigma#mappings()
