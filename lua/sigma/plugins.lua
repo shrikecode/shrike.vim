@@ -25,18 +25,6 @@ then
     require('neoclip').setup({ default_register = "+", enable_persistent_history = true, continuous_sync = true })
 end
 
-if (vim.g['sigma#plugins']['numToStr/Comment.nvim'] ~= 0)
-then
-    -- Comment.nvim
-    require('Comment').setup()
-end
-
-if (vim.g['sigma#plugins']['norcalli/nvim-colorizer.lua'] ~= 0)
-then
-    -- nvim-colorizer.lua
-    require('colorizer').setup()
-end
-
 if (vim.g['sigma#plugins']['windwp/nvim-spectre'] ~= 0)
 then
     -- nvim-spectre

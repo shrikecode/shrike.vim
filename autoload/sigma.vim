@@ -19,7 +19,9 @@ let g:sigma#plugins = {
         \ 'mcchrish/nnn.vim': 1,
         \ 'leafOfTree/vim-project': 1,
         \ 'mbbill/undotree': 1,
-        \ 'junegunn/fzf': 1
+        \ 'junegunn/fzf': 1,
+        \ 'BourgeoisBear/clrzr': 1,
+        \ 'tpope/vim-commentary': 1
       \ }
 
 let g:sigma#lsp_servers = [ 'vimls', 'sumneko_lua' ]
@@ -372,13 +374,11 @@ if has('nvim')
     call sigma#add('ibhagwan/fzf-lua', {'branch': 'main'})
     call sigma#add('AckslD/nvim-neoclip.lua')
     call sigma#add('kkharji/sqlite.lua', { 'as': 'sqlite' })
-    call sigma#add('numToStr/Comment.nvim')
     call sigma#add('nvim-lualine/lualine.nvim')
     call sigma#add('glepnir/dashboard-nvim')
     call sigma#add('ThePrimeagen/vim-be-good')
     call sigma#add('windwp/nvim-spectre')
     call sigma#add('nvim-lua/plenary.nvim')
-    call sigma#add('norcalli/nvim-colorizer.lua')
 else
 
     if g:sigma#use_coc == 1
@@ -387,7 +387,6 @@ else
 
     call sigma#add('vim-airline/vim-airline')
     call sigma#add('ryanoasis/vim-devicons')
-    call sigma#add('scrooloose/nerdcommenter')
     call sigma#add('junegunn/fzf.vim')
     call sigma#add('mhinz/vim-startify')
     call sigma#add('tpope/vim-fugitive',)

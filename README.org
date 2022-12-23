@@ -213,27 +213,29 @@ require('lspconfig')['pyright'].setup(overrides)
 
 *** Neovim with LSP enabled
 
-- cmp-buffer
-- cmp-path
-- cmp-cmdline
-- ultisnips
-- lualine.nvim
-- nvim-colorizer.lua
-- sqlite
+- nvim-lspconfig
+- mason.nvim
 - mason-lspconfig.nvim
+- [[https://github.com/hrsh7th/nvim-cmp][hrsh7th/nvim-cmp]]
+- [[https://github.com/hrsh7th/cmp-buffer][hrsh7th/cmp-buffer]]
+- [[https://github.com/hrsh7th/cmp-path][hrsh7th/cmp-path]]
+- [[https://github.com/hrsh7th/cmp-cmdline][hrsh7th/cmp-cmdline]]
+- [[https://github.com/hrsh7th/cmp-nvim-lsp][hrsh7th/cmp-nvim-lsp]]
+- [[https://github.com/quangnguyen30192/cmp-nvim-ultisnips][]]
+- [[https://github.com/SirVer/ultisnips][SirVer/ultisnips]]
+- lualine.nvim
+- [[https://github.com/BourgeoisBear/clrzr][BourgeoisBear/clrzr]]
 - vim-snippets
 - vim-auto-save
-- Comment.nvim
-- nvim-cmp
+- [[https://github.com/tpope/vim-commentary][tpope/vim-commentary]]
 - nvim-web-devicons
-- mason.nvim
 - gitsigns.nvim
 - plenary.nvim
 - nvim-neoclip.lua
+- sqlite
 - vim-abolish
 - vim-sync
 - nvim-spectre
-- nvim-lspconfig
 - kyotonight.vim
 - vim-project
 - dashboard-nvim
@@ -244,9 +246,7 @@ require('lspconfig')['pyright'].setup(overrides)
 - barbar.nvim
 - asyncrun.vim
 - nnn.vim
-- cmp-nvim-ultisnips
 - undotree
-- cmp-nvim-lsp
 
 *** Vim with coc.nvim enabled
 
@@ -264,11 +264,12 @@ require('lspconfig')['pyright'].setup(overrides)
 - kyotonight.vim
 - vim-project
 - suda.vim
-- nerdcommenter
+- [[https://github.com/tpope/vim-commentary][tpope/vim-commentary]]
 - asyncrun.vim
 - nnn.vim
 - undotree
 - cheat.sh-vim
+- [[https://github.com/BourgeoisBear/clrzr][BourgeoisBear/clrzr]]
 
 ** Keybindings
 
@@ -295,9 +296,9 @@ Some of them might've been borrowed from NvChad or ThePrimeagen.
 - Undotree
 - Better search and replace
 - Cheat.sh support
-- Clipboard history (Neovim only)
+- Color strings highlighting
+- Clipboard history picker (Neovim only)
 - Even better search and replace (Neovim only)
-- Color strings highlighting (Neovim only)
 
 ** Roadmap
 
