@@ -59,6 +59,7 @@ function! sigma#mappings()
     nnoremap <leader>ff <Cmd>SigmaFiles<CR>
     nnoremap <leader>fr <Cmd>SigmaRecentFiles<CR>
     nnoremap <leader>rg <Cmd>SigmaRg<CR>
+    nnoremap <leader>fP <Cmd>SigmaConfig<CR>
 
 
     if has('nvim')
@@ -69,7 +70,6 @@ function! sigma#mappings()
         nnoremap <leader>gj <Cmd>FzfLua jumps<CR>
         nnoremap <leader>km <Cmd>FzfLua keymaps<CR>
         nnoremap <leader>rr <Cmd>source ~/.config/nvim/init.vim<CR>
-        nnoremap <leader>fP <Cmd>e ~/.config/nvim/init.vim<CR>
 
         " barbar.nvim
         nnoremap <C-,> <Cmd>BufferMovePrevious<CR>
@@ -85,12 +85,8 @@ function! sigma#mappings()
 
         " Neoclip
         nnoremap <leader>yy <Cmd>lua require('neoclip.fzf')()<CR>
-
-        " Vim Be Good
-        nnoremap <leader>bg <Cmd>VimBeGood<CR>
     else
         nnoremap <leader>rr <Cmd>source ~/.vimrc<CR>
-        nnoremap <leader>fP <Cmd>e ~/.vimrc<CR>
         nnoremap <leader>S  <Cmd>ProjectFindInFiles<CR>
         nnoremap <leader>bi <Cmd>Buffers<CR>
         nnoremap <leader>cp <Cmd>Commands<CR>
@@ -260,6 +256,11 @@ function! sigma#config()
                     \ ]
 
         " startify
+        if has('nvim')
+            let s:sigmavim_line = " 烈NEOVIM                                                     "
+        else
+            let s:sigmavim_line = " 烈VIM                                                        "
+        endif
         let g:startify_custom_header = [
                     \ "    _____ _                      _    ___           ____      ",
                     \ "   / ___/(_)___ _____ ___  ____ | |  / (_)___ ___  / __ \\_____",
@@ -267,7 +268,7 @@ function! sigma#config()
                     \ "  ___/ / / /_/ / / / / / / /_/ /| |/ / / / / / / / _, _/ /__  ",
                     \ " /____/_/\\__, /_/ /_/ /_/\\__,_/ |___/_/_/ /_/ /_/_/ |_|\\___/  ",
                     \ "        /____/                                                ",
-                    \ " 烈VIM                                                        "
+                    \ s:sigmavim_line
                     \ ]
         let g:startify_custom_footer = 
                     \ startify#pad(split(system('echo "In order to exit Vim, press and hold the Power button"'), '\n'))
@@ -386,7 +387,6 @@ if has('nvim')
     call sigma#add('kkharji/sqlite.lua', { 'as': 'sqlite' })
     call sigma#add('nvim-lualine/lualine.nvim')
     call sigma#add('glepnir/dashboard-nvim')
-    call sigma#add('ThePrimeagen/vim-be-good')
     call sigma#add('windwp/nvim-spectre')
     call sigma#add('nvim-lua/plenary.nvim')
     call sigma#add('norcalli/nvim-colorizer.lua')

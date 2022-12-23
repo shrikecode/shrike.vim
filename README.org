@@ -211,9 +211,21 @@ require('lspconfig')['pyright'].setup(overrides)
 
 *** Neovim with LSP enabled
 
-- nvim-lspconfig
-- mason.nvim
-- mason-lspconfig.nvim
+- [[https://github.com/honza/vim-snippets][honza/vim-snippets]]
+- [[https://github.com/907th/vim-auto-save][907th/vim-auto-save]]
+- [[https://github.com/tpope/vim-abolish][tpope/vim-abolish]]
+- [[https://github.com/eshion/vim-sync][eshion/vim-sync]]
+- [[https://github.com/laniusone/kyotonight.vim][laniusone/kyotonight.vim]]
+- [[https://github.com/leafOfTree/vim-project][leafOfTree/vim-project]]
+- [[https://github.com/lambdalisue/suda.vim][lambdalisue/suda.vim]]
+- [[https://github.com/tpope/vim-commentary][tpope/vim-commentary]]
+- [[https://github.com/skywind3000/asyncrun.vim][skywind3000/asyncrun.vim]]
+- [[https://github.com/mcchrish/nnn.vim][mcchrish/nnn.vim]]
+- [[https://github.com/mbbill/undotree][mbbill/undotree]]
+- [[https://github.com/dbeniamine/cheat.sh-vim][dbeniamine/cheat.sh-vim]]
+- [[https://github.com/nvim-lspconfig][nvim-lspconfig]]
+- [[https://github.com/mason.nvim][mason.nvim]]
+- [[https://github.com/mason-lspconfig.nvim][mason-lspconfig.nvim]]
 - [[https://github.com/hrsh7th/nvim-cmp][hrsh7th/nvim-cmp]]
 - [[https://github.com/hrsh7th/cmp-buffer][hrsh7th/cmp-buffer]]
 - [[https://github.com/hrsh7th/cmp-path][hrsh7th/cmp-path]]
@@ -221,53 +233,40 @@ require('lspconfig')['pyright'].setup(overrides)
 - [[https://github.com/hrsh7th/cmp-nvim-lsp][hrsh7th/cmp-nvim-lsp]]
 - [[https://github.com/quangnguyen30192/cmp-nvim-ultisnips][]]
 - [[https://github.com/SirVer/ultisnips][SirVer/ultisnips]]
-- lualine.nvim
 - [[https://github.com/norcalli/nvim-colorizer.lua][norcalli/nvim-colorizer.lua]]
-- vim-snippets
-- vim-auto-save
-- [[https://github.com/tpope/vim-commentary][tpope/vim-commentary]]
-- nvim-web-devicons
-- gitsigns.nvim
-- plenary.nvim
-- nvim-neoclip.lua
-- sqlite
-- vim-abolish
-- vim-sync
-- nvim-spectre
-- kyotonight.vim
-- vim-project
-- dashboard-nvim
-- vim-be-good
-- suda.vim
-- fzf-lua
-- cheat.sh-vim
-- barbar.nvim
-- asyncrun.vim
-- nnn.vim
-- undotree
+- [[https://github.com/nvim-lualine/lualine.nvim][nvim-lualine/lualine.nvim]]
+- [[https://github.com/kyazdani42/nvim-web-devicons][kyazdani42/nvim-web-devicons]]
+- [[https://github.com/lewis6991/gitsigns.nvim][lewis6991/gitsigns.nvim]]
+- [[https://github.com/nvim-lua/plenary.nvim][nvim-lua/plenary.nvim]]
+- [[https://github.com/AckslD/nvim-neoclip.lua][AckslD/nvim-neoclip.lua]]
+- [[https://github.com/kkharji/sqlite.lua][kkharji/sqlite.lua]]
+- [[https://github.com/windwp/nvim-spectre][windwp/nvim-spectre]]
+- [[https://github.com/glepnir/dashboard-nvim][glepnir/dashboard-nvim]]
+- [[https://github.com/ibhagwan/fzf-lua][ibhagwan/fzf-lua]]
+- [[https://github.com/romgrk/barbar.nvim][romgrk/barbar.nvim]]
 
 *** Vim with coc.nvim enabled
 
-- vim-devicons
-- vim-startify
-- vim-airline
-- vim-signify
-- fzf.vim
-- vim-snippets
-- vim-auto-save
-- coc.nvim
-- vim-abolish
-- vim-sync
-- vim-fugitive
-- kyotonight.vim
-- vim-project
-- suda.vim
+- [[https://github.com/honza/vim-snippets][honza/vim-snippets]]
+- [[https://github.com/907th/vim-auto-save][907th/vim-auto-save]]
+- [[https://github.com/tpope/vim-abolish][tpope/vim-abolish]]
+- [[https://github.com/eshion/vim-sync][eshion/vim-sync]]
+- [[https://github.com/laniusone/kyotonight.vim][laniusone/kyotonight.vim]]
+- [[https://github.com/leafOfTree/vim-project][leafOfTree/vim-project]]
+- [[https://github.com/lambdalisue/suda.vim][lambdalisue/suda.vim]]
 - [[https://github.com/tpope/vim-commentary][tpope/vim-commentary]]
-- asyncrun.vim
-- nnn.vim
-- undotree
-- cheat.sh-vim
+- [[https://github.com/skywind3000/asyncrun.vim][skywind3000/asyncrun.vim]]
+- [[https://github.com/mcchrish/nnn.vim][mcchrish/nnn.vim]]
+- [[https://github.com/mbbill/undotree][mbbill/undotree]]
+- [[https://github.com/dbeniamine/cheat.sh-vim][dbeniamine/cheat.sh-vim]]
+- [[https://github.com/ryanoasis/vim-devicons][ryanoasis/vim-devicons]]
 - [[https://github.com/BourgeoisBear/clrzr][BourgeoisBear/clrzr]]
+- [[https://github.com/mhinz/vim-startify][mhinz/vim-startify]]
+- [[https://github.com/mhinz/vim-signify][mhinz/vim-signify]]
+- [[https://github.com/vim-airline/vim-airline][vim-airline/vim-airline]]
+- [[https://github.com/junnegunn/fzf.vim][junnegunn/fzf.vim]]
+- [[https://github.com/tpope/vim-fugitive][tpope/vim-fugitive]]
+- [[https://github.com/neoclide/coc.nvim][neoclide/coc.nvim]]
 
 ** Keybindings
 
