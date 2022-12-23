@@ -79,3 +79,10 @@ cmp.setup.cmdline(':', {
 for _,v in ipairs(vim.g['sigma#lsp_servers']) do
     require('lspconfig')[v].setup(require('sigma.lsp.defaults'))
 end
+
+local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
+
+for type, icon in pairs(signs) do
+  local hl = 'DiagnosticSign' .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
+end
