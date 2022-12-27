@@ -297,6 +297,18 @@ Some of them might've been borrowed from NvChad or ThePrimeagen.
 - Color strings highlighting
 - Clipboard history picker
 
+** Known issues
+
+*** Cursor line gets lost in Neovim
+
+For some reason 'nocursorline' option gets set *sometimes*. I haven't tracked
+the issue yet. A workaround (if you want cursorline that is) is adding following
+autocmd to your init.vim:
+
+#+begin_src vim
+autocmd FileType * if &ft != 'startify' && &ft != 'dashboard' | :set cursorline | endif
+#+end_src
+
 ** Roadmap
 
 - [x] Add screenshots
