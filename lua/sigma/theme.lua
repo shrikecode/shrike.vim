@@ -7,7 +7,7 @@
 -- sigma/theme.lua
 -- Default Neovim and Lualine theme
 
-if (vim.g['sigma#plugins']['laniusone/kyotonight.vim'] ~= 0)
+if (vim.g['sigma#plugins']['voidekh/kyotonight.vim'] ~= 0)
 then
     vim.cmd[[colorscheme kyotonight]]
 

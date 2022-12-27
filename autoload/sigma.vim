@@ -8,7 +8,7 @@
 " Main SigmaVimRc file
 
 let g:sigma#plugins = {
-        \ 'laniusone/kyotonight.vim': 1,
+        \ 'voidekh/kyotonight.vim': 1,
         \ '907th/vim-auto-save': 1,
         \ 'eshion/vim-sync': 1,
         \ 'skywind3000/asyncrun.vim': 1,

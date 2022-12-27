@@ -107,7 +107,7 @@ Install SigmaVimRc:
 #+begin_src sh
 mkdir -p ~/.vim/tmp/
 mkdir -p ~/.vim/pack/plugins/start/
-git clone git@github.com:laniusone/SigmaVimRc.git \
+git clone git@github.com:voidekh/SigmaVimRc.git \
     ~/.vim/pack/plugins/start/SigmaVimRc
 #+end_src
 
@@ -115,7 +115,7 @@ git clone git@github.com:laniusone/SigmaVimRc.git \
 
 #+begin_src sh
 mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/plugins/start
-git clone https://github.com/laniusone/SigmaVimRc.git \
+git clone https://github.com/voidekh/SigmaVimRc.git \
     "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/plugins/start/SigmaVimRc
 #+end_src
 
@@ -215,7 +215,7 @@ require('lspconfig')['pyright'].setup(overrides)
 - [[https://github.com/907th/vim-auto-save][907th/vim-auto-save]]
 - [[https://github.com/tpope/vim-abolish][tpope/vim-abolish]]
 - [[https://github.com/eshion/vim-sync][eshion/vim-sync]]
-- [[https://github.com/laniusone/kyotonight.vim][laniusone/kyotonight.vim]]
+- [[https://github.com/voidekh/kyotonight.vim][voidekh/kyotonight.vim]]
 - [[https://github.com/leafOfTree/vim-project][leafOfTree/vim-project]]
 - [[https://github.com/lambdalisue/suda.vim][lambdalisue/suda.vim]]
 - [[https://github.com/tpope/vim-commentary][tpope/vim-commentary]]
@@ -251,7 +251,7 @@ require('lspconfig')['pyright'].setup(overrides)
 - [[https://github.com/907th/vim-auto-save][907th/vim-auto-save]]
 - [[https://github.com/tpope/vim-abolish][tpope/vim-abolish]]
 - [[https://github.com/eshion/vim-sync][eshion/vim-sync]]
-- [[https://github.com/laniusone/kyotonight.vim][laniusone/kyotonight.vim]]
+- [[https://github.com/voidekh/kyotonight.vim][voidekh/kyotonight.vim]]
 - [[https://github.com/leafOfTree/vim-project][leafOfTree/vim-project]]
 - [[https://github.com/lambdalisue/suda.vim][lambdalisue/suda.vim]]
 - [[https://github.com/tpope/vim-commentary][tpope/vim-commentary]]
@@ -271,7 +271,7 @@ require('lspconfig')['pyright'].setup(overrides)
 
 ** Keybindings
 
-Check [[https://github.com/laniusone/SigmaVimRc/blob/master/autoload/sigma.vim#L47][sigma#mappings()]] function, and also review some of the default mappings of listed plugins.
+Check [[https://github.com/voidekh/SigmaVimRc/blob/master/autoload/sigma.vim#L47][sigma#mappings()]] function, and also review some of the default mappings of listed plugins.
 
 Some of them might've been borrowed from NvChad or ThePrimeagen.
 
