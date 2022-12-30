@@ -223,6 +223,7 @@ require('lspconfig')['pyright'].setup(overrides)
 - [[https://github.com/mcchrish/nnn.vim][mcchrish/nnn.vim]]
 - [[https://github.com/mbbill/undotree][mbbill/undotree]]
 - [[https://github.com/dbeniamine/cheat.sh-vim][dbeniamine/cheat.sh-vim]]
+- [[https://github.com/itchyny/vim-cursorword][itchyny/vim-cursorword]]
 - [[https://github.com/neovim/nvim-lspconfig][neovim/nvim-lspconfig]]
 - [[https://github.com/williamboman/mason.nvim][williamboman/mason.nvim]]
 - [[https://github.com/williamboman/mason-lspconfig.nvim][williamboman/mason-lspconfig.nvim]]
@@ -259,6 +260,7 @@ require('lspconfig')['pyright'].setup(overrides)
 - [[https://github.com/mcchrish/nnn.vim][mcchrish/nnn.vim]]
 - [[https://github.com/mbbill/undotree][mbbill/undotree]]
 - [[https://github.com/dbeniamine/cheat.sh-vim][dbeniamine/cheat.sh-vim]]
+- [[https://github.com/itchyny/vim-cursorword][itchyny/vim-cursorword]]
 - [[https://github.com/ryanoasis/vim-devicons][ryanoasis/vim-devicons]]
 - [[https://github.com/BourgeoisBear/clrzr][BourgeoisBear/clrzr]]
 - [[https://github.com/mhinz/vim-startify][mhinz/vim-startify]]
@@ -296,6 +298,7 @@ Some of them might've been borrowed from NvChad or ThePrimeagen.
 - Cheat.sh support
 - Color strings highlighting
 - Clipboard history picker
+- Highlighting the word under cursor
 
 ** Known issues
 

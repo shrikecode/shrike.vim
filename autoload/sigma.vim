@@ -20,7 +20,8 @@ let g:sigma#plugins = {
         \ 'leafOfTree/vim-project': 1,
         \ 'mbbill/undotree': 1,
         \ 'junegunn/fzf': 1,
-        \ 'tpope/vim-commentary': 1
+        \ 'tpope/vim-commentary': 1,
+        \ 'itchyny/vim-cursorword': 1
       \ }
 
 let g:sigma#lsp_servers = [ 'vimls', 'sumneko_lua' ]
@@ -207,6 +208,9 @@ function! sigma#config()
     let g:nnn#layout = { 'window': { 'width': 1, 'height': 1, 'border': 'none' } }
     let g:nnn#replace_netrw = 1
     let g:nnn#command = 'nnn -a -Pp -o'
+
+    " vim-cursorword
+    let g:cursorword_highlight = 0 " use highlight from theme
 
     " kyotonight.vim
     let g:kyotonight_italic = 1
