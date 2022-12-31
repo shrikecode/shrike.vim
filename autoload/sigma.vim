@@ -20,8 +20,7 @@ let g:sigma#plugins = {
         \ 'leafOfTree/vim-project': 1,
         \ 'mbbill/undotree': 1,
         \ 'junegunn/fzf': 1,
-        \ 'tpope/vim-commentary': 1,
-        \ 'itchyny/vim-cursorword': 1
+        \ 'tpope/vim-commentary': 1
       \ }
 
 let g:sigma#lsp_servers = [ 'vimls', 'sumneko_lua' ]
