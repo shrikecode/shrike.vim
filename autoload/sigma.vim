@@ -113,9 +113,13 @@ function! sigma#mappings()
     nnoremap <C-d> <C-d>zz
     nnoremap n nzzzv
     nnoremap N Nzzzv
+    nnoremap gg ggzz
+    nnoremap G Gzz
     nnoremap gd gdzz
     nnoremap gD gDzz
     nnoremap gi gizz
+    nnoremap <C-i> <C-i>zz
+    nnoremap <C-o> <C-o>zz
 
     " switch between windows
     nnoremap <leader>wh <C-w>h
