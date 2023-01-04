@@ -238,6 +238,9 @@ function! sigma#config()
     else
         " kyotonight.vim
         colorscheme kyotonight
+        " machakann/vim-highlightedyank
+        let g:highlightedyank_highlight_duration = 1000
+        hi! link HighlightedyankRegion Search
     endif
 
     " vim-airline
@@ -309,6 +312,10 @@ function! sigma#config()
     autocmd BufWritePost * :call SyncUploadFile()
     autocmd FileType org :set cc=80
     autocmd FileType markdown :set cc=80
+
+    if has('nvim')
+        autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup="Search", timeout=1000}
+    endif
 
 endfunction
 
@@ -413,4 +420,5 @@ else
     call sigma#add('mhinz/vim-signify')
     call sigma#add('BourgeoisBear/clrzr')
     call sigma#add('junegunn/vim-peekaboo')
+    call sigma#add('machakann/vim-highlightedyank')
 endif
