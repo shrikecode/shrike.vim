@@ -353,7 +353,7 @@ function! sigma#init()
     if has('nvim')
         command! SigmaRecentFiles :FzfLua oldfiles
         command! SigmaFiles :FzfLua files
-        command! SigmaRg :lua require('fzf-lua').live_grep({ cmd = "rg -g '!{.git,node_modules}/' --hidden --no-ignore --column", search = "", fzf_opts = { ['--nth'] = '2..' } })
+        command! SigmaRg :lua require('fzf-lua').live_grep({ cmd = "rg -g '!{.git,node_modules}' --hidden --no-ignore --column", search = "", fzf_opts = { ['--nth'] = '2..' } })
         command! SigmaConfig :e ~/.config/nvim/init.vim
     else
         command! SigmaRecentFiles :History
