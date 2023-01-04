@@ -7,7 +7,7 @@
 You might have already seen NvChad, but you use Vim or want a simpler config
 and be a Chad too? SigmaVimRC was made for you.
 
-#+begin_src
+#+begin_src sh
 ............................................................
 ............................... ... ........................
 ..................... ......'...,,.... .....................
@@ -57,7 +57,7 @@ knowledge, and happen to be a pain to actually replace some base plugins.
 
 Sigma is meant to be simple. It uses vim-plug as plugin manager, which is also
 wrapped in sigma#add, sigma#remove and sigma#init functions, which allows full
-control what plugins from base set are actually used.
+control over what plugins from base set are actually used.
 
 Sigma comes with sane (or maybe opinionated?) defaults and utilities to make
 your vimrc (or init.vim) as small and readable as possible.
