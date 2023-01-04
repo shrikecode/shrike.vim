@@ -66,21 +66,50 @@ Sigma comes with kyotonight.vim theme, which might easily be changed to any
 theme of your choice. There is also a plan of adding a possibility to create
 your own colorscheme providing just color palette.
 
-Sigma uses fzf which powers all the fuzzy finding in the default config.
+Sigma uses fzf which powers all the fuzzy finding in the default config. Check
+the recommended config section for FZF.
 
-Sigma includes a few quality of life plugins, doesn't include a classic file
-tree plugin (it uses nnn.vim, which requires nnn file manager). More details
-in defualt plugins list.
+Sigma uses nnn as file picker and file browser in place of netrw, it also 
+doesn't provide any file-tree plugin.
+
+Rationale for this choices is just... keeping it simple. Use the same tools
+inside of Vim which you would use outside of Vim. Fzf is great all around fuzzy
+finder, unlike Telescope which might be amazing, but it's Neovim only plugin.
+Nnn is a full blown, fully functional file manager. No file browser plugin can
+compare with that. And again, it's a tool for everyday use, not just in Vim.
+
+If you prefer different workflow, replacing nnn.vim with a file-tree plugin of
+choice is just removing one plugin, adding another one, and replacing 2 remaps.
+You can also add a file-tree plugin on top of nnn, so you might just want to 
+replace only one remap, <C-n> with toggling your file-tree.
+
+If you don't want fzf, there would be a lot more changes to do, and it might
+miss the point of making your init.vim simple, as there would be at least dozen
+remaps to replace, and Telescope, which seems an only alternative here, requires
+a bunch of plugins and configuration to replicate what SigmaVimRc offers. So, if
+you just hate fzf or love Telescope, you might give Sigma and fzf a chance, but
+if you'd still want Telescope, NvChad might be a better choice.
+
+Vim version of Sigma comes with vim-fugitive, but it's solely for hunks in 
+vim-airline. Intended git workflow is using lazygit in a kitty / tmux pane
+opened by <leader>gg keybinding. Follows the same rationale of using tools
+usable outside of Vim, but you can easily install / use your preferred plugin
+for git... as the actual lazygit integration in Sigma is this single keybinding
+for opening lazygit in current working directory. There's no plugin for that in
+the base set.
+
+In the end, you might always take parts of SigmaVimRc as inspiration for making
+your own config, which is also a valid use case for this little project. :)
 
 ** Dependencies
 
-- SauceCodePro NerdFont (or any NerdFont)
-- fzf (unless you want to disable fzf plugins and use Telescope)
-- nnn (unless you want to use some file-tree plugin)
-- npm (for coc.nvim / lsp)
-- kitty or tmux (for sigma#run support / lazygit integration)
-- lazygit (optional for <leader>gg keybinding)
-- python3 (utlisnips for coc.nvim or nvim-cmp)
+- [[NerdFont][https://github.com/ryanoasis/nerd-fonts]] (Sauce Code Pro Nerd Font is the default guifont)
+- [[https://github.com/junegunn/fzf][Fzf]] (All the fuzzy finding)
+- [[https://github.com/jarun/nnn][nnn]] (Default file picker, might be disabled / replaced)
+- [[https://github.com/npm/cli][npm]] (For coc.nvim / lsp)
+- [[https://github.com/kovidgoyal/kitty][kitty]] or [[https://github.com/tmux/tmux][tmux]] (For sigma#run support / lazygit integration)
+- [[https://github.com/jesseduffield/lazygit][lazygit]] (For... lazygit integration)
+- [[https://www.python.org/][python3]] (Ultisnips for coc.nvim or nvim-cmp)
 
 ** Installation
 
@@ -144,6 +173,55 @@ call sigma#init()
 #+begin_src lua
 vim.cmd[[call sigma#init()]]
 #+end_src
+
+*** FZF
+
+Recommended options for fzf are as follows:
+
+#+begin_src sh
+# fzf default command
+export FZF_DEFAULT_COMMAND="rd -g '!{.git,node_modules,.composer}/' --hidden --no-ignore -l ''"
+# fzf theming
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#a9b1d6,bg:#1a1b26,hl:#7aa2f7 --color=fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff --color=info:#cfc9c2,prompt:#f7768e,pointer:#bb9af7 --color=marker:#9ece6a,spinner:#bb9af7,header:#73daca'
+#+end_src
+
+You should put it in your shell configuration (.bashrc/.zshrc or .profile/.zshenv
+
+If Vim is started by '-e' option of terminal emulator, it might not inherit your
+shell env, so you might need to add the same options in your .vimrc/init.vim:
+
+#+begin_src vim
+let $FZF_DEFAULT_COMMAND = "rg -g '!{.git,node_modules,.composer}/' --hidden --no-ignore -l ''"
+let $FZF_DEFAULT_OPTS = '--color=fg:#a9b1d6,bg:#1a1b26,hl:#7aa2f7 --color=fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff --color=info:#cfc9c2,prompt:#f7768e,pointer:#bb9af7 --color=marker:#9ece6a,spinner:#bb9af7,header:#73daca'
+#+end_src
+
+Should you want to customize your fzf theme, e.g. to match colorscheme you've
+chosen instead of the default kyotonight.vim (why would you do that? :( )
+check out [[https://minsw.github.io/fzf-color-picker/][this site]].
+
+*** nnn
+
+Since nnn file manager is a big part of intended SigmaVimRc workflow, below is
+the recommended configuration (note: preview-tui plugin requires kitty or tmux):
+
+#+begin_src sh
+# nnn config
+BLK="0B" CHR="0B" DIR="04" EXE="06" REG="00" HARDLINK="06" SYMLINK="06" MISSING="00" ORPHAN="09" FIFO="06" SOCK="0B" OTHER="06"
+export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER"
+export NNN_PLUG='p:/usr/share/nnn/plugins/preview-tui;f:/usr/share/nnn/plugins/fzopen'
+#+end_src
+
+Colors configuration should be quite universal, as it will use your terminals
+colors, so if you use a theme matching your Vim colorscheme, everything would
+look right. Also be sure to tweak the nnn plugins paths to match the ones on
+your system. If nnn package on your system doesn't come with its plugins, you
+can download them [[https://github.com/jarun/nnn/tree/master/plugins][here]].
+
+*** lazygit
+
+Only thing that is needed here is running Vim in kitty or tmux, and also having
+lazygit installed. The <leader>gg keybinding pulls up a pane with lazygit in
+current working directory.
 
 *** Overriding configuration
 
