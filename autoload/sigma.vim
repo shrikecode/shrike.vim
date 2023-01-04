@@ -20,7 +20,8 @@ let g:sigma#plugins = {
         \ 'leafOfTree/vim-project': 1,
         \ 'mbbill/undotree': 1,
         \ 'junegunn/fzf': 1,
-        \ 'tpope/vim-commentary': 1
+        \ 'tpope/vim-commentary': 1,
+        \ 'mhinz/vim-startify': 0
       \ }
 
 let g:sigma#lsp_servers = [ 'vimls', 'sumneko_lua' ]
@@ -275,32 +276,35 @@ function! sigma#config()
     else
         let s:sigmavim_line = "   烈VIM                                                        "
     endif
-    let g:startify_custom_header = [
-                \ "      _____ _                      _    ___           ____      ",
-                \ "     / ___/(_)___ _____ ___  ____ | |  / (_)___ ___  / __ \\_____",
-                \ "     \\__ \\/ / __ `/ __ `__ \\/ __ `/ | / / / __ `__ \\/ /_/ / ___/",
-                \ "    ___/ / / /_/ / / / / / / /_/ /| |/ / / / / / / / _, _/ /__  ",
-                \ "   /____/_/\\__, /_/ /_/ /_/\\__,_/ |___/_/_/ /_/ /_/_/ |_|\\___/  ",
-                \ "          /____/                                                ",
-                \ s:sigmavim_line
-                \ ]
-    let g:startify_custom_footer = 
-                \ startify#pad(split(system('echo "In order to exit Vim, press and hold the Power button"'), '\n'))
-    let g:startify_lists = [
-                \ { 'type': 'files',     'header': ['   Recent Files']   },
-                \ { 'type': 'commands',  'header': ['   Commands']       },
-                \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-                \ ]
-    let g:startify_commands = [
-                \ {'p': ['  Open project      SPC p p', 'ProjectList']},
-                \ {'r': ['  Recent files      SPC f r', 'SigmaRecentFiles']},
-                \ {'f': ['  Find files        SPC f f', 'SigmaFiles']},
-                \ {'n': ['  File browser      SPC f b', 'NnnPicker']},
-                \ {'z': ['  Find word         SPC r g', 'SigmaRg']},
-                \ {'s': ['烈 Update SigmaVimRc SPC u s', 'SigmaUpdate']},
-                \ {'u': ['  Update plugins    SPC u p', 'PlugUpdate']},
-                \ {'c': ['  Configure         SPC f P', 'SigmaConfig']},
-                \ ]
+
+    if g:sigma#plugins['mhinz/vim-startify'] == 1
+        let g:startify_custom_header = [
+                    \ "      _____ _                      _    ___           ____      ",
+                    \ "     / ___/(_)___ _____ ___  ____ | |  / (_)___ ___  / __ \\_____",
+                    \ "     \\__ \\/ / __ `/ __ `__ \\/ __ `/ | / / / __ `__ \\/ /_/ / ___/",
+                    \ "    ___/ / / /_/ / / / / / / /_/ /| |/ / / / / / / / _, _/ /__  ",
+                    \ "   /____/_/\\__, /_/ /_/ /_/\\__,_/ |___/_/_/ /_/ /_/_/ |_|\\___/  ",
+                    \ "          /____/                                                ",
+                    \ s:sigmavim_line
+                    \ ]
+        let g:startify_custom_footer = 
+                    \ startify#pad(split(system('echo "In order to exit Vim, press and hold the Power button"'), '\n'))
+        let g:startify_lists = [
+                    \ { 'type': 'files',     'header': ['   Recent Files']   },
+                    \ { 'type': 'commands',  'header': ['   Commands']       },
+                    \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+                    \ ]
+        let g:startify_commands = [
+                    \ {'p': ['  Open project      SPC p p', 'ProjectList']},
+                    \ {'r': ['  Recent files      SPC f r', 'SigmaRecentFiles']},
+                    \ {'f': ['  Find files        SPC f f', 'SigmaFiles']},
+                    \ {'n': ['  File browser      SPC f b', 'NnnPicker']},
+                    \ {'z': ['  Find word         SPC r g', 'SigmaRg']},
+                    \ {'s': ['烈 Update SigmaVimRc SPC u s', 'SigmaUpdate']},
+                    \ {'u': ['  Update plugins    SPC u p', 'PlugUpdate']},
+                    \ {'c': ['  Configure         SPC f P', 'SigmaConfig']},
+                    \ ]
+    endif
 
     if g:sigma#use_coc == 1 && g:sigma#coc_default == 1
         call sigmacoc#config()
