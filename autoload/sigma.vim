@@ -62,6 +62,7 @@ function! sigma#mappings()
     nnoremap <leader>rg <Cmd>SigmaRg<CR>
     nnoremap <leader>fP <Cmd>SigmaConfig<CR>
 
+    nnoremap <leader>ss <Cmd>SigmaDashboard<CR>
 
     if has('nvim')
         nnoremap <leader>bi <Cmd>FzfLua buffers<CR>
@@ -360,6 +361,12 @@ function! sigma#init()
         command! SigmaFiles :Files
         command! SigmaRg :Rg
         command! SigmaConfig :e ~/.vimrc
+    endif
+
+    if g:sigma#plugins['mhinz/vim-startify'] != 0
+        command! SigmaDashboard :Startify
+    else
+        command! SigmaDashboard :Dashboard
     endif
 endfunction
 
