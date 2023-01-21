@@ -339,7 +339,65 @@ function! sigma#update()
     execute "!cd ".s:sigma_dir." && git pull"
 endfunction
 
+function! sigma#default_plugins()
+    let g:sigma#use_coc = get(g:, 'sigma#use_coc', 0)
+    let g:sigma#use_lsp = get(g:, 'sigma#use_lsp', 0)
+    let g:sigma#coc_default = get(g:, 'sigma#coc_default', 0)
+    let g:sigma#lsp_default = get(g:, 'sigma#lsp_default', 0)
+
+    if g:sigma#use_coc == 1
+        call sigma#add('neoclide/coc.nvim', {'branch': 'release'})
+    endif
+
+    if has('nvim')
+
+        if g:sigma#use_lsp == 1
+            call sigma#add('williamboman/mason.nvim')
+            call sigma#add('williamboman/mason-lspconfig.nvim')
+            call sigma#add('neovim/nvim-lspconfig')
+            call sigma#add('hrsh7th/cmp-nvim-lsp')
+            call sigma#add('hrsh7th/cmp-buffer')
+            call sigma#add('hrsh7th/cmp-path')
+            call sigma#add('hrsh7th/cmp-cmdline')
+            call sigma#add('hrsh7th/nvim-cmp')
+            call sigma#add('SirVer/ultisnips')
+            call sigma#add('quangnguyen30192/cmp-nvim-ultisnips')
+        elseif g:sigma#use_coc == 1
+            call sigma#add('neoclide/coc.nvim', {'branch': 'release'})
+        endif
+
+        call sigma#add('kyazdani42/nvim-web-devicons')
+        call sigma#add('romgrk/barbar.nvim')
+        call sigma#add('lewis6991/gitsigns.nvim')
+        call sigma#add('ibhagwan/fzf-lua', {'branch': 'main'})
+        call sigma#add('AckslD/nvim-neoclip.lua')
+        call sigma#add('kkharji/sqlite.lua', { 'as': 'sqlite' })
+        call sigma#add('nvim-lualine/lualine.nvim')
+        call sigma#add('glepnir/dashboard-nvim')
+        call sigma#add('windwp/nvim-spectre')
+        call sigma#add('nvim-lua/plenary.nvim')
+        call sigma#add('norcalli/nvim-colorizer.lua')
+    else
+
+        if g:sigma#use_coc == 1
+            call sigma#add('neoclide/coc.nvim', {'branch': 'release'})
+        endif
+
+        call sigma#add('vim-airline/vim-airline')
+        call sigma#add('ryanoasis/vim-devicons')
+        call sigma#add('junegunn/fzf.vim')
+        call sigma#add('mhinz/vim-startify')
+        call sigma#add('tpope/vim-fugitive',)
+        call sigma#add('mhinz/vim-signify')
+        call sigma#add('BourgeoisBear/clrzr')
+        call sigma#add('junegunn/vim-peekaboo')
+        call sigma#add('machakann/vim-highlightedyank')
+    endif
+endfunction
+
 function! sigma#init()
+    call sigma#default_plugins()
+
     call plug#begin()
 
     for [key, value] in items(g:sigma#plugins)
@@ -385,56 +443,3 @@ function! sigma#run(command = '')
     endif
 endfunction
 
-let g:sigma#use_coc = get(g:, 'sigma#use_coc', 0)
-let g:sigma#use_lsp = get(g:, 'sigma#use_lsp', 0)
-let g:sigma#coc_default = get(g:, 'sigma#coc_default', 0)
-let g:sigma#lsp_default = get(g:, 'sigma#lsp_default', 0)
-
-if g:sigma#use_coc == 1
-    call sigma#add('neoclide/coc.nvim', {'branch': 'release'})
-endif
-
-if has('nvim')
-
-    if g:sigma#use_lsp == 1
-        call sigma#add('williamboman/mason.nvim')
-        call sigma#add('williamboman/mason-lspconfig.nvim')
-        call sigma#add('neovim/nvim-lspconfig')
-        call sigma#add('hrsh7th/cmp-nvim-lsp')
-        call sigma#add('hrsh7th/cmp-buffer')
-        call sigma#add('hrsh7th/cmp-path')
-        call sigma#add('hrsh7th/cmp-cmdline')
-        call sigma#add('hrsh7th/nvim-cmp')
-        call sigma#add('SirVer/ultisnips')
-        call sigma#add('quangnguyen30192/cmp-nvim-ultisnips')
-    elseif g:sigma#use_coc == 1
-        call sigma#add('neoclide/coc.nvim', {'branch': 'release'})
-    endif
-
-    call sigma#add('kyazdani42/nvim-web-devicons')
-    call sigma#add('romgrk/barbar.nvim')
-    call sigma#add('lewis6991/gitsigns.nvim')
-    call sigma#add('ibhagwan/fzf-lua', {'branch': 'main'})
-    call sigma#add('AckslD/nvim-neoclip.lua')
-    call sigma#add('kkharji/sqlite.lua', { 'as': 'sqlite' })
-    call sigma#add('nvim-lualine/lualine.nvim')
-    call sigma#add('glepnir/dashboard-nvim')
-    call sigma#add('windwp/nvim-spectre')
-    call sigma#add('nvim-lua/plenary.nvim')
-    call sigma#add('norcalli/nvim-colorizer.lua')
-else
-
-    if g:sigma#use_coc == 1
-        call sigma#add('neoclide/coc.nvim', {'branch': 'release'})
-    endif
-
-    call sigma#add('vim-airline/vim-airline')
-    call sigma#add('ryanoasis/vim-devicons')
-    call sigma#add('junegunn/fzf.vim')
-    call sigma#add('mhinz/vim-startify')
-    call sigma#add('tpope/vim-fugitive',)
-    call sigma#add('mhinz/vim-signify')
-    call sigma#add('BourgeoisBear/clrzr')
-    call sigma#add('junegunn/vim-peekaboo')
-    call sigma#add('machakann/vim-highlightedyank')
-endif
