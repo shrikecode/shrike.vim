@@ -168,6 +168,9 @@ function! sigma#config()
     set termguicolors
     set guifont="SauceCodePro Nerd Font:h10"
     set signcolumn=yes
+    set undofile
+    set swapfile
+    set backup
 
     if has('nvim')
         set title
@@ -180,10 +183,12 @@ function! sigma#config()
         let &t_EI = "\e[1 q"
         let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
         let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-        set swapfile
-        set undodir=~/.vim/tmp
-        set backupdir=~/.vim/tmp
-        set directory=~/.vim/tmp
+        call system('mkdir -p ~/.vim/tmp/undo')
+        call system('mkdir -p ~/.vim/tmp/backup')
+        call system('mkdir -p ~/.vim/tmp/swap')
+        set undodir=~/.vim/tmp/undo
+        set backupdir=~/.vim/tmp/backup
+        set directory=~/.vim/tmp/swap
         set incsearch
     endif
 
