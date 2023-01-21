@@ -105,6 +105,8 @@ your own config, which is also a valid use case for this little project. :)
 
 - [[NerdFont][https://github.com/ryanoasis/nerd-fonts]] (Sauce Code Pro Nerd Font is the default guifont)
 - [[https://github.com/junegunn/fzf][Fzf]] (All the fuzzy finding)
+- [[https://github.com/BurntSushi/ripgrep][ripgrep]] (For Fzf default config in Sigma)
+- [[https://github.com/sharkdp/fd][fd]] (Also for Fzf)
 - [[https://github.com/jarun/nnn][nnn]] (Default file picker, might be disabled / replaced)
 - [[https://github.com/npm/cli][npm]] (For coc.nvim / lsp)
 - [[https://github.com/kovidgoyal/kitty][kitty]] or [[https://github.com/tmux/tmux][tmux]] (For sigma#run support / lazygit integration)
