@@ -136,7 +136,6 @@ Install SigmaVimRc:
 *** Vim
 
 #+begin_src sh
-mkdir -p ~/.vim/tmp/
 mkdir -p ~/.vim/pack/plugins/start/
 git clone https://github.com/voidekh/SigmaVimRc.git \
     ~/.vim/pack/plugins/start/SigmaVimRc
@@ -244,7 +243,7 @@ Add a plugin:
 call sigma#add('plugin/name', {'branch': 'master'}) " optional params
 #+end_src
 
-These functions need to be called *BEFORE* sigma#init.
+These functions need to be called *BEFORE* /sigma#init/.
 
 *** Extra functions
 
@@ -263,7 +262,7 @@ nnoremap <silent><leader>tt <Cmd>call sigma#run()<CR>
 
 Sigma provides a choice to include selected LSP or LSP-like solutions.
 
-To use coc.nvim put these *BEFORE* calling any /sigma#/ function:
+To use coc.nvim put these *BEFORE* calling /sigma#init/ function:
 
 #+begin_src vim
 let g:sigma#use_coc = 1
