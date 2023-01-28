@@ -26,15 +26,13 @@ let g:sigma#plugins = {
 let g:sigma#lsp_servers = [ 'vimls', 'sumneko_lua' ]
 
 function! sigma#remove(plugin)
-    for [key, value] in items(g:sigma#plugins)
-        if a:plugin == key
-            let g:sigma#plugins[key] = 0
-        endif
-    endfor
+    if has_key(g:sigma#plugins, a:plugin)
+        let g:sigma#plugins[a:plugin] = 0
+    endif
 endfunction
 
-function! sigma#add(plugin, config = 1, override = 1)
-    if a:override == 0 && has_key(g:sigma#plugins, a:plugin)
+function! sigma#add(plugin, config = 1, no_override = 0)
+    if a:no_override == 0 && has_key(g:sigma#plugins, a:plugin)
         return
     endif
     if type(a:config) == v:t_dict
@@ -348,7 +346,7 @@ function! sigma#default_plugins()
     let g:sigma#coc_default = get(g:, 'sigma#coc_default', 0)
     let g:sigma#lsp_default = get(g:, 'sigma#lsp_default', 0)
     let s:enable = 1
-    let s:no_override = 0
+    let s:no_override = 1
 
     if g:sigma#use_coc == 1
         call sigma#add('neoclide/coc.nvim', {'branch': 'release'}, s:no_override)
