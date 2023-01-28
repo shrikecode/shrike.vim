@@ -433,11 +433,11 @@ function! sigma#init()
     endif
 endfunction
 
-function! sigma#run(command = '')
+function! sigma#run(command = '', split = 'h')
     if $TERM == 'xterm-kitty'
         execute "!kitty @ launch " a:command getcwd()
     elseif $TMUX != ''
-        execute "!tmux split-window -c" getcwd() a:command
+        execute "!tmux split-window -"a:split "-c" getcwd() a:command
     else
         echoerr 'Vim must be run in kitty terminal or tmux for sigma#run to work'
     endif
