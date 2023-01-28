@@ -26,9 +26,7 @@ let g:sigma#plugins = {
 let g:sigma#lsp_servers = [ 'vimls', 'sumneko_lua' ]
 
 function! sigma#remove(plugin)
-    if has_key(g:sigma#plugins, a:plugin)
-        let g:sigma#plugins[a:plugin] = 0
-    endif
+    let g:sigma#plugins[a:plugin] = 0
 endfunction
 
 function! sigma#add(plugin, config = 1, no_override = 0)
