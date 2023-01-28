@@ -32,10 +32,9 @@ function! sigma#remove(plugin)
 endfunction
 
 function! sigma#add(plugin, config = 1, no_override = 0)
-    if a:no_override == 0 && has_key(g:sigma#plugins, a:plugin)
+    if a:no_override == 1 && has_key(g:sigma#plugins, a:plugin)
         return
-    endif
-    if type(a:config) == v:t_dict
+    elseif type(a:config) == v:t_dict
         let g:sigma#plugins[a:plugin] = a:config
     else
         let g:sigma#plugins[a:plugin] = 1
