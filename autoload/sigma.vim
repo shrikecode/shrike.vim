@@ -34,7 +34,7 @@ function! sigma#remove(plugin)
 endfunction
 
 function! sigma#add(plugin, config = 1, override = 1)
-    if a:override == 0 && type(g:sigma#plugins[a:plugin]) != v:t_none
+    if a:override == 0 && has_key(g:sigma#plugins, a:plugin)
         return
     endif
     if type(a:config) == v:t_dict
@@ -173,6 +173,7 @@ function! sigma#config()
     set undofile
     set swapfile
     set backup
+    set backupdir=~/.local/state/nvim/backup
 
     if has('nvim')
         set title
@@ -285,7 +286,7 @@ function! sigma#config()
         let s:sigmavim_line = "   烈VIM                                                        "
     endif
 
-    if g:sigma#plugins['mhinz/vim-startify'] == 1
+    if has_key(g:sigma#plugins, 'mhinz/vim-startify') && g:sigma#plugins['mhinz/vim-startify'] == 1
         let g:startify_custom_header = [
                     \ "      _____ _                      _    ___           ____      ",
                     \ "     / ___/(_)___ _____ ___  ____ | |  / (_)___ ___  / __ \\_____",
