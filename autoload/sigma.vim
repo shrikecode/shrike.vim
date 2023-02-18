@@ -20,7 +20,8 @@ let g:sigma#plugins = {
         \ 'leafOfTree/vim-project': 1,
         \ 'mbbill/undotree': 1,
         \ 'junegunn/fzf': 1,
-        \ 'tpope/vim-commentary': 1
+        \ 'tpope/vim-commentary': 1,
+        \ 'noahfrederick/vim-skeleton': 1
       \ }
 
 let g:sigma#lsp_servers = [ 'vimls', 'sumneko_lua' ]
@@ -323,6 +324,10 @@ function! sigma#config()
 
     if has('nvim')
         autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup="Search", timeout=1000}
+    endif
+
+    if has_key(g:sigma#plugins, 'noahfrederick/vim-skeleton') && g:sigma#plugins['noahfrederick/vim-skeleton'] == 1
+        call system('mkdir -p ~/.vim/templates')
     endif
 
 endfunction
