@@ -24,7 +24,7 @@ let g:sigma#plugins = {
         \ 'noahfrederick/vim-skeleton': 1
       \ }
 
-let g:sigma#lsp_servers = [ 'vimls', 'sumneko_lua' ]
+let g:sigma#lsp_servers = [ 'vimls', 'lua_ls' ]
 
 function! sigma#remove(plugin)
     let g:sigma#plugins[a:plugin] = 0
