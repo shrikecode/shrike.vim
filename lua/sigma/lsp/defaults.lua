@@ -8,13 +8,13 @@ local M = {
         -- Mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         local bufopts = { noremap=true, silent=true, buffer=bufnr }
-        vim.keymap.set('n', 'gD', require('fzf-lua').lsp_declarations(), bufopts)
-        vim.keymap.set('n', 'gd', require('fzf-lua').lsp_definitions(), bufopts)
-        vim.keymap.set('n', 'gr', require('fzf-lua').lsp_references(), bufopts)
-        vim.keymap.set('n', 'gi', require('fzf-lua').lsp_implementations(), bufopts)
-        vim.keymap.set('n', '<space>D', require('fzf-lua').lsp_typedefs(), bufopts)
-        vim.keymap.set('n', '<space>ca', require('fzf-lua').lsp_code_action(), bufopts)
-        vim.keymap.set('n', '<space>ld', require('fzf-lua').lsp_diagnostics_document(), bufopts)
+        vim.keymap.set('n', 'gD', require('fzf-lua').lsp_declarations, bufopts)
+        vim.keymap.set('n', 'gd', require('fzf-lua').lsp_definitions, bufopts)
+        vim.keymap.set('n', 'gr', require('fzf-lua').lsp_references, bufopts)
+        vim.keymap.set('n', 'gi', require('fzf-lua').lsp_implementations, bufopts)
+        vim.keymap.set('n', '<space>D', require('fzf-lua').lsp_typedefs, bufopts)
+        vim.keymap.set('n', '<space>ca', require('fzf-lua').lsp_code_action, bufopts)
+        vim.keymap.set('n', '<space>ld', require('fzf-lua').lsp_diagnostics_document, bufopts)
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
         vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
         vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
