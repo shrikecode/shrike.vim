@@ -486,7 +486,7 @@ function! sigma#default_plugins()
         endif
 
         if g:sigma#line == 'lightline' || g:sigma#line == 'airline'
-            if !has('nvim')
+            if has('nvim') != 1
                 call sigma#add('tpope/vim-fugitive', s:enable, s:no_override)
                 call sigma#add('sineto/lightline-hunks', s:enable, s:no_override)
             endif
