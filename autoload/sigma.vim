@@ -339,7 +339,7 @@ function! sigma#config()
             let g:lightline.component_expand = {
                         \   'buffers': 'lightline#bufferline#buffers'
                         \ }
-            let g:lightline.component_type' = {
+            let g:lightline.component_type = {
                         \   'buffers': 'tabsel'
                         \ }
 
