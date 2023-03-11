@@ -343,13 +343,14 @@ function! sigma#config()
                         \   'buffers': 'tabsel'
                         \ }
 
-            set showtabline=2
-
             let g:lightline#bufferline#show_number = 0
             let g:lightline#bufferline#enable_devicons = 1
             let g:lightline#bufferline#unicode_symbols = 1
             let g:lightline#bufferline#clickable = 1
             let g:lightline.component_raw = {'buffers': 1}
+
+            " Do not show tabline on startify buffer
+            autocmd FileType * if &ft != 'startify' && &ft != 'dashboard' | :set showtabline=2 | endif
         endif
     endif
 
