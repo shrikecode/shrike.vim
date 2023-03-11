@@ -1,8 +1,8 @@
 #+title: SigmaVimRC
 
-[[https://imgur.com/WLw4pvh.png]]
+[[https://imgur.com/yGA7GRN.png]]
 
-[[https://imgur.com/6jwa7nk.png]]
+[[https://imgur.com/4oOuxJ7.png]]
 
 You might have already seen NvChad, but you use Vim or want a simpler config
 and be a Chad too? SigmaVimRC was made for you.
@@ -39,11 +39,6 @@ and be a Chad too? SigmaVimRC was made for you.
    ...........'',,,,,,;;;;;;;.....'''',,,,,,''''........    
     ............''''''''''''.............'............
 #+end_src
-
-** Disclaimer
-
-Project is still in early stage, breaking changes might be introduced.
-Breaking as in requiring configuration changes to keep your current workflow.
 
 ** Why another Vim distribution
 
