@@ -48,7 +48,7 @@ function! sigma#add(plugin, config = 1, no_override = 0)
 endfunction
 
 function! sigma#is_enabled(plugin)
-    return has_key(g:sigma#plugins, plugin) && g:sigma#plugins != 0
+    return has_key(g:sigma#plugins, a:plugin) && g:sigma#plugins[a:plugin] != 0
 endfunction
 
 function! sigma#lsp_add(server)
