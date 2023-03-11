@@ -21,7 +21,8 @@ let g:sigma#plugins = {
             \ 'mbbill/undotree': 1,
             \ 'junegunn/fzf': 1,
             \ 'tpope/vim-commentary': 1,
-            \ 'noahfrederick/vim-skeleton': 1
+            \ 'noahfrederick/vim-skeleton': 1,
+            \ 'mhinz/vim-startify': 1,
             \ }
 
 let g:sigma#line_options = {
@@ -66,7 +67,10 @@ function! sigma#mappings()
     nnoremap <leader>rg <Cmd>SigmaRg<CR>
     nnoremap <leader>fP <Cmd>SigmaConfig<CR>
 
-    nnoremap <leader>ss <Cmd>SigmaDashboard<CR>
+
+    if has_key(g:sigma#plugins, 'mhinz/vim-startify') && g:sigma#plugins['mhinz/vim-startify'] != 0
+        nnoremap <leader>ss <Cmd>SigmaDashboard<CR>
+    endif
 
     if has('nvim')
         nnoremap <leader>bi <Cmd>FzfLua buffers<CR>
@@ -236,8 +240,6 @@ function! sigma#config()
     if has('nvim')
         " kyotonight.vim | lualine.nvim
         :lua require('sigma.theme')
-        " dashboard-nvim
-        :lua require('sigma.dashboard')
         " other lua plugins initialization
         :lua require('sigma.plugins')
         " coc.nvim or lsp config
@@ -448,7 +450,6 @@ function! sigma#default_plugins()
         call sigma#add('ibhagwan/fzf-lua', {'branch': 'main'}, s:no_override)
         call sigma#add('AckslD/nvim-neoclip.lua', s:enable, s:no_override)
         call sigma#add('kkharji/sqlite.lua', { 'as': 'sqlite' }, s:no_override)
-        call sigma#add('glepnir/dashboard-nvim', s:enable, s:no_override)
         call sigma#add('windwp/nvim-spectre', s:enable, s:no_override)
         call sigma#add('nvim-lua/plenary.nvim', s:enable, s:no_override)
         call sigma#add('norcalli/nvim-colorizer.lua', s:enable, s:no_override)
@@ -460,7 +461,6 @@ function! sigma#default_plugins()
 
         call sigma#add('ryanoasis/vim-devicons', s:enable, s:no_override)
         call sigma#add('junegunn/fzf.vim', s:enable, s:no_override)
-        call sigma#add('mhinz/vim-startify', s:enable, s:no_override)
         call sigma#add('tpope/vim-fugitive', s:enable, s:no_override)
         call sigma#add('mhinz/vim-signify', s:enable, s:no_override)
         call sigma#add('BourgeoisBear/clrzr', s:enable, s:no_override)
@@ -502,8 +502,6 @@ function! sigma#init()
 
     if has_key(g:sigma#plugins, 'mhinz/vim-startify') && g:sigma#plugins['mhinz/vim-startify'] != 0
         command! SigmaDashboard :Startify
-    else
-        command! SigmaDashboard :Dashboard
     endif
 endfunction
 
