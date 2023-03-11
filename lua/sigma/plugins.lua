@@ -11,6 +11,11 @@ local function is_enabled(plugin)
     return vim.g['sigma#plugins'][plugin] ~= nil and vim.g['sigma#plugins'][plugin] ~= 0
 end
 
+if (is_enabled('numToStr/Comment.nvim'))
+then
+    require('Comment').setup()
+end
+
 if (is_enabled('romgrk/barbar.nvim'))
 then
     -- barbar.nvim

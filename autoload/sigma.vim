@@ -20,7 +20,6 @@ let g:sigma#plugins = {
             \ 'leafOfTree/vim-project': 1,
             \ 'mbbill/undotree': 1,
             \ 'junegunn/fzf': 1,
-            \ 'tpope/vim-commentary': 1,
             \ 'noahfrederick/vim-skeleton': 1,
             \ 'mhinz/vim-startify': 1,
             \ }
@@ -488,6 +487,7 @@ function! sigma#default_plugins()
             call sigma#add('tpope/vim-fugitive', s:enable, s:no_override)
         endif
 
+        call sigma#add('numToStr/Comment.nvim', s:enable, s:no_override)
         call sigma#add('kyazdani42/nvim-web-devicons', s:enable, s:no_override)
         call sigma#add('lewis6991/gitsigns.nvim', s:enable, s:no_override)
         call sigma#add('ibhagwan/fzf-lua', {'branch': 'main'}, s:no_override)
@@ -502,6 +502,7 @@ function! sigma#default_plugins()
             call sigma#add('neoclide/coc.nvim', {'branch': 'release'}, s:no_override)
         endif
 
+        call sigma#add('tpope/vim-commentary', s:enable, s:no_override)
         call sigma#add('ryanoasis/vim-devicons', s:enable, s:no_override)
         call sigma#add('junegunn/fzf.vim', s:enable, s:no_override)
         call sigma#add('tpope/vim-fugitive', s:enable, s:no_override)
