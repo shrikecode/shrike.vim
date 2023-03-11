@@ -571,8 +571,14 @@ function! sigma#head()
     if sigma#is_enabled('sineto/lightline-hunks')
         return lightline#hunks#composer()
     elseif sigma#is_enabled('lewis6991/gitsigns.nvim')
+        let s:head = get(b:, 'gitsigns_head', '')
         let g:sigma#branch_symbol = get(g:, 'sigma#branch_symbol', '')
-        return g:sigma#branch_symbol .. b:gitsigns_head
+
+        if s:head != ''
+            let s:head = g:sigma#branch_symbol .. s:head
+        endif
+
+        return s:head
     endif
 endfunction
 
@@ -580,6 +586,6 @@ function! sigma#hunks()
     if sigma#is_enabled('sineto/lightline-hunks')
         return '' " hunks are already returned from sigma#head in this case
     elseif sigma#is_enabled('lewis6991/gitsigns.nvim')
-        return b:gitsigns_status
+        return get(b:, 'gitsigns_status', '')
     endif
 endfunction
