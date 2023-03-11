@@ -332,14 +332,14 @@ function! sigma#config()
         endif
 
         if sigma#is_enabled('mengelbrecht/lightline-bufferline')
-            g:lightline.tabline = {
+            let g:lightline.tabline = {
                         \   'left': [ ['buffers'] ],
                         \   'right': [ ['close'] ]
                         \ }
-            g:lightline.component_expand = {
+            let g:lightline.component_expand = {
                         \   'buffers': 'lightline#bufferline#buffers'
                         \ }
-            g:lightline.component_type' = {
+            let g:lightline.component_type' = {
                         \   'buffers': 'tabsel'
                         \ }
 
