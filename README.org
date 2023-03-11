@@ -149,16 +149,6 @@ git clone https://github.com/voidekh/SigmaVimRc.git \
     "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/plugins/start/SigmaVimRc
 #+end_src
 
-*** First run
-
-You will see a bunch of errors, you need to run:
-
-#+begin_src
-:PlugInstall
-#+end_src
-
-Then restart Vim / Neovim.
-
 ** Configuration
 
 To use the default SigmaVimRc just add this line to your .vimrc or init.lua:
@@ -175,6 +165,16 @@ call sigma#init()
 vim.cmd[[call sigma#init()]]
 #+end_src
 
+*** First run
+
+You will see a bunch of errors, you need to run:
+
+#+begin_src
+:PlugInstall
+#+end_src
+
+Then restart Vim / Neovim.
+
 *** FZF
 
 Recommended options for fzf are as follows:
@@ -186,7 +186,7 @@ export FZF_DEFAULT_COMMAND="rg -g '!{.git,node_modules,.composer}/' --hidden --n
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#a9b1d6,bg:#1a1b26,hl:#7aa2f7 --color=fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff --color=info:#cfc9c2,prompt:#f7768e,pointer:#bb9af7 --color=marker:#9ece6a,spinner:#bb9af7,header:#73daca'
 #+end_src
 
-You should put it in your shell configuration (.bashrc/.zshrc or .profile/.zshenv
+You should put it in your shell configuration (.bashrc/.zshrc or .profile/.zshenv)
 
 If Vim is started by '-e' option of terminal emulator, it might not inherit your
 shell env, so you might need to add the same options in your .vimrc/init.vim:
