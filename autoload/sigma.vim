@@ -361,6 +361,10 @@ function! sigma#config()
             " Do not show tabline on startify buffer
             autocmd FileType * if &ft != 'startify' && &ft != 'dashboard' | :set showtabline=2 | endif
         endif
+
+        if sigma#is_enabled('sineto/lightline-hunks')
+            let g:lightline#hunks#exclude_filetypes = [ 'startify' ]
+        endif
     endif
 
     " startify
