@@ -11,7 +11,7 @@ if (vim.g['sigma#plugins']['voidekh/kyotonight.vim'] ~= 0)
 then
     vim.cmd[[colorscheme kyotonight]]
 
-    if (vim.g['sigma#plugins']['nvim-lualine/lualine.nvim'] ~= 0)
+    if (vim.g['sigma#line'] == 'lualine')
     then
         require('lualine').setup {
             options = {

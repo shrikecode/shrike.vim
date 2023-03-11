@@ -1,8 +1,8 @@
 #+title: SigmaVimRC
 
-[[https://imgur.com/WLw4pvh.png]]
+[[https://imgur.com/yGA7GRN.png]]
 
-[[https://imgur.com/6jwa7nk.png]]
+[[https://imgur.com/4oOuxJ7.png]]
 
 You might have already seen NvChad, but you use Vim or want a simpler config
 and be a Chad too? SigmaVimRC was made for you.
@@ -39,11 +39,6 @@ and be a Chad too? SigmaVimRC was made for you.
    ...........'',,,,,,;;;;;;;.....'''',,,,,,''''........    
     ............''''''''''''.............'............
 #+end_src
-
-** Disclaimer
-
-Project is still in early stage, breaking changes might be introduced.
-Breaking as in requiring configuration changes to keep your current workflow.
 
 ** Why another Vim distribution
 
@@ -149,16 +144,6 @@ git clone https://github.com/voidekh/SigmaVimRc.git \
     "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/plugins/start/SigmaVimRc
 #+end_src
 
-*** First run
-
-You will see a bunch of errors, you need to run:
-
-#+begin_src
-:PlugInstall
-#+end_src
-
-Then restart Vim / Neovim.
-
 ** Configuration
 
 To use the default SigmaVimRc just add this line to your .vimrc or init.lua:
@@ -175,6 +160,38 @@ call sigma#init()
 vim.cmd[[call sigma#init()]]
 #+end_src
 
+*** First run
+
+You will see a bunch of errors, you need to run:
+
+#+begin_src
+:PlugInstall
+#+end_src
+
+Then restart Vim / Neovim. This step should be repeated after any SigmaVimRc
+config option change.
+
+*** Statusline / Bufferline
+
+SigmaVimRc support Lualine, Lightline and Airline by default. Default choice for
+Neovim is lualine and lightline for Vim. Lualine comes with barbar.nvim for
+bufferline support, Lightline comes with it's lightline-bufferline extension
+and Airline has bufferline built-in. To override the default choice:
+
+**** vimrc
+
+#+begin_src vim
+let g:sigma#line = 'lightline' " or 'airline' or 'lualine'
+#+end_src
+
+**** init.lua
+
+#+begin_src lua
+vim.g['sigma#line'] = 'lightline' -- or 'airline' or 'lualine'
+#+end_src
+
+Place it before calling /sigma#init/.
+
 *** FZF
 
 Recommended options for fzf are as follows:
@@ -186,7 +203,7 @@ export FZF_DEFAULT_COMMAND="rg -g '!{.git,node_modules,.composer}/' --hidden --n
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#a9b1d6,bg:#1a1b26,hl:#7aa2f7 --color=fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff --color=info:#cfc9c2,prompt:#f7768e,pointer:#bb9af7 --color=marker:#9ece6a,spinner:#bb9af7,header:#73daca'
 #+end_src
 
-You should put it in your shell configuration (.bashrc/.zshrc or .profile/.zshenv
+You should put it in your shell configuration (.bashrc/.zshrc or .profile/.zshenv)
 
 If Vim is started by '-e' option of terminal emulator, it might not inherit your
 shell env, so you might need to add the same options in your .vimrc/init.vim:
@@ -288,7 +305,7 @@ require('lspconfig')['pyright'].setup(overrides)
 
 ** Default plugins
 
-*** Neovim with LSP enabled
+*** Neovim with LSP enabled and lualine
 
 - [[https://github.com/honza/vim-snippets][honza/vim-snippets]]
 - [[https://github.com/907th/vim-auto-save][907th/vim-auto-save]]
@@ -297,7 +314,7 @@ require('lspconfig')['pyright'].setup(overrides)
 - [[https://github.com/voidekh/kyotonight.vim][voidekh/kyotonight.vim]]
 - [[https://github.com/leafOfTree/vim-project][leafOfTree/vim-project]]
 - [[https://github.com/lambdalisue/suda.vim][lambdalisue/suda.vim]]
-- [[https://github.com/tpope/vim-commentary][tpope/vim-commentary]]
+- [[https://github.com/numToStr/Comment.nvim][numToStr/Comment.nvim]]
 - [[https://github.com/skywind3000/asyncrun.vim][skywind3000/asyncrun.vim]]
 - [[https://github.com/mcchrish/nnn.vim][mcchrish/nnn.vim]]
 - [[https://github.com/mbbill/undotree][mbbill/undotree]]
@@ -321,11 +338,11 @@ require('lspconfig')['pyright'].setup(overrides)
 - [[https://github.com/AckslD/nvim-neoclip.lua][AckslD/nvim-neoclip.lua]]
 - [[https://github.com/kkharji/sqlite.lua][kkharji/sqlite.lua]]
 - [[https://github.com/windwp/nvim-spectre][windwp/nvim-spectre]]
-- [[https://github.com/glepnir/dashboard-nvim][glepnir/dashboard-nvim]]
+- [[https://github.com/mhinz/vim-startify][mhinz/vim-startify]]
 - [[https://github.com/ibhagwan/fzf-lua][ibhagwan/fzf-lua]]
 - [[https://github.com/romgrk/barbar.nvim][romgrk/barbar.nvim]]
 
-*** Vim with coc.nvim enabled
+*** Vim with coc.nvim enabled and lightline
 
 - [[https://github.com/honza/vim-snippets][honza/vim-snippets]]
 - [[https://github.com/907th/vim-auto-save][907th/vim-auto-save]]
@@ -344,11 +361,16 @@ require('lspconfig')['pyright'].setup(overrides)
 - [[https://github.com/BourgeoisBear/clrzr][BourgeoisBear/clrzr]]
 - [[https://github.com/mhinz/vim-startify][mhinz/vim-startify]]
 - [[https://github.com/mhinz/vim-signify][mhinz/vim-signify]]
-- [[https://github.com/vim-airline/vim-airline][vim-airline/vim-airline]]
+- [[https://github.com/itchyny/lightline.vim][itchyny/lightline.vim]]
+- [[https://github.com/mengelbrecht/lightline-bufferline][mengelbrecht/lightline-bufferline]]
 - [[https://github.com/junnegunn/fzf.vim][junnegunn/fzf.vim]]
 - [[https://github.com/tpope/vim-fugitive][tpope/vim-fugitive]]
 - [[https://github.com/junegunn/vim-peekaboo][junegunn/vim-peekaboo]]
 - [[https://github.com/neoclide/coc.nvim][neoclide/coc.nvim]]
+
+*** Plugin choices
+- [[https://github.com/vim-airline/vim-airline][vim-airline/vim-airline]]
+- [[https://github.com/josa42/nvim-lightline-lsp]][josa42/nvim-lightline-lsp]]
 
 ** Keybindings
 
@@ -396,4 +418,5 @@ autocmd FileType * if &ft != 'startify' && &ft != 'dashboard' | :set cursorline 
 - [x] Documentation (and default keybindings info)
 - [x] Figure out a way for vim-plug to manage SigmaVimRc or let it manage itself
 - [x] Features explanation
+- [x] Add vim-signify / gitsigns support for lightline
 - [ ] Dynamic theme plugin
