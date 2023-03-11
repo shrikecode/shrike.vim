@@ -482,7 +482,7 @@ function! sigma#default_plugins()
             call sigma#add('SirVer/ultisnips', s:enable, s:no_override)
             call sigma#add('quangnguyen30192/cmp-nvim-ultisnips', s:enable, s:no_override)
 
-            if sigma#line == 'lightline'
+            if g:sigma#line == 'lightline'
                 call sigma#add('josa42/nvim-lightline-lsp', s:enable, s:no_override)
             endif
         elseif g:sigma#use_coc == 1
