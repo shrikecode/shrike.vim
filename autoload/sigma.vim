@@ -575,7 +575,7 @@ function! sigma#head()
         let g:sigma#branch_symbol = get(g:, 'sigma#branch_symbol', '')
 
         if s:head != ''
-            let s:head = g:sigma#branch_symbol .. s:head
+            let s:head = g:sigma#branch_symbol .. ' ' .. s:head
         endif
 
         return s:head
