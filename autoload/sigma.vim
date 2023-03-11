@@ -134,12 +134,20 @@ function! sigma#mappings()
     nnoremap <leader>wl <C-w>l
     nnoremap <leader>wj <C-w>j
     nnoremap <leader>wk <C-w>k
+    nnoremap <leader>w<Left> <C-w>h
+    nnoremap <leader>w<Right> <C-w>l
+    nnoremap <leader>w<Down> <C-w>j
+    nnoremap <leader>w<Up> <C-w>k
 
     " resize windows
     nnoremap <A-h> <C-w>>
     nnoremap <A-l> <C-w><
     nnoremap <A-k> <C-w>+
     nnoremap <A-j> <C-w>-
+    nnoremap <A-Left> <C-w>>
+    nnoremap <A-Right> <C-w><
+    nnoremap <A-Up> <C-w>+
+    nnoremap <A-Down> <C-w>-
     nnoremap <A-J> <C-w>_
     nnoremap <A-K> <C-w>_
     nnoremap <A-H> <C-w>|
