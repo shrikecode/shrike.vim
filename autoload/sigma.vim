@@ -345,6 +345,12 @@ function! sigma#config()
                         \   'left': [ ['buffers'] ],
                         \   'right': [ ['close'] ]
                         \ }
+            if !has_key(g:lightline, 'component_expand')
+                let g:lightline.component_expand = {}
+            endif
+            if !has_key(g:lightline, 'component_type')
+                let g:lightline.component_type = {}
+            endif
             let g:lightline.component_expand.buffers = 'lightline#bufferline#buffers'
             let g:lightline.component_type.buffers = 'tabsel'
 
