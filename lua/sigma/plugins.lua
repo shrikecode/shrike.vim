@@ -7,25 +7,29 @@
 -- sigma/plugins.lua
 -- Default Lua plugins configurations
 
-if (vim.g['sigma#plugins']['romgrk/barbar.nvim'] ~= 0)
+local function is_enabled(plugin)
+    return vim.g['sigma#plugins'][plugin] ~= nil and vim.g['sigma#plugins'][plugin] ~= 0
+end
+
+if (is_enabled('romgrk/barbar.nvim'))
 then
     -- barbar.nvim
     require('bufferline').setup({ icon_separator_active = '', icon_separator_inactive = '', icon_pinned = '' })
 end
 
-if (vim.g['sigma#plugins']['lewis6991/gitsigns.nvim'] ~= 0)
+if (is_enabled('lewis6991/gitsigns.nvim'))
 then
     -- gitsigns.nvim
     require('gitsigns').setup()
 end
 
-if (vim.g['sigma#plugins']['AckslD/nvim-neoclip.lua'] ~= 0)
+if (is_enabled('AckslD/nvim-neoclip.lua'))
 then
     -- nvim-neoclip.lua
     require('neoclip').setup({ default_register = "+", enable_persistent_history = true, continuous_sync = true })
 end
 
-if (vim.g['sigma#plugins']['windwp/nvim-spectre'] ~= 0)
+if (is_enabled('windwp/nvim-spectre'))
 then
     -- nvim-spectre
     require('spectre').setup({
