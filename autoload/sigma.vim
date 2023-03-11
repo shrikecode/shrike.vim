@@ -485,13 +485,6 @@ function! sigma#default_plugins()
             call sigma#add('neoclide/coc.nvim', {'branch': 'release'}, s:no_override)
         endif
 
-        if g:sigma#line == 'lightline' || g:sigma#line == 'airline'
-            if has('nvim') != 1
-                call sigma#add('tpope/vim-fugitive', s:enable, s:no_override)
-                call sigma#add('sineto/lightline-hunks', s:enable, s:no_override)
-            endif
-        endif
-
         call sigma#add('numToStr/Comment.nvim', s:enable, s:no_override)
         call sigma#add('kyazdani42/nvim-web-devicons', s:enable, s:no_override)
         call sigma#add('lewis6991/gitsigns.nvim', s:enable, s:no_override)
@@ -502,6 +495,13 @@ function! sigma#default_plugins()
         call sigma#add('nvim-lua/plenary.nvim', s:enable, s:no_override)
         call sigma#add('norcalli/nvim-colorizer.lua', s:enable, s:no_override)
     else
+
+        if g:sigma#line == 'lightline' || g:sigma#line == 'airline'
+            if !has('nvim')
+                call sigma#add('tpope/vim-fugitive', s:enable, s:no_override)
+                call sigma#add('sineto/lightline-hunks', s:enable, s:no_override)
+            endif
+        endif
 
         if g:sigma#use_coc == 1
             call sigma#add('neoclide/coc.nvim', {'branch': 'release'}, s:no_override)
