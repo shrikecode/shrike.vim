@@ -310,14 +310,15 @@ function! sigma#config()
             let g:lightline = {
                         \ 'colorscheme': 'kyotonight',
                         \ 'active': {
-                        \     'left': [[ 'mode', 'paste'], [ 'gitbranch'],
+                        \     'left': [[ 'mode', 'paste'], [ 'gitbranch', 'hunks'],
                         \             ['lsp_info', 'lsp_hints', 'lsp_errors', 'lsp_warnings', 'lsp_ok', 'lsp_status' ],
                         \             ['readonly', 'filename', 'modified' ]],
                         \     'right': [[ 'lineinfo' ], [ 'percent' ],
                         \             ['fileformat', 'fileencoding', 'filetype']]
                         \ },
                         \ 'component_function': {
-                        \		'gitbranch': 'FugitiveHead'
+                        \		'gitbranch': 'sigma#head',
+                        \       'hunks': 'sigma#hunks'
                         \	}
                         \ }
 
@@ -327,13 +328,14 @@ function! sigma#config()
             let g:lightline = {
                         \ 'colorscheme': 'kyotonight',
                         \ 'active': {
-                        \     'left': [[ 'mode', 'paste'], [ 'gitbranch'],
+                        \     'left': [[ 'mode', 'paste'], [ 'gitbranch', 'hunks'],
                         \           ['readonly', 'filename', 'modified' ]],
                         \     'right': [	 [ 'lineinfo' ], [ 'percent' ],
                         \           [ 'fileformat', 'fileencoding', 'filetype']]
                         \ },
                         \ 'component_function': {
-                        \		'gitbranch': 'FugitiveHead'
+                        \		'gitbranch': 'sigma#head',
+                        \       'hunks': 'sigma#hunks'
                         \	}
                         \ }
         endif
@@ -484,7 +486,10 @@ function! sigma#default_plugins()
         endif
 
         if g:sigma#line == 'lightline' || g:sigma#line == 'airline'
-            call sigma#add('tpope/vim-fugitive', s:enable, s:no_override)
+            if !has('nvim')
+                call sigma#add('tpope/vim-fugitive', s:enable, s:no_override)
+                call sigma#add('sineto/lightline-hunks', s:enable, s:no_override)
+            endif
         endif
 
         call sigma#add('numToStr/Comment.nvim', s:enable, s:no_override)
@@ -505,8 +510,7 @@ function! sigma#default_plugins()
         call sigma#add('tpope/vim-commentary', s:enable, s:no_override)
         call sigma#add('ryanoasis/vim-devicons', s:enable, s:no_override)
         call sigma#add('junegunn/fzf.vim', s:enable, s:no_override)
-        call sigma#add('tpope/vim-fugitive', s:enable, s:no_override)
-        call sigma#add('mhinz/vim-signify', s:enable, s:no_override)
+        call sigma#add('airblade/vim-gitgutter', s:enable, s:no_override)
         call sigma#add('BourgeoisBear/clrzr', s:enable, s:no_override)
         call sigma#add('junegunn/vim-peekaboo', s:enable, s:no_override)
         call sigma#add('machakann/vim-highlightedyank', s:enable, s:no_override)
@@ -559,3 +563,19 @@ function! sigma#run(command = '', split = 'h')
     endif
 endfunction
 
+function! sigma#head()
+    if sigma#is_enabled('sineto/lightline-hunks')
+        return lightline#hunks#composer()
+    elseif sigma#is_enabled('lewis6991/gitsigns.nvim')
+        let g:sigma#branch_symbol = get(g:, 'sigma#branch_symbol', '')
+        return g:sigma#branch_symbol .. b:gitsigns_head
+    endif
+endfunction
+
+function! sigma#hunks()
+    if sigma#is_enabled('sineto/lightline-hunks')
+        return '' " hunks are already returned from sigma#head in this case
+    elseif sigma#is_enabled('lewis6991/gitsigns.nvim')
+        return b:gitsigns_status
+    endif
+endfunction

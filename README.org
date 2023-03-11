@@ -423,5 +423,5 @@ autocmd FileType * if &ft != 'startify' && &ft != 'dashboard' | :set cursorline 
 - [x] Documentation (and default keybindings info)
 - [x] Figure out a way for vim-plug to manage SigmaVimRc or let it manage itself
 - [x] Features explanation
+- [x] Add vim-signify / gitsigns support for lightline
 - [ ] Dynamic theme plugin
-- [ ] Add vim-signify / gitsigns support for lightline
