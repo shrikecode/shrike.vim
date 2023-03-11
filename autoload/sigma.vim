@@ -500,7 +500,7 @@ function! sigma#init()
         command! SigmaConfig :e ~/.vimrc
     endif
 
-    if g:sigma#plugins['mhinz/vim-startify'] != 0
+    if has_key(g:sigma#plugins, 'mhinz/vim-startify') && g:sigma#plugins['mhinz/vim-startify'] != 0
         command! SigmaDashboard :Startify
     else
         command! SigmaDashboard :Dashboard
