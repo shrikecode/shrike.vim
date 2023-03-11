@@ -8,21 +8,27 @@
 " Main SigmaVimRc file
 
 let g:sigma#plugins = {
-        \ 'voidekh/kyotonight.vim': 1,
-        \ '907th/vim-auto-save': 1,
-        \ 'eshion/vim-sync': 1,
-        \ 'skywind3000/asyncrun.vim': 1,
-        \ 'lambdalisue/suda.vim': 1,
-        \ 'tpope/vim-abolish': 1,
-        \ 'honza/vim-snippets': 1,
-        \ 'dbeniamine/cheat.sh-vim': 1,
-        \ 'mcchrish/nnn.vim': 1,
-        \ 'leafOfTree/vim-project': 1,
-        \ 'mbbill/undotree': 1,
-        \ 'junegunn/fzf': 1,
-        \ 'tpope/vim-commentary': 1,
-        \ 'noahfrederick/vim-skeleton': 1
-      \ }
+            \ 'voidekh/kyotonight.vim': 1,
+            \ '907th/vim-auto-save': 1,
+            \ 'eshion/vim-sync': 1,
+            \ 'skywind3000/asyncrun.vim': 1,
+            \ 'lambdalisue/suda.vim': 1,
+            \ 'tpope/vim-abolish': 1,
+            \ 'honza/vim-snippets': 1,
+            \ 'dbeniamine/cheat.sh-vim': 1,
+            \ 'mcchrish/nnn.vim': 1,
+            \ 'leafOfTree/vim-project': 1,
+            \ 'mbbill/undotree': 1,
+            \ 'junegunn/fzf': 1,
+            \ 'tpope/vim-commentary': 1,
+            \ 'noahfrederick/vim-skeleton': 1
+            \ }
+
+let g:sigma#line_options = {
+            \ 'lightline': 'itchyny/lightline.vim',
+            \ 'lualine': 'nvim-lualine/lualine.nvim',
+            \ 'airline': 'vim-airline/vim-airline'
+            \ }
 
 let g:sigma#lsp_servers = [ 'vimls', 'lua_ls' ]
 
@@ -249,31 +255,72 @@ function! sigma#config()
         hi! link HighlightedyankRegion Search
     endif
 
-    " vim-airline
-    let g:airline#extensions#branch#enabled = 1
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#left_sep = ' '
-    let g:airline#extensions#tabline#left_alt_sep = ''
-    let g:airline_left_sep=''
-    let g:airline_left_alt_sep=''
-    let g:airline_right_sep=''
-    let g:airline_right_alt_sep=''
-    let g:airline_detect_modified=1
-    let g:airline_detect_paste=1
-    let g:airline_detect_crypt=1
-    if !exists('g:airline_symbols')
-        let g:airline_symbols = {}
+    if g:sigma#line == 'airline'
+        " vim-airline
+        let g:airline#extensions#branch#enabled = 1
+        let g:airline#extensions#tabline#enabled = 1
+        let g:airline#extensions#tabline#left_sep = ' '
+        let g:airline#extensions#tabline#left_alt_sep = ''
+        let g:airline_left_sep=''
+        let g:airline_left_alt_sep=''
+        let g:airline_right_sep=''
+        let g:airline_right_alt_sep=''
+        let g:airline_detect_modified=1
+        let g:airline_detect_paste=1
+        let g:airline_detect_crypt=1
+        if !exists('g:airline_symbols')
+            let g:airline_symbols = {}
+        endif
+        let g:airline_symbols.branch = ''
+        let g:airline_symbols.colnr = ' ℅:'
+        let g:airline_symbols.readonly = ''
+        let g:airline_symbols.linenr = ' :'
+        let g:airline_symbols.maxlinenr = '☰ '
+        let g:airline_symbols.dirty='⚡'
+        let g:airline#extensions#default#layout = [
+                    \ [ 'a', 'b',  'c'],
+                    \ [ 'x', 'warning', 'error', 'y', 'z']
+                    \ ]
     endif
-    let g:airline_symbols.branch = ''
-    let g:airline_symbols.colnr = ' ℅:'
-    let g:airline_symbols.readonly = ''
-    let g:airline_symbols.linenr = ' :'
-    let g:airline_symbols.maxlinenr = '☰ '
-    let g:airline_symbols.dirty='⚡'
-    let g:airline#extensions#default#layout = [
-                \ [ 'a', 'b',  'c'],
-                \ [ 'x', 'warning', 'error', 'y', 'z']
-                \ ]
+
+    if g:sigma#line == 'lightline'
+        if g:sigma#use_lsp == 1
+            let g:lightline#lsp#indicator_warnings = " "
+            let g:lightline#lsp#indicator_errors = " "
+            let g:lightline#lsp#indicator_info = " "
+            let g:lightline#lsp#indicator_hints = " "
+            let g:lightline#lsp#indicator_ok = ""
+            let g:lightline = {
+                        \ 'colorscheme': 'kyotonight',
+                        \   'active': {
+                        \       'left': [[ 'mode', 'paste'], [ 'gitbranch'],
+                        \               ['lsp_info', 'lsp_hints', 'lsp_errors', 'lsp_warnings', 'lsp_ok', 'lsp_status' ],
+                        \               ['readonly', 'filename', 'modified' ]],
+                        \       'right': [[ 'lineinfo' ], [ 'percent' ],
+                        \               ['fileformat', 'fileencoding', 'filetype']]
+                        \   },
+                        \ 'component_function': {
+                        \		'gitbranch': 'FugitiveHead'
+                        \	}
+                        \ }
+
+            " register compoments:
+            call lightline#lsp#register()
+        else
+            let g:lightline = {
+                        \ 'colorscheme': 'kyotonight',
+                        \   'active': {
+                        \       'left': [[ 'mode', 'paste'], [ 'gitbranch'],
+                        \             ['readonly', 'filename', 'modified' ]],
+                        \       'right': [	 [ 'lineinfo' ], [ 'percent' ],
+                        \             [ 'fileformat', 'fileencoding', 'filetype']]
+                        \   },
+                        \ 'component_function': {
+                        \		'gitbranch': 'FugitiveHead'
+                        \	}
+                        \ }
+        endif
+    endif
 
     " startify
     if has('nvim')
@@ -309,6 +356,14 @@ function! sigma#config()
                     \ {'u': ['  Update plugins    SPC u p', 'PlugUpdate']},
                     \ {'c': ['  Configure         SPC f P', 'SigmaConfig']},
                     \ ]
+        if has('nvim') && has_key(g:sigma#plugins, 'kyazdani42/nvim-web-devicons') && g:sigma#plugins['kyazdani42/nvim-web-devicons'] == 1
+            " dev icons for startify
+            :lua function _G.webDevIcons(path) local filename = vim.fn.fnamemodify(path, ':t') local extension = vim.fn.fnamemodify(path, ':e') return require'nvim-web-devicons'.get_icon(filename, extension, { default = true }) end
+
+            function! StartifyEntryFormat() abort
+                return 'v:lua.webDevIcons(absolute_path) . " " . entry_path'
+            endfunction
+        endif
     endif
 
     if g:sigma#use_coc == 1 && g:sigma#coc_default == 1
@@ -350,9 +405,17 @@ function! sigma#default_plugins()
     let s:enable = 1
     let s:no_override = 1
 
+    if has('nvim')
+        let g:sigma#line = get(g:, 'sigma#line', 'lualine')
+    else
+        let g:sigma#line = get(g:, 'sigma#line', 'lightline')
+    endif
+
     if g:sigma#use_coc == 1
         call sigma#add('neoclide/coc.nvim', {'branch': 'release'}, s:no_override)
     endif
+
+    call sigma#add(g:sigma#line_options[g:sigma#line], s:enable, s:no_override)
 
     if has('nvim')
 
@@ -367,8 +430,16 @@ function! sigma#default_plugins()
             call sigma#add('hrsh7th/nvim-cmp', s:enable, s:no_override)
             call sigma#add('SirVer/ultisnips', s:enable, s:no_override)
             call sigma#add('quangnguyen30192/cmp-nvim-ultisnips', s:enable, s:no_override)
+
+            if sigma#line == 'lightline'
+                call sigma#add('josa42/nvim-lightline-lsp', s:enable, s:no_override)
+            endif
         elseif g:sigma#use_coc == 1
             call sigma#add('neoclide/coc.nvim', {'branch': 'release'}, s:no_override)
+        endif
+
+        if g:sigma#line == 'lightline' || g:sigma#line == 'airline'
+            call sigma#add('tpope/vim-fugitive', s:enable, s:no_override)
         endif
 
         call sigma#add('kyazdani42/nvim-web-devicons', s:enable, s:no_override)
@@ -377,7 +448,6 @@ function! sigma#default_plugins()
         call sigma#add('ibhagwan/fzf-lua', {'branch': 'main'}, s:no_override)
         call sigma#add('AckslD/nvim-neoclip.lua', s:enable, s:no_override)
         call sigma#add('kkharji/sqlite.lua', { 'as': 'sqlite' }, s:no_override)
-        call sigma#add('nvim-lualine/lualine.nvim', s:enable, s:no_override)
         call sigma#add('glepnir/dashboard-nvim', s:enable, s:no_override)
         call sigma#add('windwp/nvim-spectre', s:enable, s:no_override)
         call sigma#add('nvim-lua/plenary.nvim', s:enable, s:no_override)
@@ -388,7 +458,6 @@ function! sigma#default_plugins()
             call sigma#add('neoclide/coc.nvim', {'branch': 'release'}, s:no_override)
         endif
 
-        call sigma#add('vim-airline/vim-airline', s:enable, s:no_override)
         call sigma#add('ryanoasis/vim-devicons', s:enable, s:no_override)
         call sigma#add('junegunn/fzf.vim', s:enable, s:no_override)
         call sigma#add('mhinz/vim-startify', s:enable, s:no_override)
