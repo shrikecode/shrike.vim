@@ -4,7 +4,7 @@
 --  ___/ / / /_/ / / / / / / /_/ /| |/ / / / / / / / _, _/ /__
 -- /____/_/\__, /_/ /_/ /_/\__,_/ |___/_/_/ /_/ /_/_/ |_|\___/
 --        /____/
--- sigma/e-resize-fix.lua
+-- sigma/tweaks/resizefix.lua
 -- Fix weird size if started with -e
 
 vim.api.nvim_create_autocmd({"VimEnter"}, {

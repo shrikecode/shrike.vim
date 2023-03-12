@@ -201,7 +201,7 @@ function! sigma#config()
         set title
         set laststatus=3
         set noshowmode
-        :lua require('sigma.e-resize-fix')
+        :lua require('sigma.tweaks')
     else
         set laststatus=2
         let &t_SI = "\e[5 q"
@@ -238,6 +238,8 @@ function! sigma#config()
     set whichwrap+=<>[]hl
     set cursorline
 
+    lua require('sigma.plugins')
+
     " vim-auto-save
     let g:auto_save = 1
 
@@ -268,106 +270,6 @@ function! sigma#config()
     else
         " kyotonight.vim
         colorscheme kyotonight
-        " machakann/vim-highlightedyank
-        let g:highlightedyank_highlight_duration = 1000
-        hi! link HighlightedyankRegion Search
-    endif
-
-    if g:sigma#line == 'airline'
-        " vim-airline
-        let g:airline#extensions#branch#enabled = 1
-        let g:airline#extensions#tabline#enabled = 1
-        let g:airline#extensions#tabline#left_sep = ' '
-        let g:airline#extensions#tabline#left_alt_sep = ''
-        let g:airline_left_sep=''
-        let g:airline_left_alt_sep=''
-        let g:airline_right_sep=''
-        let g:airline_right_alt_sep=''
-        let g:airline_detect_modified=1
-        let g:airline_detect_paste=1
-        let g:airline_detect_crypt=1
-        if !exists('g:airline_symbols')
-            let g:airline_symbols = {}
-        endif
-        let g:airline_symbols.branch = ''
-        let g:airline_symbols.colnr = ' ℅:'
-        let g:airline_symbols.readonly = ''
-        let g:airline_symbols.linenr = ' :'
-        let g:airline_symbols.maxlinenr = '☰ '
-        let g:airline_symbols.dirty='⚡'
-        let g:airline#extensions#default#layout = [
-                    \ [ 'a', 'b',  'c'],
-                    \ [ 'x', 'warning', 'error', 'y', 'z']
-                    \ ]
-    endif
-
-    if g:sigma#line == 'lightline'
-        if g:sigma#use_lsp == 1
-            let g:lightline#lsp#indicator_warnings = " "
-            let g:lightline#lsp#indicator_errors = " "
-            let g:lightline#lsp#indicator_info = " "
-            let g:lightline#lsp#indicator_hints = " "
-            let g:lightline#lsp#indicator_ok = ""
-            let g:lightline = {
-                        \ 'colorscheme': 'kyotonight',
-                        \ 'active': {
-                        \     'left': [[ 'mode', 'paste'], [ 'gitbranch', 'hunks'],
-                        \             ['lsp_info', 'lsp_hints', 'lsp_errors', 'lsp_warnings', 'lsp_ok', 'lsp_status' ],
-                        \             ['readonly', 'filename', 'modified' ]],
-                        \     'right': [[ 'lineinfo' ], [ 'percent' ],
-                        \             ['fileformat', 'fileencoding', 'filetype']]
-                        \ },
-                        \ 'component_function': {
-                        \		'gitbranch': 'sigma#head',
-                        \       'hunks': 'sigma#hunks'
-                        \	}
-                        \ }
-
-            " register compoments:
-            call lightline#lsp#register()
-        else
-            let g:lightline = {
-                        \ 'colorscheme': 'kyotonight',
-                        \ 'active': {
-                        \     'left': [[ 'mode', 'paste'], [ 'gitbranch', 'hunks'],
-                        \           ['readonly', 'filename', 'modified' ]],
-                        \     'right': [	 [ 'lineinfo' ], [ 'percent' ],
-                        \           [ 'fileformat', 'fileencoding', 'filetype']]
-                        \ },
-                        \ 'component_function': {
-                        \		'gitbranch': 'sigma#head',
-                        \       'hunks': 'sigma#hunks'
-                        \	}
-                        \ }
-        endif
-
-        if sigma#is_enabled('mengelbrecht/lightline-bufferline')
-            let g:lightline.tabline = {
-                        \   'left': [ ['buffers'] ],
-                        \   'right': [ ['close'] ]
-                        \ }
-            if !has_key(g:lightline, 'component_expand')
-                let g:lightline.component_expand = {}
-            endif
-            if !has_key(g:lightline, 'component_type')
-                let g:lightline.component_type = {}
-            endif
-            let g:lightline.component_expand.buffers = 'lightline#bufferline#buffers'
-            let g:lightline.component_type.buffers = 'tabsel'
-
-            let g:lightline#bufferline#show_number = 0
-            let g:lightline#bufferline#enable_devicons = 1
-            let g:lightline#bufferline#unicode_symbols = 1
-            let g:lightline#bufferline#clickable = 1
-            let g:lightline.component_raw = {'buffers': 1}
-
-            " Do not show tabline on startify buffer
-            autocmd FileType * if &ft != 'startify' && &ft != 'dashboard' | :set showtabline=2 | endif
-        endif
-
-        if sigma#is_enabled('sineto/lightline-hunks')
-            let g:lightline#hunks#exclude_filetypes = [ 'startify' ]
-        endif
     endif
 
     " startify
@@ -498,7 +400,7 @@ function! sigma#default_plugins()
         call sigma#add('ibhagwan/fzf-lua', {'branch': 'main'}, s:no_override)
         call sigma#add('AckslD/nvim-neoclip.lua', s:enable, s:no_override)
         call sigma#add('kkharji/sqlite.lua', { 'as': 'sqlite' }, s:no_override)
-        call sigma#add('windwp/nvim-spectre', s:enable, s:no_override)
+        call sigma#add('nvim-pack/nvim-spectre', s:enable, s:no_override)
         call sigma#add('nvim-lua/plenary.nvim', s:enable, s:no_override)
         call sigma#add('norcalli/nvim-colorizer.lua', s:enable, s:no_override)
     else

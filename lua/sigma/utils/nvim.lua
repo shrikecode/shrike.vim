@@ -7,6 +7,24 @@
 -- sigma/utils/nvim.lua
 -- Lua util functions for Neovim
 
-local M = {}
+local keyset = function (mode, keymap, command, opts)
+    vim.keymap.set(mode, keymap, command, opts)
+end
+
+local M = {
+    set = function (opt, value)
+        vim.opt[opt] = value
+    end,
+    keyset = keyset,
+    noremap = function (mode, keymap, command, opts)
+        opts.noremap = true
+        keyset(mode, keymap, command, opts)
+    end,
+    map = function (mode, keymap, command, opts)
+        opts.noremap = false
+        keyset(mode, keymap, command, opts)
+    end,
+    cmd = vim.cmd
+}
 
 return M
