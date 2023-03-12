@@ -107,6 +107,7 @@ your own config, which is also a valid use case for this little project. :)
 - [[https://github.com/kovidgoyal/kitty][kitty]] or [[https://github.com/tmux/tmux][tmux]] (For sigma#run support / lazygit integration)
 - [[https://github.com/jesseduffield/lazygit][lazygit]] (For... lazygit integration)
 - [[https://www.python.org/][python3]] (Ultisnips for coc.nvim or nvim-cmp)
+- [[https://www.lua.org/][Lua]] (and Vim version with Lua support)
 
 ** Installation
 
@@ -131,17 +132,15 @@ Install SigmaVimRc:
 *** Vim
 
 #+begin_src sh
-mkdir -p ~/.vim/pack/plugins/start/
-git clone https://github.com/voidekh/SigmaVimRc.git \
-    ~/.vim/pack/plugins/start/SigmaVimRc
+curl -fLo ~/.vim/autoload/sigma.vim --create-dirs \
+    https://raw.githubusercontent.com/voidekh/SigmaVimRc/master/autoload/sigma.vim
 #+end_src
 
 *** Neovim
 
 #+begin_src sh
-mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/plugins/start
-git clone https://github.com/voidekh/SigmaVimRc.git \
-    "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/plugins/start/SigmaVimRc
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/sigma.vim --create-dirs \
+       https://raw.githubusercontent.com/voidekh/SigmaVimRc/master/autoload/sigma.vim'
 #+end_src
 
 ** Configuration

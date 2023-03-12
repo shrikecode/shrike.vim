@@ -8,6 +8,7 @@
 " Main SigmaVimRc file
 
 let g:sigma#plugins = {
+            \ 'voidekh/SigmaVimRc': {'branch': 'lua'},
             \ 'voidekh/kyotonight.vim': 1,
             \ '907th/vim-auto-save': 1,
             \ 'eshion/vim-sync': 1,
@@ -524,7 +525,6 @@ function! sigma#default_plugins()
 endfunction
 
 function! sigma#init()
-    let &runtimepath.=',' .. escape(expand('<sfile>:p:h'), '\,') " add to runtime so we can then load Lua
     call sigma#default_plugins()
 
     call plug#begin()
