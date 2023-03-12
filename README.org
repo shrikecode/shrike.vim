@@ -159,17 +159,6 @@ call sigma#init()
 vim.cmd[[call sigma#init()]]
 #+end_src
 
-*** First run
-
-You will see a bunch of errors, you need to run:
-
-#+begin_src
-:PlugInstall
-#+end_src
-
-Then restart Vim / Neovim. This step should be repeated after any SigmaVimRc
-config option change.
-
 *** Statusline / Bufferline
 
 SigmaVimRc support Lualine, Lightline and Airline by default. Default choice for

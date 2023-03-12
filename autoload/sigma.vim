@@ -538,6 +538,12 @@ function! sigma#init()
     endfor
 
     call plug#end()
+
+    " Automatically install missing plugins
+    autocmd VimEnter *
+                \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+                \|   PlugInstall --sync | q
+                \| endif
     
     call sigma#config()
 
