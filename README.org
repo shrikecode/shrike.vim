@@ -4,6 +4,9 @@
 
 [[https://imgur.com/4oOuxJ7.png]]
 
+** BREAKING
+Neovim support will be dropped in favor of new Lua-only [[https://github.com/wmwnuk/sigma.nvim][Sigma.nvim]], and SigmaVimRc will go into maintenance mode.
+
 You might have already seen NvChad, but you use Vim or want a simpler config
 and be a Chad too? SigmaVimRC was made for you.
 
@@ -98,7 +101,7 @@ your own config, which is also a valid use case for this little project. :)
 
 ** Dependencies
 
-- [[NerdFont][https://github.com/ryanoasis/nerd-fonts]] (Sauce Code Pro Nerd Font is the default guifont)
+- [[https://github.com/ryanoasis/nerd-fonts][NerdFont]] (Sauce Code Pro Nerd Font is the default guifont)
 - [[https://github.com/junegunn/fzf][Fzf]] (All the fuzzy finding)
 - [[https://github.com/BurntSushi/ripgrep][ripgrep]] (For Fzf default config in Sigma)
 - [[https://github.com/sharkdp/fd][fd]] (Also for Fzf)
