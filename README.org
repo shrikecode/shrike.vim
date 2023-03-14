@@ -412,3 +412,6 @@ autocmd FileType * if &ft != 'startify' && &ft != 'dashboard' | :set cursorline 
 - [x] Features explanation
 - [x] Add vim-signify / gitsigns support for lightline
 - [ ] Dynamic theme plugin
+- [ ] New installation method (bootstrap SigmaVimRc and let vim-plug manage the full plugin)
+- [ ] Replace coc.nvim with ALE or vim-lsp
+- [ ] Remove all Neovim specific stuff
