@@ -7,29 +7,33 @@
 -- sigma/utils/init.lua
 -- Lua util functions for Vim / Neovim
 
-local function has_nvim()
-    return vim.call('has', 'nvim')
+local keyset = function(mode, keymap, command, opts)
+    vim.keymap.set(mode, keymap, command, opts)
 end
 
-local function is_enabled(plugin)
-    return vim.g['sigma#plugins'][plugin] ~= nil and vim.g['sigma#plugins'][plugin] ~= 0
-end
-
-local function get_plug(name)
-    return name:gsub('/', '-'):gsub('%.', '-')
-end
-
-local M = {}
-
-if (has_nvim() == 1)
-then
-    M = require('sigma.utils.nvim')
-else
-    M = require('sigma.utils.vim')
-end
-
-M.has_nvim = has_nvim
-M.is_enabled = is_enabled
-M.get_plug = get_plug
+local M = {
+    has_nvim = function()
+        return vim.call('has', 'nvim')
+    end,
+    is_enabled = function(plugin)
+        return vim.g['sigma#plugins'][plugin] ~= nil and vim.g['sigma#plugins'][plugin] ~= 0
+    end,
+    get_plug = function(name)
+        return name:gsub('/', '-'):gsub('%.', '-')
+    end,
+    set = function(opt, value)
+        vim.opt[opt] = value
+    end,
+    keyset = keyset,
+    noremap = function(mode, keymap, command, opts)
+        opts.noremap = true
+        keyset(mode, keymap, command, opts)
+    end,
+    map = function(mode, keymap, command, opts)
+        opts.noremap = false
+        keyset(mode, keymap, command, opts)
+    end,
+    cmd = vim.cmd
+}
 
 return M

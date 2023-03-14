@@ -243,7 +243,7 @@ function! sigma#config()
     " vim-auto-save
     let g:auto_save = 1
 
-    " suda.vim
+    " lambdalisue/suda.vim
     let g:suda_smart_edit = 1
 
     " nnn.vim
@@ -251,7 +251,7 @@ function! sigma#config()
     let g:nnn#replace_netrw = 1
     let g:nnn#command = 'nnn -a -Pp -o'
 
-    " kyotonight.vim
+    " voidekh/kyotonight.vim
     let g:kyotonight_italic = 1
     let g:kyotonight_italic_comments = 1
 
