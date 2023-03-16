@@ -35,6 +35,10 @@ let g:sigma#plugins = {
             \ 'machakann/vim-highlightedyank': 1,
             \ }
 
+let g:sigma#ale_linters = {
+            \ 'vim': ['vimls'],
+            \ }
+
 function! sigma#remove(plugin)
     let g:sigma#plugins[a:plugin] = 0
 endfunction
@@ -47,6 +51,10 @@ function! sigma#add(plugin, config = 1, no_override = 0)
     else
         let g:sigma#plugins[a:plugin] = 1
     endif
+endfunction
+
+function! sigma#add_linter(lang, linter)
+    let g:sigma#ale_linters[a:lang] = a:linter
 endfunction
 
 function! sigma#is_enabled(plugin)
@@ -237,6 +245,32 @@ function! sigma#config()
                 \       'hunks': 'sigma#hunks'
                 \	}
                 \ }
+    if sigma#use_ale == 1
+        let g:lightline.component_expand = {
+                    \  'linter_checking': 'lightline#ale#checking',
+                    \  'linter_infos': 'lightline#ale#infos',
+                    \  'linter_warnings': 'lightline#ale#warnings',
+                    \  'linter_errors': 'lightline#ale#errors',
+                    \  'linter_ok': 'lightline#ale#ok',
+                    \ }
+        let g:lightline.component_type = {
+                    \  'linter_checking': 'right',
+                    \  'linter_infos': 'right',
+                    \  'linter_warnings': 'warning',
+                    \  'linter_errors': 'error',
+                    \  'linter_ok': 'right',
+                    \ }
+        let g:lightline.active.left = [
+                    \ [ 'mode', 'paste'], [ 'gitbranch', 'hunks'],
+                    \ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+                    \ [ 'readonly', 'filename', 'modified' ]
+                    \ ]
+        let g:lightline#ale#indicator_checking = " "
+        let g:lightline#ale#indicator_warnings = " "
+        let g:lightline#ale#indicator_errors = " "
+        let g:lightline#ale#indicator_infos = " "
+        let g:lightline#ale#indicator_ok = ""
+    endif
 
     if sigma#is_enabled('mengelbrecht/lightline-bufferline')
         let g:lightline.tabline = {
@@ -257,6 +291,11 @@ function! sigma#config()
         let g:lightline#bufferline#unicode_symbols = 1
         let g:lightline#bufferline#clickable = 1
         let g:lightline.component_raw = {'buffers': 1}
+
+        if sigma#use_ale == 1 && sigma#ale_default == 1
+            let g:ale_linters = g:sigma#ale_linters
+            let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰', '│', '─']
+        endif
 
         " Do not show tabline on startify buffer
         autocmd FileType * if &ft != 'startify' && &ft != 'dashboard' | :set showtabline=2 | endif
@@ -316,11 +355,14 @@ function! sigma#update()
 endfunction
 
 function! sigma#default_plugins()
-    let g:sigma#use_coc = get(g:, 'sigma#use_coc', 0)
-    let g:sigma#coc_default = get(g:, 'sigma#coc_default', 0)
+    let g:sigma#use_ale = get(g:, 'sigma#use_ale', 0)
+    let g:sigma#ale_default = get(g:, 'sigma#ale_default', 0)
     let s:enable = 1
     let s:no_override = 1
-    " Add optional ALE here
+    if (sigma#use_ale == 1)
+        call sigma#add('dense-analysis/ale', s:enable, s:no_override)
+        call sigma#add('maximbaz/lightline-ale', s:enable, s:no_override)
+    endif
 endfunction
 
 function! sigma#init()
