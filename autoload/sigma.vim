@@ -35,10 +35,6 @@ let g:sigma#plugins = {
             \ 'machakann/vim-highlightedyank': 1,
             \ }
 
-let g:sigma#ale_linters = {
-            \ 'vim': ['vimls'],
-            \ }
-
 function! sigma#remove(plugin)
     let g:sigma#plugins[a:plugin] = 0
 endfunction
@@ -51,10 +47,6 @@ function! sigma#add(plugin, config = 1, no_override = 0)
     else
         let g:sigma#plugins[a:plugin] = 1
     endif
-endfunction
-
-function! sigma#add_linter(lang, linter)
-    let g:sigma#ale_linters[a:lang] = a:linter
 endfunction
 
 function! sigma#is_enabled(plugin)
@@ -292,8 +284,7 @@ function! sigma#config()
         let g:lightline#bufferline#clickable = 1
         let g:lightline.component_raw = {'buffers': 1}
 
-        if sigma#use_ale == 1 && sigma#ale_default == 1
-            let g:ale_linters = g:sigma#ale_linters
+        if g:sigma#use_ale == 1
             let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰', '│', '─']
         endif
 
@@ -356,7 +347,6 @@ endfunction
 
 function! sigma#default_plugins()
     let g:sigma#use_ale = get(g:, 'sigma#use_ale', 0)
-    let g:sigma#ale_default = get(g:, 'sigma#ale_default', 0)
     let s:enable = 1
     let s:no_override = 1
     if (g:sigma#use_ale == 1)
