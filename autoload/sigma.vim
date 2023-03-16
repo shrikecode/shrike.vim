@@ -54,6 +54,17 @@ function! sigma#is_enabled(plugin)
 endfunction
 
 function! sigma#mappings()
+    if g:sigma#use_ale == 1
+        nnoremap gd <Cmd>ALEGoToDefinition
+        nnoremap gr <Cmd>ALEFindReferences
+        nnoremap gD <Cmd>ALEGoToTypeDefinition
+        nnoremap gi <Cmd>ALEGoToImplementation
+        nnoremap <leader>e <Cmd>ALEDetail
+        nnoremap <leader>ca <Cmd>ALECodeAction
+        nnoremap <leader>rn <Cmd>ALERename
+        nnoremap <leader>f <Cmd>ALEFix
+    endif
+
     " Mappings
     nnoremap <leader>pp <Cmd>ProjectList<CR>
     nnoremap <leader>fb <Cmd>NnnPicker<CR>
@@ -262,6 +273,10 @@ function! sigma#config()
         let g:lightline#ale#indicator_errors = " "
         let g:lightline#ale#indicator_infos = " "
         let g:lightline#ale#indicator_ok = ""
+
+        let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰', '│', '─']
+        let g:ale_completion_enabled = 1
+
     endif
 
     if sigma#is_enabled('mengelbrecht/lightline-bufferline')
@@ -283,10 +298,6 @@ function! sigma#config()
         let g:lightline#bufferline#unicode_symbols = 1
         let g:lightline#bufferline#clickable = 1
         let g:lightline.component_raw = {'buffers': 1}
-
-        if g:sigma#use_ale == 1
-            let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰', '│', '─']
-        endif
 
         " Do not show tabline on startify buffer
         autocmd FileType * if &ft != 'startify' && &ft != 'dashboard' | :set showtabline=2 | endif
