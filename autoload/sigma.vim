@@ -54,17 +54,6 @@ function! sigma#is_enabled(plugin)
 endfunction
 
 function! sigma#mappings()
-    if g:sigma#use_ale == 1
-        nnoremap gd <Cmd>ALEGoToDefinition<CR>
-        nnoremap gr <Cmd>ALEFindReferences<CR>
-        nnoremap gD <Cmd>ALEGoToTypeDefinition<CR>
-        nnoremap gi <Cmd>ALEGoToImplementation<CR>
-        nnoremap <leader>e <Cmd>ALEDetail<CR>
-        nnoremap <leader>ca <Cmd>ALECodeAction<CR>
-        nnoremap <leader>rn <Cmd>ALERename<CR>
-        nnoremap <leader>f <Cmd>ALEFix<CR>
-    endif
-
     " Mappings
     nnoremap <leader>pp <Cmd>ProjectList<CR>
     nnoremap <leader>fb <Cmd>NnnPicker<CR>
@@ -168,6 +157,17 @@ function! sigma#mappings()
 
     " close window
     nnoremap <leader>wc <C-w>c
+
+    if g:sigma#use_ale == 1
+        nnoremap gd <Cmd>ALEGoToDefinition<CR>
+        nnoremap gr <Cmd>ALEFindReferences<CR>
+        nnoremap gD <Cmd>ALEGoToTypeDefinition<CR>
+        nnoremap gi <Cmd>ALEGoToImplementation<CR>
+        nnoremap <leader>e <Cmd>ALEDetail<CR>
+        nnoremap <leader>ca <Cmd>ALECodeAction<CR>
+        nnoremap <leader>rn <Cmd>ALERename<CR>
+        nnoremap <leader>f <Cmd>ALEFix<CR>
+    endif
 endfunction
 
 function! sigma#config()
