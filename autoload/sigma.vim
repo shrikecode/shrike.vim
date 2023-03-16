@@ -55,14 +55,14 @@ endfunction
 
 function! sigma#mappings()
     if g:sigma#use_ale == 1
-        nnoremap gd <Cmd>ALEGoToDefinition
-        nnoremap gr <Cmd>ALEFindReferences
-        nnoremap gD <Cmd>ALEGoToTypeDefinition
-        nnoremap gi <Cmd>ALEGoToImplementation
-        nnoremap <leader>e <Cmd>ALEDetail
-        nnoremap <leader>ca <Cmd>ALECodeAction
-        nnoremap <leader>rn <Cmd>ALERename
-        nnoremap <leader>f <Cmd>ALEFix
+        nnoremap gd <Cmd>ALEGoToDefinition<CR>
+        nnoremap gr <Cmd>ALEFindReferences<CR>
+        nnoremap gD <Cmd>ALEGoToTypeDefinition<CR>
+        nnoremap gi <Cmd>ALEGoToImplementation<CR>
+        nnoremap <leader>e <Cmd>ALEDetail<CR>
+        nnoremap <leader>ca <Cmd>ALECodeAction<CR>
+        nnoremap <leader>rn <Cmd>ALERename<CR>
+        nnoremap <leader>f <Cmd>ALEFix<CR>
     endif
 
     " Mappings
