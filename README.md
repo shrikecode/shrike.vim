@@ -164,76 +164,25 @@ project. :)
 
 Install vim-plug first:
 
-### Vim
-
 ```sh
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
-### Neovim
-
-```sh
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-```
-
 Install SigmaVimRc:
 
-### Vim
-
 ```sh
-mkdir -p ~/.vim/pack/plugins/start/
-git clone https://github.com/voidekh/SigmaVimRc.git \
-    ~/.vim/pack/plugins/start/SigmaVimRc
-```
-
-### Neovim
-
-```sh
-mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/plugins/start
-git clone https://github.com/voidekh/SigmaVimRc.git \
-    "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/plugins/start/SigmaVimRc
+curl -fLo ~/.vim/autoload/sigma.vim --create-dirs \
+    https://raw.githubusercontent.com/voidekh/SigmaVimRc/master/autoload/sigma.vim
 ```
 
 ## Configuration
 
-To use the default SigmaVimRc just add this line to your .vimrc or
-init.lua:
-
-### vimrc
+To use the default SigmaVimRc just add this line to your .vimrc:
 
 ```vim
 call sigma#init()
 ```
-
-### init.lua
-
-```lua
-vim.cmd[[call sigma#init()]]
-```
-
-### Statusline / Bufferline
-
-SigmaVimRc support Lualine, Lightline and Airline by default. Default
-choice for Neovim is lualine and lightline for Vim. Lualine comes with
-barbar.nvim for bufferline support, Lightline comes with it\'s
-lightline-bufferline extension and Airline has bufferline built-in. To
-override the default choice:
-
-1.  vimrc
-
-    ```vim
-    let g:sigma#line = 'lightline' " or 'airline' or 'lualine'
-    ```
-
-2.  init.lua
-
-    ```lua
-    vim.g['sigma#line'] = 'lightline' -- or 'airline' or 'lualine'
-    ```
-
-    Place it before calling *sigma#init*.
 
 ### FZF
 
@@ -260,8 +209,7 @@ let $FZF_DEFAULT_OPTS = '--color=fg:#a9b1d6,bg:#1a1b26,hl:#7aa2f7 --color=fg+:#c
 
 Should you want to customize your fzf theme, e.g. to match colorscheme
 you\'ve chosen instead of the default kyotonight.vim (why would you do
-that? :( ) check out [this
-site](https://minsw.github.io/fzf-color-picker/).
+that? :( ) check out [this site](https://minsw.github.io/fzf-color-picker/).
 
 ### nnn
 
@@ -286,7 +234,7 @@ come with its plugins, you can download them
 ### lazygit
 
 Only thing that is needed here is running Vim in kitty or tmux, and also
-having lazygit installed. The \<leader\>gg keybinding pulls up a pane
+having lazygit installed. The <leader>gg keybinding pulls up a pane
 with lazygit in current working directory.
 
 ### Overriding configuration
@@ -328,72 +276,9 @@ These functions need to be called **BEFORE** *sigma#init*.
 
 ### LSP
 
-Sigma provides a choice to include selected LSP or LSP-like solutions.
-
-To use coc.nvim put these **BEFORE** calling *sigma#init* function:
-
-```vim
-let g:sigma#use_coc = 1
-let g:sigma#coc_default = 1 " or 0 to not configure it automatically
-```
-
-Or to use nvim-lspconfig:
-
-```vim
-let g:sigma#use_lsp = 1
-let g:sigma#lsp_default = 1 " or 0 to not configure it automatically
-
-call sigma#lsp_add('pyright') " to add language server of choice
-```
-
-To reconfigure LSP server:
-
-```lua
-local overrides = require('sigma.lsp.defaults')
-overrides.init_options = {param = 'value'}
-require('lspconfig')['pyright'].setup(overrides)
-```
+*ALE is coming here*
 
 ## Default plugins
-
-### Neovim with LSP enabled and lualine
-
-- [honza/vim-snippets](https://github.com/honza/vim-snippets)
-- [907th/vim-auto-save](https://github.com/907th/vim-auto-save)
-- [tpope/vim-abolish](https://github.com/tpope/vim-abolish)
-- [eshion/vim-sync](https://github.com/eshion/vim-sync)
-- [voidekh/kyotonight.vim](https://github.com/voidekh/kyotonight.vim)
-- [leafOfTree/vim-project](https://github.com/leafOfTree/vim-project)
-- [lambdalisue/suda.vim](https://github.com/lambdalisue/suda.vim)
-- [numToStr/Comment.nvim](https://github.com/numToStr/Comment.nvim)
-- [skywind3000/asyncrun.vim](https://github.com/skywind3000/asyncrun.vim)
-- [mcchrish/nnn.vim](https://github.com/mcchrish/nnn.vim)
-- [mbbill/undotree](https://github.com/mbbill/undotree)
-- [dbeniamine/cheat.sh-vim](https://github.com/dbeniamine/cheat.sh-vim)
-- [noahfrederick/vim-skeleton](https://github.com/noahfrederick/vim-skeleton)
-- [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
-- [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim)
-- [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
-- [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
-- [hrsh7th/cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
-- [hrsh7th/cmp-path](https://github.com/hrsh7th/cmp-path)
-- [hrsh7th/cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline)
-- [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
-- [quangnguyen30192/cmp-nvim-ultisnips](https://github.com/quangnguyen30192/cmp-nvim-ultisnips)
-- [SirVer/ultisnips](https://github.com/SirVer/ultisnips)
-- [norcalli/nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua)
-- [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-- [kyazdani42/nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons)
-- [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
-- [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
-- [AckslD/nvim-neoclip.lua](https://github.com/AckslD/nvim-neoclip.lua)
-- [kkharji/sqlite.lua](https://github.com/kkharji/sqlite.lua)
-- [windwp/nvim-spectre](https://github.com/windwp/nvim-spectre)
-- [mhinz/vim-startify](https://github.com/mhinz/vim-startify)
-- [ibhagwan/fzf-lua](https://github.com/ibhagwan/fzf-lua)
-- [romgrk/barbar.nvim](https://github.com/romgrk/barbar.nvim)
-
-### Vim with coc.nvim enabled and lightline
 
 - [honza/vim-snippets](https://github.com/honza/vim-snippets)
 - [907th/vim-auto-save](https://github.com/907th/vim-auto-save)
@@ -419,11 +304,6 @@ require('lspconfig')['pyright'].setup(overrides)
 - [junegunn/vim-peekaboo](https://github.com/junegunn/vim-peekaboo)
 - [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
 
-### Plugin choices
-
-- [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline)
-- [josa42/nvim-lightline-lsp](https://github.com/josa42/nvim-lightline-lsp)
-
 ## Keybindings
 
 Check
@@ -446,8 +326,7 @@ Some of them might\'ve been borrowed from NvChad or ThePrimeagen.
 - LSP support
 - Undotree
 - Nnn file manager integration
-- Easy shortcuts to lazygit and full fledged terminal (kitty or tmux
-    required)
+- Easy shortcuts to lazygit and full fledged terminal (kitty or tmux required)
 - Auto-save
 - Easy to configure remote sync
 - Undotree
@@ -460,8 +339,8 @@ Some of them might\'ve been borrowed from NvChad or ThePrimeagen.
 
 ### Cursor line gets lost in Neovim
 
-For some reason \'nocursorline\' option gets set **sometimes**. I
-haven\'t tracked the issue yet. A workaround (if you want cursorline
+For some reason `nocursorline` option gets set **sometimes**. I
+haven't tracked the issue yet. A workaround (if you want cursorline
 that is) is adding following autocmd to your init.vim:
 
 ```vim
@@ -477,7 +356,7 @@ autocmd FileType * if &ft != 'startify' && &ft != 'dashboard' | :set cursorline 
 - [x] Features explanation
 - [x] Add vim-signify / gitsigns support for lightline
 - [ ] Dynamic theme plugin
-- [ ] New installation method (bootstrap SigmaVimRc and let vim-plug
+- [x] New installation method (bootstrap SigmaVimRc and let vim-plug
     manage the full plugin)
 - [ ] Replace coc.nvim with ALE or vim-lsp
 - [ ] Remove all Neovim specific stuff
