@@ -276,6 +276,8 @@ function! sigma#config()
 
         let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰', '│', '─']
         let g:ale_completion_enabled = 1
+        let g:ale_sign_error = ' '
+        let g:ale_sign_warning = ' '
 
     endif
 
