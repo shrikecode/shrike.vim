@@ -245,7 +245,7 @@ function! sigma#config()
                 \       'hunks': 'sigma#hunks'
                 \	}
                 \ }
-    if sigma#use_ale == 1
+    if g:sigma#use_ale == 1
         let g:lightline.component_expand = {
                     \  'linter_checking': 'lightline#ale#checking',
                     \  'linter_infos': 'lightline#ale#infos',
@@ -359,7 +359,7 @@ function! sigma#default_plugins()
     let g:sigma#ale_default = get(g:, 'sigma#ale_default', 0)
     let s:enable = 1
     let s:no_override = 1
-    if (sigma#use_ale == 1)
+    if (g:sigma#use_ale == 1)
         call sigma#add('dense-analysis/ale', s:enable, s:no_override)
         call sigma#add('maximbaz/lightline-ale', s:enable, s:no_override)
     endif
