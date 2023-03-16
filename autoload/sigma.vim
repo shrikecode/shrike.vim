@@ -8,7 +8,6 @@
 " Main SigmaVimRc file
 
 let g:sigma#plugins = {
-            \ 'voidekh/SigmaVimRc': { 'branch': 'master' },
             \ 'voidekh/kyotonight.vim': 1,
             \ '907th/vim-auto-save': 1,
             \ 'eshion/vim-sync': 1,
