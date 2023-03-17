@@ -365,6 +365,7 @@ function! sigma#default_plugins()
     if (g:sigma#use_ale == 1)
         call sigma#add('dense-analysis/ale', s:enable, s:no_override)
         call sigma#add('maximbaz/lightline-ale', s:enable, s:no_override)
+        call sigma#add('SirVer/ultisnips', s:enable, s:no_override)
     endif
 endfunction
 
