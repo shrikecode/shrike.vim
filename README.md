@@ -71,7 +71,7 @@ config and be a Chad too? SigmaVimRC was made for you.
 
 ## Why another Vim distribution
 
-First of all, most of \"Vim\" distros, are Neovim distros. Sigma is
+First of all, most of "Vim" distros, are Neovim distros. Sigma is
 compatible with Vim and Neovim.
 
 Most of these distributions are pretty complex, and usually require some
@@ -100,7 +100,7 @@ also doesn\'t provide any file-tree plugin.
 
 Rationale for this choices is just... keeping it simple. Use the same
 tools inside of Vim which you would use outside of Vim. Fzf is great all
-around fuzzy finder, unlike Telescope which might be amazing, but it\'s
+around fuzzy finder, unlike Telescope which might be amazing, but it's
 Neovim only plugin. Nnn is a full blown, fully functional file manager.
 No file browser plugin can compare with that. And again, it\'s a tool
 for everyday use, not just in Vim.
@@ -108,24 +108,24 @@ for everyday use, not just in Vim.
 If you prefer different workflow, replacing nnn.vim with a file-tree
 plugin of choice is just removing one plugin, adding another one, and
 replacing 2 remaps. You can also add a file-tree plugin on top of nnn,
-so you might just want to replace only one remap, \<C-n\> with toggling
+so you might just want to replace only one remap, <C-n> with toggling
 your file-tree.
 
-If you don\'t want fzf, there would be a lot more changes to do, and it
+If you don't want fzf, there would be a lot more changes to do, and it
 might miss the point of making your init.vim simple, as there would be
 at least dozen remaps to replace, and Telescope, which seems an only
 alternative here, requires a bunch of plugins and configuration to
 replicate what SigmaVimRc offers. So, if you just hate fzf or love
-Telescope, you might give Sigma and fzf a chance, but if you\'d still
+Telescope, you might give Sigma and fzf a chance, but if you'd still
 want Telescope, NvChad might be a better choice.
 
-Vim version of Sigma comes with vim-fugitive, but it\'s solely for hunks
+Vim version of Sigma comes with vim-fugitive, but it's solely for hunks
 in vim-airline. Intended git workflow is using lazygit in a kitty / tmux
-pane opened by \<leader\>gg keybinding. Follows the same rationale of
+pane opened by <leader>gg keybinding. Follows the same rationale of
 using tools usable outside of Vim, but you can easily install / use your
 preferred plugin for git... as the actual lazygit integration in Sigma
 is this single keybinding for opening lazygit in current working
-directory. There\'s no plugin for that in the base set.
+directory. There's no plugin for that in the base set.
 
 In the end, you might always take parts of SigmaVimRc as inspiration for
 making your own config, which is also a valid use case for this little
@@ -147,8 +147,7 @@ project. :)
     lazygit integration)
 - [lazygit](https://github.com/jesseduffield/lazygit) (For... lazygit
     integration)
-- [python3](https://www.python.org/) (Ultisnips for coc.nvim or
-    nvim-cmp)
+- [python3](https://www.python.org/) (Ultisnips)
 
 ## Installation
 
@@ -266,7 +265,11 @@ These functions need to be called **BEFORE** *sigma#init*.
 
 ### LSP
 
-*ALE is coming here*
+Sigma provides a choice to include ALE. To use it, put this **BEFORE** calling `sigma#init` function:
+
+```vim
+let g:sigma#use_ale = 1
+```
 
 ## Default plugins
 
@@ -292,16 +295,16 @@ These functions need to be called **BEFORE** *sigma#init*.
 - [junnegunn/fzf.vim](https://github.com/junnegunn/fzf.vim)
 - [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)
 - [junegunn/vim-peekaboo](https://github.com/junegunn/vim-peekaboo)
-- [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
+- [dense-analysis/ale](https://github.com/dense-analysis/ale)
+- [maximbaz/lightline-ale](https://github.com/maximbaz/lightline-ale)
 
 ## Keybindings
 
-Check
-[sigma#mappings()](https://github.com/voidekh/SigmaVimRc/blob/master/autoload/sigma.vim#L47)
+Check [sigma#mappings()](https://github.com/voidekh/SigmaVimRc/blob/master/autoload/sigma.vim#L47)
 function, and also review some of the default mappings of listed
 plugins.
 
-Some of them might\'ve been borrowed from NvChad or ThePrimeagen.
+Some of them might've been borrowed from NvChad or ThePrimeagen.
 
 ## Features
 
@@ -348,5 +351,6 @@ autocmd FileType * if &ft != 'startify' && &ft != 'dashboard' | :set cursorline 
 - [ ] Dynamic theme plugin
 - [x] New installation method (bootstrap SigmaVimRc and let vim-plug
     manage the full plugin)
-- [ ] Replace coc.nvim with ALE or vim-lsp
-- [ ] Remove all Neovim specific stuff
+- [x] Replace coc.nvim with ALE or vim-lsp
+- [x] Remove all Neovim specific stuff
+- [ ] Ultisnips
