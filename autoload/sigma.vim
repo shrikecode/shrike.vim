@@ -14,7 +14,6 @@ let g:sigma#plugins = {
             \ 'skywind3000/asyncrun.vim': 1,
             \ 'lambdalisue/suda.vim': 1,
             \ 'tpope/vim-abolish': 1,
-            \ 'honza/vim-snippets': 1,
             \ 'dbeniamine/cheat.sh-vim': 1,
             \ 'mcchrish/nnn.vim': 1,
             \ 'leafOfTree/vim-project': 1,
@@ -366,6 +365,7 @@ function! sigma#default_plugins()
         call sigma#add('dense-analysis/ale', s:enable, s:no_override)
         call sigma#add('maximbaz/lightline-ale', s:enable, s:no_override)
         call sigma#add('SirVer/ultisnips', s:enable, s:no_override)
+        call sigma#add('honza/vim-snippets', s:enable, s:no_override)
     endif
 endfunction
 
