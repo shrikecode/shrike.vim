@@ -362,10 +362,10 @@ function! sigma#init()
 
     command! SigmaUpdate :call sigma#update()
 
-    command! SigmaRecentFiles :History
-    command! SigmaFiles :Files
-    command! SigmaRg :Rg
-    command! SigmaConfig :e ~/.vimrc
+    command!                SigmaRecentFiles    :History
+    command!                SigmaFiles          :Files
+    command! -bang -nargs=* SigmaRg             :call fzf#vim#grep("rg -g '!{.git,node_modules}/' --hidden --no-ignore --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
+    command!                SigmaConfig         :e ~/.vimrc
 
     if sigma#is_enabled('mhinz/vim-startify')
         command! SigmaDashboard :Startify
