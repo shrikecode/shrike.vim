@@ -19,22 +19,22 @@ function! sigma#coc#lsp#init()
         autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
     augroup end
 
-    function! sigma#coc#lsp#show_documentation()
-        if CocAction('hasProvider', 'hover')
-            call CocActionAsync('doHover')
-        else
-            call feedkeys('K', 'in')
-        endif
-    endfunction
-
-    function! sigma#coc#lsp#check_backspace() abort
-        let col = col('.') - 1
-        return !col || getline('.')[col - 1]  =~# '\s'
-    endfunction
-
     autocmd CursorHold * silent call CocActionAsync('highlight')
 
     command! -nargs=0 Format :call CocActionAsync('format')
     command! -nargs=? Fold :call     CocAction('fold', <f-args>)
     command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+endfunction
+
+function! sigma#coc#lsp#show_documentation()
+    if CocAction('hasProvider', 'hover')
+        call CocActionAsync('doHover')
+    else
+        call feedkeys('K', 'in')
+    endif
+endfunction
+
+function! sigma#coc#lsp#check_backspace() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
