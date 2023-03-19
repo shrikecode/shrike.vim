@@ -324,7 +324,7 @@ function! sigma#config()
 endfunction
 
 function! sigma#update()
-    execute "!curl -fLo ~/.vim/autoload/sigma.vim --create-dirs https://raw.githubusercontent.com/voidekh/SigmaVimRc/master/autoload/sigma.vim"
+    execute "!curl -fLo ~/.vim/autoload/sigma.vim --create-dirs https://raw.githubusercontent.com/voidekh/SigmaVimRc/next/autoload/sigma.vim"
 endfunction
 
 function! sigma#default_plugins()
