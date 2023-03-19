@@ -8,6 +8,7 @@
 " Main SigmaVimRc file
 
 let g:sigma#plugins = {
+            \ 'voidekh/SigmaVimRc': {'branch': 'next', 'do': ':SigmaUpdate'},
             \ 'voidekh/kyotonight.vim': 1,
             \ '907th/vim-auto-save': 1,
             \ 'eshion/vim-sync': 1,
@@ -157,15 +158,8 @@ function! sigma#mappings()
     " close window
     nnoremap <leader>wc <C-w>c
 
-    if g:sigma#use_ale == 1
-        nnoremap gd <Cmd>ALEGoToDefinition<CR>
-        nnoremap gr <Cmd>ALEFindReferences<CR>
-        nnoremap gD <Cmd>ALEGoToTypeDefinition<CR>
-        nnoremap gi <Cmd>ALEGoToImplementation<CR>
-        nnoremap <leader>e <Cmd>ALEDetail<CR>
-        nnoremap <leader>ca <Cmd>ALECodeAction<CR>
-        nnoremap <leader>rn <Cmd>ALERename<CR>
-        nnoremap <leader>f <Cmd>ALEFix<CR>
+    if g:sigma#use_coc == 1
+        call sigma#coc#mappings#init()
     endif
 endfunction
 
@@ -243,43 +237,17 @@ function! sigma#config()
                 \           [ 'fileformat', 'fileencoding', 'filetype']]
                 \ },
                 \ 'component_function': {
-                \		'gitbranch': 'sigma#head',
-                \       'hunks': 'sigma#hunks'
+                \		'gitbranch': 'sigma#head'
                 \	}
                 \ }
-    if g:sigma#use_ale == 1
-        let g:lightline.component_expand = {
-                    \  'linter_checking': 'lightline#ale#checking',
-                    \  'linter_infos': 'lightline#ale#infos',
-                    \  'linter_warnings': 'lightline#ale#warnings',
-                    \  'linter_errors': 'lightline#ale#errors',
-                    \  'linter_ok': 'lightline#ale#ok',
-                    \ }
-        let g:lightline.component_type = {
-                    \  'linter_checking': 'right',
-                    \  'linter_infos': 'right',
-                    \  'linter_warnings': 'warning',
-                    \  'linter_errors': 'error',
-                    \  'linter_ok': 'right',
-                    \ }
+    if g:sigma#use_coc == 1
+        call sigma#coc#lsp#init()
+        call sigma#coc#line#register()
         let g:lightline.active.left = [
-                    \ [ 'mode', 'paste'], [ 'gitbranch', 'hunks'],
-                    \ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+                    \ [ 'mode', 'paste'], [ 'gitbranch'],
+                    \ [ 'coc_status', 'coc_errors', 'coc_warnings', 'coc_infos' ],
                     \ [ 'readonly', 'filename', 'modified' ]
                     \ ]
-        let g:lightline#ale#indicator_checking = " "
-        let g:lightline#ale#indicator_warnings = " "
-        let g:lightline#ale#indicator_errors = " "
-        let g:lightline#ale#indicator_infos = " "
-        let g:lightline#ale#indicator_ok = ""
-
-        let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰', '│', '─']
-        let g:ale_completion_enabled = 1
-        let g:ale_lint_on_text_changed = 'normal'
-        let g:ale_lint_on_insert_leave = 1
-        let g:ale_sign_error = ' '
-        let g:ale_sign_warning = ' '
-
     endif
 
     if sigma#is_enabled('mengelbrecht/lightline-bufferline')
@@ -360,13 +328,11 @@ function! sigma#update()
 endfunction
 
 function! sigma#default_plugins()
-    let g:sigma#use_ale = get(g:, 'sigma#use_ale', 0)
+    let g:sigma#use_coc = get(g:, 'sigma#use_coc', 0)
     let s:enable = 1
     let s:no_override = 1
-    if (g:sigma#use_ale == 1)
-        call sigma#add('dense-analysis/ale', s:enable, s:no_override)
-        call sigma#add('maximbaz/lightline-ale', s:enable, s:no_override)
-        call sigma#add('SirVer/ultisnips', s:enable, s:no_override)
+    if (g:sigma#use_coc == 1)
+        call sigma#add('neoclide/coc.nvim', {'branch': 'release'}, s:no_override)
         call sigma#add('honza/vim-snippets', s:enable, s:no_override)
     endif
 endfunction
@@ -412,29 +378,14 @@ function! sigma#run(command = '', split = 'h')
     elseif $TMUX != ''
         execute "!tmux split-window -" . a:split "-c" getcwd() a:command
     else
-        echoerr 'Vim must be run in kitty terminal or tmux for sigma#run to work'
+        vsplit | term a:command
     endif
 endfunction
 
 function! sigma#head()
     if sigma#is_enabled('sineto/lightline-hunks')
         return lightline#hunks#composer()
-    elseif sigma#is_enabled('lewis6991/gitsigns.nvim')
-        let s:head = get(b:, 'gitsigns_head', '')
-        let g:sigma#branch_symbol = get(g:, 'sigma#branch_symbol', '')
-
-        if s:head != ''
-            let s:head = g:sigma#branch_symbol .. ' ' .. s:head
-        endif
-
-        return s:head
     endif
-endfunction
 
-function! sigma#hunks()
-    if sigma#is_enabled('sineto/lightline-hunks')
-        return '' " hunks are already returned from sigma#head in this case
-    elseif sigma#is_enabled('lewis6991/gitsigns.nvim')
-        return get(b:, 'gitsigns_status', '')
-    endif
+    return ''
 endfunction
