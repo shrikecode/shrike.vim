@@ -1,12 +1,9 @@
 # SigmaVimRc
 
-![](https://imgur.com/yGA7GRN.png)
-
 ![](https://imgur.com/4oOuxJ7.png)
 
 <!--toc:start-->
 - [SigmaVimRc](#sigmavimrc)
-  - [BREAKING](#breaking)
   - [Why another Vim distribution](#why-another-vim-distribution)
   - [What is Sigma](#what-is-sigma)
   - [Dependencies](#dependencies)
