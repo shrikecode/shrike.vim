@@ -245,7 +245,7 @@ function! sigma#config()
         call sigma#coc#line#register()
         let g:lightline.active.left = [
                     \ [ 'mode', 'paste'], [ 'gitbranch'],
-                    \ [ 'coc_status', 'coc_errors', 'coc_warnings', 'coc_infos' ],
+                    \ [ 'coc_status', 'coc_errors', 'coc_warnings', 'coc_hints', 'coc_infos' ],
                     \ [ 'readonly', 'filename', 'modified' ]
                     \ ]
     endif
