@@ -1,5 +1,9 @@
 # SigmaVimRc
 
+![](https://imgur.com/yGA7GRN.png)
+
+![](https://imgur.com/4oOuxJ7.png)
+
 <!--toc:start-->
 - [SigmaVimRc](#sigmavimrc)
   - [BREAKING](#breaking)
@@ -7,14 +11,7 @@
   - [What is Sigma](#what-is-sigma)
   - [Dependencies](#dependencies)
   - [Installation](#installation)
-    - [Vim](#vim)
-    - [Neovim](#neovim)
-    - [Vim](#vim)
-    - [Neovim](#neovim)
   - [Configuration](#configuration)
-    - [vimrc](#vimrc)
-    - [init.lua](#initlua)
-    - [Statusline / Bufferline](#statusline-bufferline)
     - [FZF](#fzf)
     - [nnn](#nnn)
     - [lazygit](#lazygit)
@@ -23,70 +20,23 @@
     - [Extra functions](#extra-functions)
     - [LSP](#lsp)
   - [Default plugins](#default-plugins)
-    - [Neovim with LSP enabled and lualine](#neovim-with-lsp-enabled-and-lualine)
-    - [Vim with coc.nvim enabled and lightline](#vim-with-cocnvim-enabled-and-lightline)
-    - [Plugin choices](#plugin-choices)
   - [Keybindings](#keybindings)
   - [Features](#features)
   - [Known issues](#known-issues)
-    - [Cursor line gets lost in Neovim](#cursor-line-gets-lost-in-neovim)
+    - [Cursor line gets lost](#cursor-line-gets-lost)
   - [Roadmap](#roadmap)
 <!--toc:end-->
 
-![](https://imgur.com/yGA7GRN.png)
-
-![](https://imgur.com/4oOuxJ7.png)
-
-## BREAKING
-
-Neovim support will be dropped in favor of new Lua-only
-[Sigma.nvim](https://github.com/wmwnuk/sigma.nvim), and SigmaVimRc will
-go into maintenance mode.
-
-You might have already seen NvChad, but you use Vim or want a simpler
-config and be a Chad too? SigmaVimRC was made for you.
-
-```sh
-............................................................
-............................... ... ........................
-..................... ......'...,,.... .....................
-...................  ..'''''',''';;;;'......................
-................... ..',,;:::cclodxxdo;.....................
-..................  ...''',,,;:ccllllc;.....................
-..................   ...',;::::clllcc:,.....................
-................... .... ............','....................
-......................      ...      ..',,..................
-......................... ...:;.....',,'....................
-...................  .......'cl,.'......''..................
-...................    ...........'..  .....................
-...................             ....   .....................
-...................           ...  .    ....................
-.....................                 ......................
-.....................                .......................
-.....................               ...''...................
-....................               ....';::,................
-................'...              ....'';:clool:,...........
-..........',,''.....             ....',;:ccccloodddl;.......
-.......,;;;;,''......           ..',;:cloooooodoooodddl;'...
-',,,;;:::;;;;,''''....         ...';:clloloooooddoodxxxxdddd
-;:::::::::;;;,,,''...............';:cllllcllloooodddddddddoo
-;;;;;;;;;;;;;;,,,'''......'''....',;::cccccllllllllllllllllc
-,,,,,,,,,;;;;;;;,,,,,,,,,,,,;'...'',;:::ccllllllllccc::;;;;;
-....'',,,,,,;;;;;;;;;;;;;;;;;,..',,;;:::cclllccccc::;;,''.''
-......'''',,,,,;;;;;;;;;;;;::'..'',;;::::ccccc::::;,,,'.....
-. ........'''',,,;;;;;;;;,;;;....'',,,;;;;;;;;;;,,,''....   
-   ...........'',,,,,,;;;;;;;.....'''',,,,,,''''........    
-    ............''''''''''''.............'............
-```
+You might have already seen NvChad, but you use Vim and want to be a Chad too?
+SigmaVimRC was made for you.
 
 ## Why another Vim distribution
 
-First of all, most of \"Vim\" distros, are Neovim distros. Sigma is
-compatible with Vim and Neovim.
+First of all, most of "Vim" distros, are Neovim distros. SigmaVimRc is an actual
+Vim distribution (if we want to call it like this).
 
-Most of these distributions are pretty complex, and usually require some
-Lua knowledge, and happen to be a pain to actually replace some base
-plugins.
+Most of these distributions are pretty complex,  and happen to be a pain to
+actually replace some base plugins.
 
 ## What is Sigma
 
@@ -96,7 +46,7 @@ which allows full control over what plugins from base set are actually
 used.
 
 Sigma comes with sane (or maybe opinionated?) defaults and utilities to
-make your vimrc (or init.vim) as small and readable as possible.
+make your vimrc as small and readable as possible.
 
 Sigma comes with kyotonight.vim theme, which might easily be changed to
 any theme of your choice. There is also a plan of adding a possibility
@@ -106,36 +56,26 @@ Sigma uses fzf which powers all the fuzzy finding in the default config.
 Check the recommended config section for FZF.
 
 Sigma uses nnn as file picker and file browser in place of netrw, it
-also doesn\'t provide any file-tree plugin.
+also doesn't provide any file-tree plugin.
 
 Rationale for this choices is just... keeping it simple. Use the same
 tools inside of Vim which you would use outside of Vim. Fzf is great all
-around fuzzy finder, unlike Telescope which might be amazing, but it\'s
-Neovim only plugin. Nnn is a full blown, fully functional file manager.
-No file browser plugin can compare with that. And again, it\'s a tool
+around fuzzy finder. Nnn is a full blown, fully functional file manager.
+No file browser plugin can compare with that. And again, it's a tool
 for everyday use, not just in Vim.
 
 If you prefer different workflow, replacing nnn.vim with a file-tree
 plugin of choice is just removing one plugin, adding another one, and
 replacing 2 remaps. You can also add a file-tree plugin on top of nnn,
-so you might just want to replace only one remap, \<C-n\> with toggling
+so you might just want to replace only one remap, `<C-n>` with toggling
 your file-tree.
 
-If you don\'t want fzf, there would be a lot more changes to do, and it
-might miss the point of making your init.vim simple, as there would be
-at least dozen remaps to replace, and Telescope, which seems an only
-alternative here, requires a bunch of plugins and configuration to
-replicate what SigmaVimRc offers. So, if you just hate fzf or love
-Telescope, you might give Sigma and fzf a chance, but if you\'d still
-want Telescope, NvChad might be a better choice.
-
-Vim version of Sigma comes with vim-fugitive, but it\'s solely for hunks
-in vim-airline. Intended git workflow is using lazygit in a kitty / tmux
-pane opened by \<leader\>gg keybinding. Follows the same rationale of
-using tools usable outside of Vim, but you can easily install / use your
-preferred plugin for git... as the actual lazygit integration in Sigma
-is this single keybinding for opening lazygit in current working
-directory. There\'s no plugin for that in the base set.
+Sigma comes with vim-fugitive, but it's solely for hunks in lightline. Intended
+git workflow is using lazygit in a kitty, tmux or Vim terminal pane opened by
+`<leader>gg` keybinding. It follows the same rationale of using tools usable
+outside of Vim, but you can easily install / use your preferred plugin for git,
+as the actual lazygit integration in Sigma is this single keybinding for opening
+lazygit in current working directory. There's no plugin for that in the base set.
 
 In the end, you might always take parts of SigmaVimRc as inspiration for
 making your own config, which is also a valid use case for this little
@@ -143,97 +83,43 @@ project. :)
 
 ## Dependencies
 
-- [NerdFont](https://github.com/ryanoasis/nerd-fonts) (Sauce Code Pro
-    Nerd Font is the default guifont)
+- [NerdFont](https://github.com/ryanoasis/nerd-fonts)
 - [Fzf](https://github.com/junegunn/fzf) (All the fuzzy finding)
 - [ripgrep](https://github.com/BurntSushi/ripgrep) (For Fzf default
     config in Sigma)
 - [fd](https://github.com/sharkdp/fd) (Also for Fzf)
 - [nnn](https://github.com/jarun/nnn) (Default file picker, might be
     disabled / replaced)
-- [npm](https://github.com/npm/cli) (For coc.nvim / lsp)
+- [npm](https://github.com/npm/cli) (For coc.nvim)
 - [kitty](https://github.com/kovidgoyal/kitty) or
-    [tmux](https://github.com/tmux/tmux) (For sigma#run support /
-    lazygit integration)
+    [tmux](https://github.com/tmux/tmux) (optional)
 - [lazygit](https://github.com/jesseduffield/lazygit) (For... lazygit
     integration)
-- [python3](https://www.python.org/) (Ultisnips for coc.nvim or
-    nvim-cmp)
+- [python3](https://www.python.org/) (Ultisnips)
 
 ## Installation
 
 Install vim-plug first:
-
-### Vim
 
 ```sh
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
-### Neovim
-
-```sh
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-```
-
 Install SigmaVimRc:
 
-### Vim
-
 ```sh
-mkdir -p ~/.vim/pack/plugins/start/
-git clone https://github.com/voidekh/SigmaVimRc.git \
-    ~/.vim/pack/plugins/start/SigmaVimRc
-```
-
-### Neovim
-
-```sh
-mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/plugins/start
-git clone https://github.com/voidekh/SigmaVimRc.git \
-    "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/plugins/start/SigmaVimRc
+curl -fLo ~/.vim/autoload/sigma.vim --create-dirs \
+    https://raw.githubusercontent.com/voidekh/SigmaVimRc/master/autoload/sigma.vim
 ```
 
 ## Configuration
 
-To use the default SigmaVimRc just add this line to your .vimrc or
-init.lua:
-
-### vimrc
+To use the default SigmaVimRc just add this line to your .vimrc:
 
 ```vim
 call sigma#init()
 ```
-
-### init.lua
-
-```lua
-vim.cmd[[call sigma#init()]]
-```
-
-### Statusline / Bufferline
-
-SigmaVimRc support Lualine, Lightline and Airline by default. Default
-choice for Neovim is lualine and lightline for Vim. Lualine comes with
-barbar.nvim for bufferline support, Lightline comes with it\'s
-lightline-bufferline extension and Airline has bufferline built-in. To
-override the default choice:
-
-1.  vimrc
-
-    ```vim
-    let g:sigma#line = 'lightline' " or 'airline' or 'lualine'
-    ```
-
-2.  init.lua
-
-    ```lua
-    vim.g['sigma#line'] = 'lightline' -- or 'airline' or 'lualine'
-    ```
-
-    Place it before calling *sigma#init*.
 
 ### FZF
 
@@ -249,9 +135,9 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#a9b1d6,bg:#1a1b26,hl:#7aa
 You should put it in your shell configuration (.bashrc/.zshrc or
 .profile/.zshenv)
 
-If Vim is started by \'-e\' option of terminal emulator, it might not
+If Vim is started by `-e` option of terminal emulator, it might not
 inherit your shell env, so you might need to add the same options in
-your .vimrc/init.vim:
+your .vimrc:
 
 ```vim
 let $FZF_DEFAULT_COMMAND = "rg -g '!{.git,node_modules,.composer}/' --hidden --no-ignore -l ''"
@@ -259,9 +145,8 @@ let $FZF_DEFAULT_OPTS = '--color=fg:#a9b1d6,bg:#1a1b26,hl:#7aa2f7 --color=fg+:#c
 ```
 
 Should you want to customize your fzf theme, e.g. to match colorscheme
-you\'ve chosen instead of the default kyotonight.vim (why would you do
-that? :( ) check out [this
-site](https://minsw.github.io/fzf-color-picker/).
+you've chosen instead of the default kyotonight.vim (why would you do
+that? :( ) check out [this site](https://minsw.github.io/fzf-color-picker/).
 
 ### nnn
 
@@ -277,17 +162,15 @@ export NNN_PLUG='p:/usr/share/nnn/plugins/preview-tui;f:/usr/share/nnn/plugins/f
 ```
 
 Colors configuration should be quite universal, as it will use your
-terminals colors, so if you use a theme matching your Vim colorscheme,
+terminal's colors, so if you use a theme matching your Vim colorscheme,
 everything would look right. Also be sure to tweak the nnn plugins paths
-to match the ones on your system. If nnn package on your system doesn\'t
-come with its plugins, you can download them
-[here](https://github.com/jarun/nnn/tree/master/plugins).
+to match the ones on your system. If nnn package on your system doesn't
+come with its plugins, you can download them [here](https://github.com/jarun/nnn/tree/master/plugins).
 
 ### lazygit
 
-Only thing that is needed here is running Vim in kitty or tmux, and also
-having lazygit installed. The \<leader\>gg keybinding pulls up a pane
-with lazygit in current working directory.
+Only thing that is needed here is having lazygit installed. The `<leader>gg`
+keybinding pulls up a pane with lazygit in current working directory.
 
 ### Overriding configuration
 
@@ -314,10 +197,11 @@ These functions need to be called **BEFORE** *sigma#init*.
 ### Extra functions
 
 - sigma#run - opens a split in kitty or tmux, running a supplied
-    command in current working directory, or no command is supplied it
-    just opens the terminal.
+    command in current working directory, or if no command is supplied it
+    just opens the terminal. If Vim is run in an unsupported terminal, it
+    just opens Vim terminal
 
-1.  Examples
+1. Examples
 
     ```vim
     " Run lazygit in current working directory
@@ -328,74 +212,17 @@ These functions need to be called **BEFORE** *sigma#init*.
 
 ### LSP
 
-Sigma provides a choice to include selected LSP or LSP-like solutions.
-
-To use coc.nvim put these **BEFORE** calling *sigma#init* function:
+Sigma provides a choice to include CoC.
+To use it, put this **BEFORE** calling `sigma#init` function:
 
 ```vim
 let g:sigma#use_coc = 1
-let g:sigma#coc_default = 1 " or 0 to not configure it automatically
 ```
 
-Or to use nvim-lspconfig:
-
-```vim
-let g:sigma#use_lsp = 1
-let g:sigma#lsp_default = 1 " or 0 to not configure it automatically
-
-call sigma#lsp_add('pyright') " to add language server of choice
-```
-
-To reconfigure LSP server:
-
-```lua
-local overrides = require('sigma.lsp.defaults')
-overrides.init_options = {param = 'value'}
-require('lspconfig')['pyright'].setup(overrides)
-```
+Sigma also provides its custom CoC diagnostics support for lightline.
 
 ## Default plugins
 
-### Neovim with LSP enabled and lualine
-
-- [honza/vim-snippets](https://github.com/honza/vim-snippets)
-- [907th/vim-auto-save](https://github.com/907th/vim-auto-save)
-- [tpope/vim-abolish](https://github.com/tpope/vim-abolish)
-- [eshion/vim-sync](https://github.com/eshion/vim-sync)
-- [voidekh/kyotonight.vim](https://github.com/voidekh/kyotonight.vim)
-- [leafOfTree/vim-project](https://github.com/leafOfTree/vim-project)
-- [lambdalisue/suda.vim](https://github.com/lambdalisue/suda.vim)
-- [numToStr/Comment.nvim](https://github.com/numToStr/Comment.nvim)
-- [skywind3000/asyncrun.vim](https://github.com/skywind3000/asyncrun.vim)
-- [mcchrish/nnn.vim](https://github.com/mcchrish/nnn.vim)
-- [mbbill/undotree](https://github.com/mbbill/undotree)
-- [dbeniamine/cheat.sh-vim](https://github.com/dbeniamine/cheat.sh-vim)
-- [noahfrederick/vim-skeleton](https://github.com/noahfrederick/vim-skeleton)
-- [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
-- [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim)
-- [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
-- [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
-- [hrsh7th/cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
-- [hrsh7th/cmp-path](https://github.com/hrsh7th/cmp-path)
-- [hrsh7th/cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline)
-- [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
-- [quangnguyen30192/cmp-nvim-ultisnips](https://github.com/quangnguyen30192/cmp-nvim-ultisnips)
-- [SirVer/ultisnips](https://github.com/SirVer/ultisnips)
-- [norcalli/nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua)
-- [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-- [kyazdani42/nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons)
-- [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
-- [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
-- [AckslD/nvim-neoclip.lua](https://github.com/AckslD/nvim-neoclip.lua)
-- [kkharji/sqlite.lua](https://github.com/kkharji/sqlite.lua)
-- [windwp/nvim-spectre](https://github.com/windwp/nvim-spectre)
-- [mhinz/vim-startify](https://github.com/mhinz/vim-startify)
-- [ibhagwan/fzf-lua](https://github.com/ibhagwan/fzf-lua)
-- [romgrk/barbar.nvim](https://github.com/romgrk/barbar.nvim)
-
-### Vim with coc.nvim enabled and lightline
-
-- [honza/vim-snippets](https://github.com/honza/vim-snippets)
 - [907th/vim-auto-save](https://github.com/907th/vim-auto-save)
 - [tpope/vim-abolish](https://github.com/tpope/vim-abolish)
 - [eshion/vim-sync](https://github.com/eshion/vim-sync)
@@ -417,21 +244,17 @@ require('lspconfig')['pyright'].setup(overrides)
 - [junnegunn/fzf.vim](https://github.com/junnegunn/fzf.vim)
 - [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)
 - [junegunn/vim-peekaboo](https://github.com/junegunn/vim-peekaboo)
-- [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
-
-### Plugin choices
-
-- [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline)
-- [josa42/nvim-lightline-lsp](https://github.com/josa42/nvim-lightline-lsp)
+- [machakann/vim-highlightedyank](https://github.com/machakann/vim-highlightedyank)
+- [honza/vim-snippets](https://github.com/honza/vim-snippets)
+- [neoclice/coc.nvim](https://github.com/neoclice/coc.nvim)
 
 ## Keybindings
 
-Check
-[sigma#mappings()](https://github.com/voidekh/SigmaVimRc/blob/master/autoload/sigma.vim#L47)
+Check [sigma#mappings()](https://github.com/voidekh/SigmaVimRc/blob/master/autoload/sigma.vim#L47)
 function, and also review some of the default mappings of listed
 plugins.
 
-Some of them might\'ve been borrowed from NvChad or ThePrimeagen.
+Some of them might've been borrowed from NvChad or ThePrimeagen.
 
 ## Features
 
@@ -446,8 +269,7 @@ Some of them might\'ve been borrowed from NvChad or ThePrimeagen.
 - LSP support
 - Undotree
 - Nnn file manager integration
-- Easy shortcuts to lazygit and full fledged terminal (kitty or tmux
-    required)
+- Easy shortcuts to lazygit and full fledged terminal (kitty or tmux required)
 - Auto-save
 - Easy to configure remote sync
 - Undotree
@@ -458,10 +280,10 @@ Some of them might\'ve been borrowed from NvChad or ThePrimeagen.
 
 ## Known issues
 
-### Cursor line gets lost in Neovim
+### Cursor line gets lost
 
-For some reason \'nocursorline\' option gets set **sometimes**. I
-haven\'t tracked the issue yet. A workaround (if you want cursorline
+For some reason `nocursorline` option gets set **sometimes**. I
+haven't tracked the issue yet. A workaround (if you want cursorline
 that is) is adding following autocmd to your init.vim:
 
 ```vim
@@ -477,7 +299,6 @@ autocmd FileType * if &ft != 'startify' && &ft != 'dashboard' | :set cursorline 
 - [x] Features explanation
 - [x] Add vim-signify / gitsigns support for lightline
 - [ ] Dynamic theme plugin
-- [ ] New installation method (bootstrap SigmaVimRc and let vim-plug
+- [x] New installation method (bootstrap SigmaVimRc and let vim-plug
     manage the full plugin)
-- [ ] Replace coc.nvim with ALE or vim-lsp
-- [ ] Remove all Neovim specific stuff
+- [x] Remove all Neovim specific stuff
