@@ -56,8 +56,8 @@ function! s:get_coc(type) abort
     endif
 
     let info =  get(b:, 'coc_diagnostic_info', {})
-    let count = get(info, a:type, 0)
-    return count == 0 ? '' : printf(s:indicator[a:type] . '%d', l:counts)
+    let coc_count = get(info, a:type, 0)
+    return coc_count == 0 ? '' : printf(s:indicator[a:type] . '%d', coc_count)
 endfunction
 
 function! s:isHidden()
