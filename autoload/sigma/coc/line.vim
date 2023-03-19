@@ -36,11 +36,11 @@ function! sigma#coc#line#status()
 endfunction
 
 function! sigma#coc#line#register() abort
-  call s:setLightline('component_expand', 'coc_status', 'sigma#coc#line#status')
-  call s:setLightline('component_expand', 'coc_errors', 'sigma#coc#line#errors')
-  call s:setLightline('component_expand', 'coc_warnings', 'sigma#coc#line#warnings')
-  call s:setLightline('component_expand', 'coc_infos', 'sigma#coc#line#infos')
-  call s:setLightline('component_expand', 'coc_hints', 'sigma#coc#line#hints')
+  call s:setLightline('component_function', 'coc_status', 'sigma#coc#line#status')
+  call s:setLightline('component_function', 'coc_errors', 'sigma#coc#line#errors')
+  call s:setLightline('component_function', 'coc_warnings', 'sigma#coc#line#warnings')
+  call s:setLightline('component_function', 'coc_infos', 'sigma#coc#line#infos')
+  call s:setLightline('component_function', 'coc_hints', 'sigma#coc#line#hints')
 
   call s:setLightline('component_type', 'coc_warnings', 'warning')
   call s:setLightline('component_type', 'coc_errors', 'error')
