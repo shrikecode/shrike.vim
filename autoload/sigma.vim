@@ -8,7 +8,7 @@
 " Main SigmaVimRc file
 
 let g:sigma#plugins = {
-            \ 'voidekh/SigmaVimRc': {'branch': 'next', 'do': ':SigmaUpdate'},
+            \ 'voidekh/SigmaVimRc': {'branch': 'master', 'do': ':SigmaUpdate'},
             \ 'voidekh/kyotonight.vim': 1,
             \ '907th/vim-auto-save': 1,
             \ 'eshion/vim-sync': 1,
@@ -324,7 +324,7 @@ function! sigma#config()
 endfunction
 
 function! sigma#update()
-    execute "!curl -fLo ~/.vim/autoload/sigma.vim --create-dirs https://raw.githubusercontent.com/voidekh/SigmaVimRc/next/autoload/sigma.vim"
+    execute "!curl -fLo ~/.vim/autoload/sigma.vim --create-dirs https://raw.githubusercontent.com/voidekh/SigmaVimRc/master/autoload/sigma.vim"
 endfunction
 
 function! sigma#default_plugins()
@@ -378,7 +378,7 @@ function! sigma#run(command = '', split = 'h')
     elseif $TMUX != ''
         execute "!tmux split-window -" . a:split "-c" getcwd() a:command
     else
-        vsplit | term a:command
+        term a:command
     endif
 endfunction
 
