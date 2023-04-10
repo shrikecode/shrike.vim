@@ -376,7 +376,7 @@ function! sigma#run(command = '', split = 'h')
     elseif $TMUX != ''
         execute "!tmux split-window -" . a:split "-c" getcwd() a:command
     else
-        term a:command
+        execute "term " .. a:command
     endif
 endfunction
 
