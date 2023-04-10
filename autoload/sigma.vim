@@ -84,14 +84,13 @@ function! sigma#mappings()
 
     noremap <C-n> <Cmd>NnnPicker %:p:h<CR>
 
-    if $TERM == 'xterm-kitty' || $TMUX != ''
-        if $TMUX != ''
-            nnoremap <silent><leader>gg <Cmd>call sigma#run("lazygit")<C-j><CR>
-        else
-            nnoremap <silent><leader>gg <Cmd>call sigma#run("lazygit -p")<C-j><CR>
-        endif
-        nnoremap <silent><leader>tt <Cmd>call sigma#run()<C-j><CR>
+    if $TERM != 'xterm-kitty'
+        nnoremap <silent><leader>gg <Cmd>call sigma#run("lazygit")<C-j><CR>
+    else
+        nnoremap <silent><leader>gg <Cmd>call sigma#run("lazygit -p")<C-j><CR>
     endif
+
+    nnoremap <silent><leader>tt <Cmd>call sigma#run()<C-j><CR>
 
     nnoremap <leader>uu <Cmd>UndotreeToggle<CR>
 
@@ -171,7 +170,6 @@ function! sigma#config()
     set undofile
     set swapfile
     set backup
-    set backupdir=~/.local/state/nvim/backup
 
     set laststatus=2
     let &t_SI = "\e[5 q"
