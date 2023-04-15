@@ -49,7 +49,7 @@ function! sigma#add(plugin, config = 1, no_override = 0)
 endfunction
 
 function! sigma#is_enabled(plugin)
-    return has_key(g:sigma#plugins, a:plugin) && g:sigma#plugins[a:plugin] != 0
+    return has_key(g:sigma#plugins, a:plugin) && (type(g:sigma#plugins[a:plugin]) == v:t_dict || g:sigma#plugins[a:plugin] != 0)
 endfunction
 
 function! sigma#mappings()
