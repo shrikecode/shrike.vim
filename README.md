@@ -220,6 +220,8 @@ Sigma also provides its custom CoC diagnostics support for lightline.
 
 ## Default plugins
 
+- [voidekh/kyotonight.vim](https://github.com/voidekh/kyotonight.vim)
+- [voidekh/sigma-skeleton](https://github.com/voidekh/sigma-skeleton)
 - [907th/vim-auto-save](https://github.com/907th/vim-auto-save)
 - [tpope/vim-abolish](https://github.com/tpope/vim-abolish)
 - [eshion/vim-sync](https://github.com/eshion/vim-sync)
@@ -230,14 +232,14 @@ Sigma also provides its custom CoC diagnostics support for lightline.
 - [skywind3000/asyncrun.vim](https://github.com/skywind3000/asyncrun.vim)
 - [mcchrish/nnn.vim](https://github.com/mcchrish/nnn.vim)
 - [mbbill/undotree](https://github.com/mbbill/undotree)
-- [dbeniamine/cheat.sh-vim](https://github.com/dbeniamine/cheat.sh-vim)
 - [noahfrederick/vim-skeleton](https://github.com/noahfrederick/vim-skeleton)
 - [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
 - [BourgeoisBear/clrzr](https://github.com/BourgeoisBear/clrzr)
 - [mhinz/vim-startify](https://github.com/mhinz/vim-startify)
-- [mhinz/vim-signify](https://github.com/mhinz/vim-signify)
 - [itchyny/lightline.vim](https://github.com/itchyny/lightline.vim)
 - [mengelbrecht/lightline-bufferline](https://github.com/mengelbrecht/lightline-bufferline)
+- [sineto/lightline-hunks](https://github.com/sineto/lightline-hunks)
+- [airblade/vim-gitgutter](https://github.com/airblade/vim-gitgutter)
 - [junnegunn/fzf.vim](https://github.com/junnegunn/fzf.vim)
 - [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)
 - [junegunn/vim-peekaboo](https://github.com/junegunn/vim-peekaboo)
