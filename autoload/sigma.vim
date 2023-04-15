@@ -9,18 +9,17 @@
 
 let g:sigma#plugins = {
             \ 'voidekh/SigmaVimRc': {'branch': 'master', 'do': ':SigmaUpdate'},
-            \ 'voidekh/kyotonight.vim': 1,
+            \ 'voidekh/kyotonight.vim': {'tag': 'v1.0.0'},
+            \ 'voidekh/sigma-skeleton': {'tag': 'v1.0.0'},
             \ '907th/vim-auto-save': 1,
             \ 'eshion/vim-sync': 1,
             \ 'skywind3000/asyncrun.vim': 1,
             \ 'lambdalisue/suda.vim': 1,
             \ 'tpope/vim-abolish': 1,
-            \ 'dbeniamine/cheat.sh-vim': 1,
             \ 'mcchrish/nnn.vim': 1,
             \ 'leafOfTree/vim-project': 1,
             \ 'mbbill/undotree': 1,
             \ 'junegunn/fzf': 1,
-            \ 'noahfrederick/vim-skeleton': 1,
             \ 'mhinz/vim-startify': 1,
             \ 'itchyny/lightline.vim': 1,
             \ 'mengelbrecht/lightline-bufferline': 1,
@@ -219,6 +218,9 @@ function! sigma#config()
     " kyotonight.vim
     let g:kyotonight_italic = 1
     let g:kyotonight_italic_comments = 1
+
+    " sigma-skeleton
+    let g:sigma_skeleton_fill = 1
 
     " kyotonight.vim
     colorscheme kyotonight
