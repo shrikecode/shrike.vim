@@ -10,7 +10,7 @@
 let g:sigma#plugins = {
             \ 'voidekh/SigmaVimRc': {'branch': 'master', 'do': ':SigmaUpdate'},
             \ 'voidekh/kyotonight.vim': {'tag': 'v1.0.0'},
-            \ 'voidekh/sigma-skeleton': {'tag': 'v1.0.0'},
+            \ 'voidekh/sigma-skeleton': {'tag': 'v1.0.1'},
             \ '907th/vim-auto-save': {'commit': '2e3e54e'},
             \ 'eshion/vim-sync': {'commit': '8456c14'},
             \ 'skywind3000/asyncrun.vim': {'tag': '2.11.16'},
