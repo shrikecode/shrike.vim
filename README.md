@@ -107,7 +107,7 @@ Install SigmaVimRc:
 
 ```sh
 curl -fLo ~/.vim/autoload/sigma.vim --create-dirs \
-    https://raw.githubusercontent.com/voidekh/SigmaVimRc/master/autoload/sigma.vim
+    https://raw.githubusercontent.com/sigmavim/vimrc/master/autoload/sigma.vim
 ```
 
 ## Configuration
@@ -220,12 +220,11 @@ Sigma also provides its custom CoC diagnostics support for lightline.
 
 ## Default plugins
 
-- [voidekh/kyotonight.vim](https://github.com/voidekh/kyotonight.vim)
-- [voidekh/sigma-skeleton](https://github.com/voidekh/sigma-skeleton)
+- [sigmavim/kyotonight](https://github.com/sigmavim/kyotonight)
+- [sigmavim/skeleton](https://github.com/sigmavim/skeleton)
 - [907th/vim-auto-save](https://github.com/907th/vim-auto-save)
 - [tpope/vim-abolish](https://github.com/tpope/vim-abolish)
 - [eshion/vim-sync](https://github.com/eshion/vim-sync)
-- [voidekh/kyotonight.vim](https://github.com/voidekh/kyotonight.vim)
 - [leafOfTree/vim-project](https://github.com/leafOfTree/vim-project)
 - [lambdalisue/suda.vim](https://github.com/lambdalisue/suda.vim)
 - [tpope/vim-commentary](https://github.com/tpope/vim-commentary)
