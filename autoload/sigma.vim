@@ -8,7 +8,7 @@
 " Main SigmaVimRc file
 
 let g:sigma#plugins = {
-            \ 'sigmavim/vimrc': {'branch': 'next', 'do': ':SigmaUpdate'},
+            \ 'sigmavim/vimrc': {'branch': 'master', 'do': ':SigmaUpdate'},
             \ 'sigmavim/kyotonight': {'tag': 'v1.0.0'},
             \ 'sigmavim/skeleton': {'tag': 'v1.0.2'},
             \ '907th/vim-auto-save': {'commit': '2e3e54e'},
