@@ -9,10 +9,10 @@
 " Derived from: https://github.com/josa42/vim-lightline-coc/blob/master/autoload/lightline/coc.vim
 
 let s:indicator = { 
-            \ 'error': get(g:, 'sigma#coc#line#indicator_errors', ' '),
-            \ 'warning': get(g:, 'sigma#coc#line#indicator_warnings', ' '),
-            \ 'hint': get(g:, 'sigma#coc#line#indicator_hints', ' '),
-            \ 'info': get(g:, 'sigma#coc#line#indicator_info', ' ')
+            \ 'error': get(g:, 'sigma#coc#line#indicator_errors', '󰅚 '),
+            \ 'warning': get(g:, 'sigma#coc#line#indicator_warnings', '󰀪 '),
+            \ 'hint': get(g:, 'sigma#coc#line#indicator_hints', '󰌶 '),
+            \ 'info': get(g:, 'sigma#coc#line#indicator_info', '󰋽 ')
             \ }
 
 function! sigma#coc#line#errors()

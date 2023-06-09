@@ -278,7 +278,7 @@ function! sigma#config()
     endif
 
     " startify
-    let s:sigmavim_line = "   烈VIM                                                        "
+    let s:sigmavim_line = "   󰒠 VIM                                                        "
 
     if sigma#is_enabled('mhinz/vim-startify')
         let g:startify_custom_header = [
@@ -299,12 +299,12 @@ function! sigma#config()
                     \ ]
         let g:startify_commands = [
                     \ {'p': ['  Open project      SPC p p', 'ProjectList']},
-                    \ {'r': ['  Recent files      SPC f r', 'SigmaRecentFiles']},
+                    \ {'r': ['󰋚  Recent files      SPC f r', 'SigmaRecentFiles']},
                     \ {'f': ['  Find files        SPC f f', 'SigmaFiles']},
                     \ {'n': ['  File browser      SPC f b', 'NnnPicker']},
-                    \ {'z': ['  Find word         SPC r g', 'SigmaRg']},
-                    \ {'s': ['烈 Update SigmaVimRc SPC u s', 'SigmaUpdate']},
-                    \ {'u': ['  Update plugins    SPC u p', 'PlugUpdate']},
+                    \ {'z': ['󰈞  Find word         SPC r g', 'SigmaRg']},
+                    \ {'s': ['󰒠  Update SigmaVimRc SPC u s', 'SigmaUpdate']},
+                    \ {'u': ['  Update plugins    SPC u p', 'PlugUpdate']},
                     \ {'c': ['  Configure         SPC f P', 'SigmaConfig']},
                     \ ]
     endif
