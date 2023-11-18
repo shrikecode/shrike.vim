@@ -291,7 +291,7 @@ function! shrike#config()
                     \ {'f': ['  Find files        SPC f f', 'ShrikeFiles']},
                     \ {'n': ['  File browser      SPC f b', 'NnnPicker']},
                     \ {'z': ['󰈞  Find word         SPC r g', 'ShrikeRg']},
-                    \ {'s': ['󰒠  Update ShrikeVimRc SPC u s', 'ShrikeUpdate']},
+                    \ {'s': ['  Update ShrikeVim  SPC u s', 'ShrikeUpdate']},
                     \ {'u': ['  Update plugins    SPC u p', 'PlugUpdate']},
                     \ {'c': ['  Configure         SPC f P', 'ShrikeConfig']},
                     \ ]
