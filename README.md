@@ -1,58 +1,58 @@
-# SigmaVimRc
+# ShrikeVim
 
 ![](https://imgur.com/4oOuxJ7.png)
 
-<!--toc:start-->
-- [SigmaVimRc](#sigmavimrc)
-  - [Why another Vim distribution](#why-another-vim-distribution)
-  - [What is Sigma](#what-is-sigma)
-  - [Dependencies](#dependencies)
-  - [Installation](#installation)
-  - [Configuration](#configuration)
-    - [FZF](#fzf)
-    - [nnn](#nnn)
-    - [lazygit](#lazygit)
-    - [Overriding configuration](#overriding-configuration)
-    - [Plugins](#plugins)
-    - [Extra functions](#extra-functions)
-    - [LSP](#lsp)
-  - [Default plugins](#default-plugins)
-  - [Keybindings](#keybindings)
-  - [Features](#features)
-  - [Known issues](#known-issues)
-    - [Cursor line gets lost](#cursor-line-gets-lost)
-  - [Roadmap](#roadmap)
-<!--toc:end-->
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
 
-You might have already seen NvChad, but you use Vim and want to be a Chad too?
-SigmaVimRC was made for you.
+- [ShrikeVim](#shrikevim)
+- [Why another Vim distribution](#why-another-vim-distribution)
+- [What is ShrikeVim](#what-is-shrikevim)
+- [Dependencies](#dependencies)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [FZF](#fzf)
+- [nnn](#nnn)
+- [lazygit](#lazygit)
+- [Overriding configuration](#overriding-configuration)
+- [Plugins](#plugins)
+- [Extra functions](#extra-functions)
+- [LSP](#lsp)
+- [Default plugins](#default-plugins)
+- [Keybindings](#keybindings)
+- [Features](#features)
+- [Known issues](#known-issues)
+- [Cursor line gets lost](#cursor-line-gets-lost)
+- [Roadmap](#roadmap)
+
+<!-- markdown-toc end -->
 
 ## Why another Vim distribution
 
-First of all, most of "Vim" distros, are Neovim distros. SigmaVimRc is an actual
+First of all, most of "Vim" distros, are Neovim distros. ShrikeVim is an actual
 Vim distribution (if we want to call it like this).
 
 Most of these distributions are pretty complex,  and happen to be a pain to
 actually replace some base plugins.
 
-## What is Sigma
+## What is ShrikeVim
 
-Sigma is meant to be simple. It uses vim-plug as plugin manager, which
-is also wrapped in sigma#add, sigma#remove and sigma#init functions,
+ShrikeVim is meant to be simple. It uses vim-plug as plugin manager, which
+is also wrapped in shrike#add, shrike#remove and shrike#init functions,
 which allows full control over what plugins from base set are actually
 used.
 
-Sigma comes with sane (or maybe opinionated?) defaults and utilities to
+ShrikeVim comes with sane (or maybe opinionated?) defaults and utilities to
 make your vimrc as small and readable as possible.
 
-Sigma comes with kyotonight.vim theme, which might easily be changed to
+ShrikeVim comes with kyotonight.vim theme, which might easily be changed to
 any theme of your choice. There is also a plan of adding a possibility
 to create your own colorscheme providing just color palette.
 
-Sigma uses fzf which powers all the fuzzy finding in the default config.
+ShrikeVim uses fzf which powers all the fuzzy finding in the default config.
 Check the recommended config section for FZF.
 
-Sigma uses nnn as file picker and file browser in place of netrw, it
+ShrikeVim uses nnn as file picker and file browser in place of netrw, it
 also doesn't provide any file-tree plugin.
 
 Rationale for this choices is just... keeping it simple. Use the same
@@ -67,14 +67,14 @@ replacing 2 remaps. You can also add a file-tree plugin on top of nnn,
 so you might just want to replace only one remap, `<C-n>` with toggling
 your file-tree.
 
-Sigma comes with vim-fugitive, but it's solely for hunks in lightline. Intended
+ShrikeVim comes with vim-fugitive, but it's solely for hunks in lightline. Intended
 git workflow is using lazygit in a kitty, tmux or Vim terminal pane opened by
 `<leader>gg` keybinding. It follows the same rationale of using tools usable
 outside of Vim, but you can easily install / use your preferred plugin for git,
-as the actual lazygit integration in Sigma is this single keybinding for opening
+as the actual lazygit integration in ShrikeVim is this single keybinding for opening
 lazygit in current working directory. There's no plugin for that in the base set.
 
-In the end, you might always take parts of SigmaVimRc as inspiration for
+In the end, you might always take parts of ShrikeVimRc as inspiration for
 making your own config, which is also a valid use case for this little
 project. :)
 
@@ -83,10 +83,8 @@ project. :)
 - [NerdFont](https://github.com/ryanoasis/nerd-fonts)
 - [Fzf](https://github.com/junegunn/fzf) (All the fuzzy finding)
 - [ripgrep](https://github.com/BurntSushi/ripgrep) (For Fzf default
-    config in Sigma)
+    config in ShrikeVim)
 - [fd](https://github.com/sharkdp/fd) (Also for Fzf)
-- [nnn](https://github.com/jarun/nnn) (Default file picker, might be
-    disabled / replaced)
 - [npm](https://github.com/npm/cli) (For coc.nvim)
 - [kitty](https://github.com/kovidgoyal/kitty) or
     [tmux](https://github.com/tmux/tmux) (optional)
@@ -103,19 +101,19 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
-Install SigmaVimRc:
+Install ShrikeVimRc:
 
 ```sh
-curl -fLo ~/.vim/autoload/sigma.vim --create-dirs \
-    https://raw.githubusercontent.com/sigmavim/vimrc/master/autoload/sigma.vim
+curl -fLo ~/.vim/autoload/shrike.vim --create-dirs \
+    https://raw.githubusercontent.com/shrikevim/vimrc/master/autoload/shrike.vim
 ```
 
 ## Configuration
 
-To use the default SigmaVimRc just add this line to your .vimrc:
+To use the default ShrikeVimRc just add this line to your .vimrc:
 
 ```vim
-call sigma#init()
+call shrike#init()
 ```
 
 ### FZF
@@ -145,25 +143,6 @@ Should you want to customize your fzf theme, e.g. to match colorscheme
 you've chosen instead of the default kyotonight.vim (why would you do
 that? :( ) check out [this site](https://minsw.github.io/fzf-color-picker/).
 
-### nnn
-
-Since nnn file manager is a big part of intended SigmaVimRc workflow,
-below is the recommended configuration (note: preview-tui plugin
-requires kitty or tmux):
-
-```sh
-# nnn config
-BLK="0B" CHR="0B" DIR="04" EXE="06" REG="00" HARDLINK="06" SYMLINK="06" MISSING="00" ORPHAN="09" FIFO="06" SOCK="0B" OTHER="06"
-export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER"
-export NNN_PLUG='p:/usr/share/nnn/plugins/preview-tui;f:/usr/share/nnn/plugins/fzopen'
-```
-
-Colors configuration should be quite universal, as it will use your
-terminal's colors, so if you use a theme matching your Vim colorscheme,
-everything would look right. Also be sure to tweak the nnn plugins paths
-to match the ones on your system. If nnn package on your system doesn't
-come with its plugins, you can download them [here](https://github.com/jarun/nnn/tree/master/plugins).
-
 ### lazygit
 
 Only thing that is needed here is having lazygit installed. The `<leader>gg`
@@ -171,8 +150,8 @@ keybinding pulls up a pane with lazygit in current working directory.
 
 ### Overriding configuration
 
-To override default Sigma configuration... just set your configuration
-changes after calling sigma#init function. That includes plugin
+To override default ShrikeVim configuration... just set your configuration
+changes after calling shrike#init function. That includes plugin
 configurations.
 
 ### Plugins
@@ -180,20 +159,20 @@ configurations.
 To remove a plugin:
 
 ```vim
-call sigma#remove('plugin/name')
+call shrike#remove('plugin/name')
 ```
 
 Add a plugin:
 
 ```vim
-call sigma#add('plugin/name', {'branch': 'master'}) " optional params
+call shrike#add('plugin/name', {'branch': 'master'}) " optional params
 ```
 
-These functions need to be called **BEFORE** *sigma#init*.
+These functions need to be called **BEFORE** *shrike#init*.
 
 ### Extra functions
 
-- sigma#run - opens a split in kitty or tmux, running a supplied
+- shrike#run - opens a split in kitty or tmux, running a supplied
     command in current working directory, or if no command is supplied it
     just opens the terminal. If Vim is run in an unsupported terminal, it
     just opens Vim terminal
@@ -202,36 +181,32 @@ These functions need to be called **BEFORE** *sigma#init*.
 
     ```vim
     " Run lazygit in current working directory
-    nnoremap <silent><leader>gg <Cmd>call sigma#run("lazygit -p")<CR>
+    nnoremap <silent><leader>gg <Cmd>call shrike#run("lazygit -p")<CR>
     " Open terminal in current working directory
-    nnoremap <silent><leader>tt <Cmd>call sigma#run()<CR>
+    nnoremap <silent><leader>tt <Cmd>call shrike#run()<CR>
     ```
 
 ### LSP
 
-Sigma provides a choice to include CoC.
-To use it, put this **BEFORE** calling `sigma#init` function:
+ShrikeVim provides a choice to include CoC.
+To use it, put this **BEFORE** calling `shrike#init` function:
 
 ```vim
-let g:sigma#use_coc = 1
+let g:shrike#use_coc = 1
 ```
 
-Sigma also provides its custom CoC diagnostics support for lightline.
+ShrikeVim also provides its custom CoC diagnostics support for lightline.
 
 ## Default plugins
 
-- [sigmavim/kyotonight](https://github.com/sigmavim/kyotonight)
-- [sigmavim/skeleton](https://github.com/sigmavim/skeleton)
+- [shrikecode/kyotonight.vim](https://github.com/shrikecode/kyotonight.vim)
+- [shrikecode/skeleton.vim](https://github.com/shrikecode/skeleton.vim)
 - [907th/vim-auto-save](https://github.com/907th/vim-auto-save)
 - [tpope/vim-abolish](https://github.com/tpope/vim-abolish)
-- [eshion/vim-sync](https://github.com/eshion/vim-sync)
 - [leafOfTree/vim-project](https://github.com/leafOfTree/vim-project)
 - [lambdalisue/suda.vim](https://github.com/lambdalisue/suda.vim)
 - [tpope/vim-commentary](https://github.com/tpope/vim-commentary)
-- [skywind3000/asyncrun.vim](https://github.com/skywind3000/asyncrun.vim)
-- [mcchrish/nnn.vim](https://github.com/mcchrish/nnn.vim)
 - [mbbill/undotree](https://github.com/mbbill/undotree)
-- [noahfrederick/vim-skeleton](https://github.com/noahfrederick/vim-skeleton)
 - [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
 - [BourgeoisBear/clrzr](https://github.com/BourgeoisBear/clrzr)
 - [mhinz/vim-startify](https://github.com/mhinz/vim-startify)
@@ -248,7 +223,7 @@ Sigma also provides its custom CoC diagnostics support for lightline.
 
 ## Keybindings
 
-Check [sigma#mappings()](https://github.com/voidekh/SigmaVimRc/blob/master/autoload/sigma.vim#L47)
+Check [shrike#mappings()](https://github.com/shrikecode/shrike.vim/blob/master/autoload/shrike.vim#L47)
 function, and also review some of the default mappings of listed
 plugins.
 
@@ -266,13 +241,11 @@ Some of them might've been borrowed from NvChad or ThePrimeagen.
 - Autocompletion and snippets
 - LSP support
 - Undotree
-- Nnn file manager integration
+- Better file manager
 - Easy shortcuts to lazygit and full fledged terminal (kitty or tmux required)
 - Auto-save
 - Easy to configure remote sync
-- Undotree
 - Better search and replace
-- Cheat.sh support
 - Color strings highlighting
 - Clipboard history picker
 
@@ -292,11 +265,11 @@ autocmd FileType * if &ft != 'startify' && &ft != 'dashboard' | :set cursorline 
 
 - [x] Add screenshots
 - [x] Documentation (and default keybindings info)
-- [x] Figure out a way for vim-plug to manage SigmaVimRc or let it
+- [x] Figure out a way for vim-plug to manage ShrikeVimRc or let it
     manage itself
 - [x] Features explanation
 - [x] Add vim-signify / gitsigns support for lightline
 - [ ] Dynamic theme plugin
-- [x] New installation method (bootstrap SigmaVimRc and let vim-plug
+- [x] New installation method (bootstrap ShrikeVim and let vim-plug
     manage the full plugin)
 - [x] Remove all Neovim specific stuff
