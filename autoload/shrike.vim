@@ -51,6 +51,10 @@ endfunction
 
 function! shrike#mappings()
     " Mappings
+    if shrike#is_enabled('liuchengxu/vim-which-key')
+        nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+    endif
+
     nnoremap <leader>pp <Cmd>ProjectList<CR>
     nnoremap <leader>fb <Cmd>NnnPicker<CR>
 
