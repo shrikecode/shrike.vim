@@ -8,7 +8,7 @@
 " Main ShrikeVimRc file
 
 let g:shrike#plugins = {
-            \ 'shrikecode/shrike.vim': {'branch': 'master', 'do': ':ShrikeUpdate'},
+            \ 'shrikecode/shrike.vim': {'branch': 'main', 'do': ':ShrikeUpdate'},
             \ 'shrikecode/kyotonight.vim': {'tag': 'v1.0.0'},
             \ 'shrikecode/skeleton.vim': {'tag': 'v1.0.2'},
             \ 'lambdalisue/suda.vim': {'tag': 'v1.0.1'},
@@ -65,6 +65,7 @@ function! shrike#mappings()
     nnoremap <leader>us <Cmd>ShrikeUpdate<CR>
 
     nnoremap <leader>ff <Cmd>ShrikeFiles<CR>
+    nnoremap <leader>fb <Cmd>Ex<CR>
     nnoremap <leader>fr <Cmd>ShrikeRecentFiles<CR>
     nnoremap <leader>rg <Cmd>ShrikeRg<CR>
     nnoremap <leader>fP <Cmd>ShrikeConfig<CR>
@@ -315,7 +316,7 @@ function! shrike#config()
 endfunction
 
 function! shrike#update()
-    execute "!curl -fLo ~/.vim/autoload/shrike.vim --create-dirs https://raw.githubusercontent.com/shrikecode/shrike.vim/master/autoload/shrike.vim"
+    execute "!curl -fLo ~/.vim/autoload/shrike.vim --create-dirs https://raw.githubusercontent.com/shrikecode/shrike.vim/main/autoload/shrike.vim"
 endfunction
 
 function! shrike#default_plugins()

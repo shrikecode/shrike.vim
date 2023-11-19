@@ -105,7 +105,7 @@ Install ShrikeVimRc:
 
 ```sh
 curl -fLo ~/.vim/autoload/shrike.vim --create-dirs \
-    https://raw.githubusercontent.com/shrikevim/vimrc/master/autoload/shrike.vim
+    https://raw.githubusercontent.com/shrikevim/vimrc/main/autoload/shrike.vim
 ```
 
 ## Configuration
@@ -201,8 +201,8 @@ ShrikeVim also provides its custom CoC diagnostics support for lightline.
 
 - [shrikecode/kyotonight.vim](https://github.com/shrikecode/kyotonight.vim)
 - [shrikecode/skeleton.vim](https://github.com/shrikecode/skeleton.vim)
-- [907th/vim-auto-save](https://github.com/907th/vim-auto-save)
 - [tpope/vim-abolish](https://github.com/tpope/vim-abolish)
+- [tpope/vim-vinegar](https://github.com/tpope/vim-vinegar)
 - [leafOfTree/vim-project](https://github.com/leafOfTree/vim-project)
 - [lambdalisue/suda.vim](https://github.com/lambdalisue/suda.vim)
 - [tpope/vim-commentary](https://github.com/tpope/vim-commentary)
