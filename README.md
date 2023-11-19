@@ -1,6 +1,6 @@
 # ShrikeVim
 
-![](https://imgur.com/4oOuxJ7.png)
+![ShrikeVim dashboard](https://i.imgur.com/TmrPNgz.png)
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
@@ -12,7 +12,6 @@
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [FZF](#fzf)
-- [nnn](#nnn)
 - [lazygit](#lazygit)
 - [Overriding configuration](#overriding-configuration)
 - [Plugins](#plugins)
