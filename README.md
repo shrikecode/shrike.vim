@@ -1,8 +1,17 @@
 # SigmaVimRc
 
+**BREAKING**
+SigmaVimRc is now ShrikeVim. The `master` branch will remain untouched if you wanna
+keep using it, but if you do it's recommended to just yoink the the config. To switch to
+ShrikeVim some changes will be needed, you might want to re-add some elements e.g.: nnn
+integration that was dropped. You'll do that just the same as you did here.
+New main branch is... `main`. Also the repository address has changed and it should
+be updated in your config.
+
 ![](https://imgur.com/4oOuxJ7.png)
 
 <!--toc:start-->
+
 - [SigmaVimRc](#sigmavimrc)
   - [Why another Vim distribution](#why-another-vim-distribution)
   - [What is Sigma](#what-is-sigma)
@@ -22,7 +31,7 @@
   - [Known issues](#known-issues)
     - [Cursor line gets lost](#cursor-line-gets-lost)
   - [Roadmap](#roadmap)
-<!--toc:end-->
+  <!--toc:end-->
 
 You might have already seen NvChad, but you use Vim and want to be a Chad too?
 SigmaVimRC was made for you.
@@ -32,7 +41,7 @@ SigmaVimRC was made for you.
 First of all, most of "Vim" distros, are Neovim distros. SigmaVimRc is an actual
 Vim distribution (if we want to call it like this).
 
-Most of these distributions are pretty complex,  and happen to be a pain to
+Most of these distributions are pretty complex, and happen to be a pain to
 actually replace some base plugins.
 
 ## What is Sigma
@@ -83,15 +92,15 @@ project. :)
 - [NerdFont](https://github.com/ryanoasis/nerd-fonts)
 - [Fzf](https://github.com/junegunn/fzf) (All the fuzzy finding)
 - [ripgrep](https://github.com/BurntSushi/ripgrep) (For Fzf default
-    config in Sigma)
+  config in Sigma)
 - [fd](https://github.com/sharkdp/fd) (Also for Fzf)
 - [nnn](https://github.com/jarun/nnn) (Default file picker, might be
-    disabled / replaced)
+  disabled / replaced)
 - [npm](https://github.com/npm/cli) (For coc.nvim)
 - [kitty](https://github.com/kovidgoyal/kitty) or
-    [tmux](https://github.com/tmux/tmux) (optional)
+  [tmux](https://github.com/tmux/tmux) (optional)
 - [lazygit](https://github.com/jesseduffield/lazygit) (For... lazygit
-    integration)
+  integration)
 - [python3](https://www.python.org/) (Ultisnips)
 
 ## Installation
@@ -189,23 +198,23 @@ Add a plugin:
 call sigma#add('plugin/name', {'branch': 'master'}) " optional params
 ```
 
-These functions need to be called **BEFORE** *sigma#init*.
+These functions need to be called **BEFORE** _sigma#init_.
 
 ### Extra functions
 
 - sigma#run - opens a split in kitty or tmux, running a supplied
-    command in current working directory, or if no command is supplied it
-    just opens the terminal. If Vim is run in an unsupported terminal, it
-    just opens Vim terminal
+  command in current working directory, or if no command is supplied it
+  just opens the terminal. If Vim is run in an unsupported terminal, it
+  just opens Vim terminal
 
 1. Examples
 
-    ```vim
-    " Run lazygit in current working directory
-    nnoremap <silent><leader>gg <Cmd>call sigma#run("lazygit -p")<CR>
-    " Open terminal in current working directory
-    nnoremap <silent><leader>tt <Cmd>call sigma#run()<CR>
-    ```
+   ```vim
+   " Run lazygit in current working directory
+   nnoremap <silent><leader>gg <Cmd>call sigma#run("lazygit -p")<CR>
+   " Open terminal in current working directory
+   nnoremap <silent><leader>tt <Cmd>call sigma#run()<CR>
+   ```
 
 ### LSP
 
@@ -293,10 +302,10 @@ autocmd FileType * if &ft != 'startify' && &ft != 'dashboard' | :set cursorline 
 - [x] Add screenshots
 - [x] Documentation (and default keybindings info)
 - [x] Figure out a way for vim-plug to manage SigmaVimRc or let it
-    manage itself
+      manage itself
 - [x] Features explanation
 - [x] Add vim-signify / gitsigns support for lightline
 - [ ] Dynamic theme plugin
 - [x] New installation method (bootstrap SigmaVimRc and let vim-plug
-    manage the full plugin)
+      manage the full plugin)
 - [x] Remove all Neovim specific stuff
