@@ -305,7 +305,6 @@ function! shrike#config()
     call shrike#mappings()
 
     " Autocmd
-    autocmd BufWritePost * :call SyncUploadFile()
     autocmd FileType org :set cc=80
     autocmd FileType markdown :set cc=80
 
