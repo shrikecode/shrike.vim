@@ -104,7 +104,7 @@ Install ShrikeVimRc:
 
 ```sh
 curl -fLo ~/.vim/autoload/shrike.vim --create-dirs \
-    https://raw.githubusercontent.com/shrikevim/vimrc/main/autoload/shrike.vim
+    https://raw.githubusercontent.com/shrikecode/shrike.vim/main/autoload/shrike.vim
 ```
 
 ## Configuration
