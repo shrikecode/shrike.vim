@@ -1,55 +1,55 @@
-"    _____ _                      _    ___           ____
-"   / ___/(_)___ _____ ___  ____ | |  / (_)___ ___  / __ \_____
-"   \__ \/ / __ `/ __ `__ \/ __ `/ | / / / __ `__ \/ /_/ / ___/
-"  ___/ / / /_/ / / / / / / /_/ /| |/ / / / / / / / _, _/ /__
-" /____/_/\__, /_/ /_/ /_/\__,_/ |___/_/_/ /_/ /_/_/ |_|\___/
-"        /____/
-" autoload/sigma/coc/line.vim
-" SigmaVimRc CoC line
+"    _____ __         _ __      _    ___
+"   / ___// /_  _____(_) /_____| |  / (_)___ ___
+"   \__ \/ __ \/ ___/ / //_/ _ \ | / / / __ `__ \
+"  ___/ / / / / /  / / ,< /  __/ |/ / / / / / / /
+" /____/_/ /_/_/  /_/_/|_|\___/|___/_/_/ /_/ /_/
+"
+" autoload/shrike/coc/line.vim
+" ShrikeVim CoC line
 " Derived from: https://github.com/josa42/vim-lightline-coc/blob/master/autoload/lightline/coc.vim
 
 let s:indicator = { 
-            \ 'error': get(g:, 'sigma#coc#line#indicator_errors', '󰅚 '),
-            \ 'warning': get(g:, 'sigma#coc#line#indicator_warnings', '󰀪 '),
-            \ 'hint': get(g:, 'sigma#coc#line#indicator_hints', '󰌶 '),
-            \ 'info': get(g:, 'sigma#coc#line#indicator_info', '󰋽 ')
+            \ 'error': get(g:, 'shrike#coc#line#indicator_errors', '󰅚 '),
+            \ 'warning': get(g:, 'shrike#coc#line#indicator_warnings', '󰀪 '),
+            \ 'hint': get(g:, 'shrike#coc#line#indicator_hints', '󰌶 '),
+            \ 'info': get(g:, 'shrike#coc#line#indicator_info', '󰋽 ')
             \ }
 
-function! sigma#coc#line#errors()
+function! shrike#coc#line#errors()
     return s:get_coc('error')
 endfunction
 
-function! sigma#coc#line#warnings()
+function! shrike#coc#line#warnings()
     return s:get_coc('warning')
 endfunction
 
-function! sigma#coc#line#hints()
+function! shrike#coc#line#hints()
     return s:get_coc('hint')
 endfunction
 
-function! sigma#coc#line#infos()
+function! shrike#coc#line#infos()
     return s:get_coc('info')
 endfunction
 
-function! sigma#coc#line#status()
+function! shrike#coc#line#status()
   return get(g:, 'coc_status', '')
 endfunction
 
-function! sigma#coc#line#register() abort
-  call s:setLightline('component_expand', 'coc_status', 'sigma#coc#line#status')
-  call s:setLightline('component_expand', 'coc_errors', 'sigma#coc#line#errors')
-  call s:setLightline('component_expand', 'coc_warnings', 'sigma#coc#line#warnings')
-  call s:setLightline('component_expand', 'coc_infos', 'sigma#coc#line#infos')
-  call s:setLightline('component_expand', 'coc_hints', 'sigma#coc#line#hints')
+function! shrike#coc#line#register() abort
+  call s:setLightline('component_expand', 'coc_status', 'shrike#coc#line#status')
+  call s:setLightline('component_expand', 'coc_errors', 'shrike#coc#line#errors')
+  call s:setLightline('component_expand', 'coc_warnings', 'shrike#coc#line#warnings')
+  call s:setLightline('component_expand', 'coc_infos', 'shrike#coc#line#infos')
+  call s:setLightline('component_expand', 'coc_hints', 'shrike#coc#line#hints')
 
   call s:setLightline('component_type', 'coc_warnings', 'warning')
   call s:setLightline('component_type', 'coc_errors', 'error')
   call s:setLightline('component_type', 'coc_infos', 'info')
   call s:setLightline('component_type', 'coc_hints', 'hint')
 
-  call s:setLightline('component_function', 'coc_status', 'sigma#coc#line#status')
+  call s:setLightline('component_function', 'coc_status', 'shrike#coc#line#status')
 
-  augroup sigma#coc#line
+  augroup shrike#coc#line
       autocmd!
       autocmd User CocDiagnosticChange call lightline#update()
       autocmd User CocStatusChange call lightline#update()

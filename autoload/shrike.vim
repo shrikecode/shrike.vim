@@ -1,22 +1,19 @@
-"    _____ _                      _    ___           ____
-"   / ___/(_)___ _____ ___  ____ | |  / (_)___ ___  / __ \_____
-"   \__ \/ / __ `/ __ `__ \/ __ `/ | / / / __ `__ \/ /_/ / ___/
-"  ___/ / / /_/ / / / / / / /_/ /| |/ / / / / / / / _, _/ /__
-" /____/_/\__, /_/ /_/ /_/\__,_/ |___/_/_/ /_/ /_/_/ |_|\___/
-"        /____/
-" autoload/sigma.vim
-" Main SigmaVimRc file
+"    _____ __         _ __      _    ___
+"   / ___// /_  _____(_) /_____| |  / (_)___ ___
+"   \__ \/ __ \/ ___/ / //_/ _ \ | / / / __ `__ \
+"  ___/ / / / / /  / / ,< /  __/ |/ / / / / / / /
+" /____/_/ /_/_/  /_/_/|_|\___/|___/_/_/ /_/ /_/
+"
+" autoload/shrike.vim
+" Main ShrikeVimRc file
 
-let g:sigma#plugins = {
-            \ 'sigmavim/vimrc': {'branch': 'master', 'do': ':SigmaUpdate'},
-            \ 'sigmavim/kyotonight': {'tag': 'v1.0.0'},
-            \ 'sigmavim/skeleton': {'tag': 'v1.0.2'},
-            \ '907th/vim-auto-save': {'commit': '2e3e54e'},
-            \ 'eshion/vim-sync': {'commit': '8456c14'},
-            \ 'skywind3000/asyncrun.vim': {'tag': '2.12.2'},
+let g:shrike#plugins = {
+            \ 'shrikecode/shrike.vim': {'branch': 'main', 'do': ':ShrikeUpdate'},
+            \ 'shrikecode/kyotonight.vim': {'tag': 'v1.0.0'},
+            \ 'shrikecode/skeleton.vim': {'tag': 'v1.0.2'},
             \ 'lambdalisue/suda.vim': {'tag': 'v1.0.1'},
             \ 'tpope/vim-abolish': {'commit': 'dcbfe06'},
-            \ 'mcchrish/nnn.vim': {'commit': 'e0104e3'},
+            \ 'tpope/vim-vinegar': {'commit': 'bb1bcdd'},
             \ 'leafOfTree/vim-project': {'commit': 'dd9362d'},
             \ 'mbbill/undotree': {'commit': '3ff3aa0'},
             \ 'junegunn/fzf.vim': {'commit': 'd1016db'},
@@ -31,28 +28,33 @@ let g:sigma#plugins = {
             \ 'BourgeoisBear/clrzr': {'tag': 'v1.8.2'},
             \ 'junegunn/vim-peekaboo': {'commit': 'cc4469c'},
             \ 'machakann/vim-highlightedyank': {'commit': 'fa3f57b'},
+            \ 'liuchengxu/vim-which-key': {'commit': '08cf520'},
             \ }
 
-function! sigma#remove(plugin)
-    let g:sigma#plugins[a:plugin] = 0
+function! shrike#remove(plugin)
+    let g:shrike#plugins[a:plugin] = 0
 endfunction
 
-function! sigma#add(plugin, config = 1, no_override = 0)
-    if a:no_override == 1 && has_key(g:sigma#plugins, a:plugin)
+function! shrike#add(plugin, config = 1, no_override = 0)
+    if a:no_override == 1 && has_key(g:shrike#plugins, a:plugin)
         return
     elseif type(a:config) == v:t_dict
-        let g:sigma#plugins[a:plugin] = a:config
+        let g:shrike#plugins[a:plugin] = a:config
     else
-        let g:sigma#plugins[a:plugin] = 1
+        let g:shrike#plugins[a:plugin] = 1
     endif
 endfunction
 
-function! sigma#is_enabled(plugin)
-    return has_key(g:sigma#plugins, a:plugin) && (type(g:sigma#plugins[a:plugin]) == v:t_dict || g:sigma#plugins[a:plugin] != 0)
+function! shrike#is_enabled(plugin)
+    return has_key(g:shrike#plugins, a:plugin) && (type(g:shrike#plugins[a:plugin]) == v:t_dict || g:shrike#plugins[a:plugin] != 0)
 endfunction
 
-function! sigma#mappings()
+function! shrike#mappings()
     " Mappings
+    if shrike#is_enabled('liuchengxu/vim-which-key')
+        nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+    endif
+
     nnoremap <leader>pp <Cmd>ProjectList<CR>
     nnoremap <leader>fb <Cmd>NnnPicker<CR>
 
@@ -60,16 +62,17 @@ function! sigma#mappings()
     nnoremap <leader>uc <Cmd>PlugClean<CR>
     nnoremap <leader>up <Cmd>PlugUpdate<CR>
     nnoremap <leader>uv <Cmd>PlugUpgrade<CR>
-    nnoremap <leader>us <Cmd>SigmaUpdate<CR>
+    nnoremap <leader>us <Cmd>ShrikeUpdate<CR>
 
-    nnoremap <leader>ff <Cmd>SigmaFiles<CR>
-    nnoremap <leader>fr <Cmd>SigmaRecentFiles<CR>
-    nnoremap <leader>rg <Cmd>SigmaRg<CR>
-    nnoremap <leader>fP <Cmd>SigmaConfig<CR>
+    nnoremap <leader>ff <Cmd>ShrikeFiles<CR>
+    nnoremap <leader>fb <Cmd>Ex<CR>
+    nnoremap <leader>fr <Cmd>ShrikeRecentFiles<CR>
+    nnoremap <leader>rg <Cmd>ShrikeRg<CR>
+    nnoremap <leader>fP <Cmd>ShrikeConfig<CR>
 
 
-    if sigma#is_enabled('mhinz/vim-startify')
-        nnoremap <leader>ss <Cmd>SigmaDashboard<CR>
+    if shrike#is_enabled('mhinz/vim-startify')
+        nnoremap <leader>ss <Cmd>ShrikeDashboard<CR>
     endif
 
     nnoremap <leader>rr <Cmd>source ~/.vimrc<CR>
@@ -83,12 +86,12 @@ function! sigma#mappings()
     noremap <C-n> <Cmd>NnnPicker %:p:h<CR>
 
     if $TERM != 'xterm-kitty'
-        nnoremap <silent><leader>gg <Cmd>call sigma#run("lazygit")<C-j><CR>
+        nnoremap <silent><leader>gg <Cmd>call shrike#run("lazygit")<C-j><CR>
     else
-        nnoremap <silent><leader>gg <Cmd>call sigma#run("lazygit -p")<C-j><CR>
+        nnoremap <silent><leader>gg <Cmd>call shrike#run("lazygit -p")<C-j><CR>
     endif
 
-    nnoremap <silent><leader>tt <Cmd>call sigma#run()<C-j><CR>
+    nnoremap <silent><leader>tt <Cmd>call shrike#run()<C-j><CR>
 
     nnoremap <leader>uu <Cmd>UndotreeToggle<CR>
 
@@ -131,7 +134,7 @@ function! sigma#mappings()
     nnoremap <A-e> <C-w>=
 
     " Bufferline
-    if sigma#is_enabled('mengelbrecht/lightline-bufferline')
+    if shrike#is_enabled('mengelbrecht/lightline-bufferline')
         nnoremap <A-.> <Plug>lightline#bufferline#go_next()<CR>
         nnoremap <A-,> <Plug>lightline#bufferline#go_previous()<CR>
         nnoremap <C-,> <Plug>lightline#bufferline#move_previous()<CR>
@@ -155,12 +158,12 @@ function! sigma#mappings()
     " close window
     nnoremap <leader>wc <C-w>c
 
-    if g:sigma#use_coc == 1
-        call sigma#coc#mappings#init()
+    if g:shrike#use_coc == 1
+        call shrike#coc#mappings#init()
     endif
 endfunction
 
-function! sigma#config()
+function! shrike#config()
     " General Config
     set termguicolors
     set guifont="SauceCodePro Nerd Font:h10"
@@ -203,23 +206,16 @@ function! sigma#config()
     set whichwrap+=<>[]hl
     set cursorline
 
-    " vim-auto-save
-    let g:auto_save = 1
-
     " suda.vim
     let g:suda_smart_edit = 1
 
-    " nnn.vim
-    let g:nnn#layout = { 'window': { 'width': 1, 'height': 1, 'border': 'none' } }
-    let g:nnn#replace_netrw = 1
-    let g:nnn#command = 'nnn -a -Pp -o'
 
     " kyotonight.vim
     let g:kyotonight_italic = 1
     let g:kyotonight_italic_comments = 1
 
-    " sigma-skeleton
-    let g:sigma_skeleton_fill = 1
+    " skeleton.vim
+    let g:shrike_skeleton_fill = 1
 
     " kyotonight.vim
     colorscheme kyotonight
@@ -236,12 +232,12 @@ function! sigma#config()
                 \           [ 'fileformat', 'fileencoding', 'filetype']]
                 \ },
                 \ 'component_function': {
-                \		'gitbranch': 'sigma#head'
+                \		'gitbranch': 'shrike#head'
                 \	}
                 \ }
-    if g:sigma#use_coc == 1
-        call sigma#coc#lsp#init()
-        call sigma#coc#line#register()
+    if g:shrike#use_coc == 1
+        call shrike#coc#lsp#init()
+        call shrike#coc#line#register()
         let g:lightline.active.left = [
                     \ [ 'mode', 'paste'], [ 'gitbranch'],
                     \ [ 'coc_status', 'coc_errors', 'coc_warnings', 'coc_hints', 'coc_infos' ],
@@ -249,7 +245,7 @@ function! sigma#config()
                     \ ]
     endif
 
-    if sigma#is_enabled('mengelbrecht/lightline-bufferline')
+    if shrike#is_enabled('mengelbrecht/lightline-bufferline')
         let g:lightline.tabline = {
                     \   'left': [ ['buffers'] ],
                     \   'right': [ ['close'] ]
@@ -273,23 +269,20 @@ function! sigma#config()
         autocmd FileType * if &ft != 'startify' && &ft != 'dashboard' | :set showtabline=2 | endif
     endif
 
-    if sigma#is_enabled('sineto/lightline-hunks')
+    if shrike#is_enabled('sineto/lightline-hunks')
         let g:lightline#hunks#exclude_filetypes = [ 'startify' ]
     endif
 
     " startify
-    let s:sigmavim_line = "   󰒠 VIM                                                        "
-
-    if sigma#is_enabled('mhinz/vim-startify')
+    if shrike#is_enabled('mhinz/vim-startify')
         let g:startify_custom_header = [
-                    \ "      _____ _                      _    ___           ____      ",
-                    \ "     / ___/(_)___ _____ ___  ____ | |  / (_)___ ___  / __ \\_____",
-                    \ "     \\__ \\/ / __ `/ __ `__ \\/ __ `/ | / / / __ `__ \\/ /_/ / ___/",
-                    \ "    ___/ / / /_/ / / / / / / /_/ /| |/ / / / / / / / _, _/ /__  ",
-                    \ "   /____/_/\\__, /_/ /_/ /_/\\__,_/ |___/_/_/ /_/ /_/_/ |_|\\___/  ",
-                    \ "          /____/                                                ",
-                    \ s:sigmavim_line
-                    \ ]
+        \ "    _____ __         _ __      _    ___",
+        \ "   / ___// /_  _____(_) /_____\| \|  / (_)___ ___",
+        \ "   \\__ \\/ __ \\/ ___/ / //_/ _ \\ | / / / __ `__ \\",
+        \ "  ___/ / / / / /  / / ,< /  __/ |/ / / / / / / /",
+        \ " /____/_/ /_/_/  /_/_/|_|\\___/|___/_/_/ /_/ /_/",
+        \ " "
+        \ ]
         let g:startify_custom_footer = 
                     \ startify#pad(split(system('echo "In order to exit Vim, press and hold the Power button"'), '\n'))
         let g:startify_lists = [
@@ -299,49 +292,49 @@ function! sigma#config()
                     \ ]
         let g:startify_commands = [
                     \ {'p': ['  Open project      SPC p p', 'ProjectList']},
-                    \ {'r': ['󰋚  Recent files      SPC f r', 'SigmaRecentFiles']},
-                    \ {'f': ['  Find files        SPC f f', 'SigmaFiles']},
+                    \ {'r': ['󰋚  Recent files      SPC f r', 'ShrikeRecentFiles']},
+                    \ {'f': ['  Find files        SPC f f', 'ShrikeFiles']},
                     \ {'n': ['  File browser      SPC f b', 'NnnPicker']},
-                    \ {'z': ['󰈞  Find word         SPC r g', 'SigmaRg']},
-                    \ {'s': ['󰒠  Update SigmaVimRc SPC u s', 'SigmaUpdate']},
+                    \ {'z': ['󰈞  Find word         SPC r g', 'ShrikeRg']},
+                    \ {'s': ['  Update ShrikeVim  SPC u s', 'ShrikeUpdate']},
                     \ {'u': ['  Update plugins    SPC u p', 'PlugUpdate']},
-                    \ {'c': ['  Configure         SPC f P', 'SigmaConfig']},
+                    \ {'c': ['  Configure         SPC f P', 'ShrikeConfig']},
                     \ ]
     endif
 
-    call sigma#mappings()
+    call shrike#mappings()
 
     " Autocmd
     autocmd BufWritePost * :call SyncUploadFile()
     autocmd FileType org :set cc=80
     autocmd FileType markdown :set cc=80
 
-    if sigma#is_enabled('noahfrederick/vim-skeleton')
+    if shrike#is_enabled('shrikecode/skeleton.vim')
         call system('mkdir -p ~/.vim/templates')
     endif
 
 endfunction
 
-function! sigma#update()
-    execute "!curl -fLo ~/.vim/autoload/sigma.vim --create-dirs https://raw.githubusercontent.com/voidekh/SigmaVimRc/master/autoload/sigma.vim"
+function! shrike#update()
+    execute "!curl -fLo ~/.vim/autoload/shrike.vim --create-dirs https://raw.githubusercontent.com/shrikecode/shrike.vim/main/autoload/shrike.vim"
 endfunction
 
-function! sigma#default_plugins()
-    let g:sigma#use_coc = get(g:, 'sigma#use_coc', 0)
+function! shrike#default_plugins()
+    let g:shrike#use_coc = get(g:, 'shrike#use_coc', 0)
     let s:enable = 1
     let s:no_override = 1
-    if (g:sigma#use_coc == 1)
-        call sigma#add('neoclide/coc.nvim', {'branch': 'release'}, s:no_override)
-        call sigma#add('honza/vim-snippets', s:enable, s:no_override)
+    if (g:shrike#use_coc == 1)
+        call shrike#add('neoclide/coc.nvim', {'branch': 'release'}, s:no_override)
+        call shrike#add('honza/vim-snippets', s:enable, s:no_override)
     endif
 endfunction
 
-function! sigma#init()
-    call sigma#default_plugins()
+function! shrike#init()
+    call shrike#default_plugins()
 
     call plug#begin()
 
-    for [key, value] in items(g:sigma#plugins)
+    for [key, value] in items(g:shrike#plugins)
         if type(value) == v:t_dict
             Plug key, value
         elseif value == 1
@@ -357,21 +350,21 @@ function! sigma#init()
                 \|   PlugInstall --sync | q
                 \| endif
     
-    call sigma#config()
+    call shrike#config()
 
-    command! SigmaUpdate :call sigma#update()
+    command! ShrikeUpdate :call shrike#update()
 
-    command!                SigmaRecentFiles    :History
-    command!                SigmaFiles          :Files
-    command! -bang -nargs=* SigmaRg             :call fzf#vim#grep("rg -g '!{.git,node_modules}/' --hidden --no-ignore --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
-    command!                SigmaConfig         :e ~/.vimrc
+    command!                ShrikeRecentFiles    :History
+    command!                ShrikeFiles          :Files
+    command! -bang -nargs=* ShrikeRg             :call fzf#vim#grep("rg -g '!{.git,node_modules}/' --hidden --no-ignore --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
+    command!                ShrikeConfig         :e ~/.vimrc
 
-    if sigma#is_enabled('mhinz/vim-startify')
-        command! SigmaDashboard :Startify
+    if shrike#is_enabled('mhinz/vim-startify')
+        command! ShrikeDashboard :Startify
     endif
 endfunction
 
-function! sigma#run(command = '', split = 'h')
+function! shrike#run(command = '', split = 'h')
     if $TERM == 'xterm-kitty'
         execute "!kitty @ launch " a:command getcwd()
     elseif $TMUX != ''
@@ -381,8 +374,8 @@ function! sigma#run(command = '', split = 'h')
     endif
 endfunction
 
-function! sigma#head()
-    if sigma#is_enabled('sineto/lightline-hunks')
+function! shrike#head()
+    if shrike#is_enabled('sineto/lightline-hunks')
         return lightline#hunks#composer()
     endif
 

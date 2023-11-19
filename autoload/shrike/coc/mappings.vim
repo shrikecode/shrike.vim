@@ -1,7 +1,16 @@
-function! sigma#coc#mappings#init()
+"    _____ __         _ __      _    ___
+"   / ___// /_  _____(_) /_____| |  / (_)___ ___
+"   \__ \/ __ \/ ___/ / //_/ _ \ | / / / __ `__ \
+"  ___/ / / / / /  / / ,< /  __/ |/ / / / / / / /
+" /____/_/ /_/_/  /_/_/|_|\___/|___/_/_/ /_/ /_/
+"
+" autoload/shrike/coc/mappings.vim
+" ShrikeVim CoC mappings
+
+function! shrike#coc#mappings#init()
     inoremap <silent><expr> <TAB>
                 \ coc#pum#visible() ? coc#pum#next(1) :
-                \ sigma#coc#lsp#check_backspace() ? "\<Tab>" :
+                \ shrike#coc#lsp#check_backspace() ? "\<Tab>" :
                 \ coc#refresh()
     inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
@@ -18,7 +27,7 @@ function! sigma#coc#mappings#init()
     nmap <silent> gi <Plug>(coc-implementation)
     nmap <silent> gr <Plug>(coc-references)
 
-    nnoremap <silent> K :call sigma#coc#lsp#show_documentation()<CR>
+    nnoremap <silent> K :call shrike#coc#lsp#show_documentation()<CR>
 
     nmap <leader>rn <Plug>(coc-rename)
 
