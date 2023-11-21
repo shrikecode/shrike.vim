@@ -2,8 +2,8 @@
 
 ![ShrikeVim dashboard](https://i.imgur.com/TmrPNgz.png)
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-**Table of Contents**
+<!-- markdown-toc start - Don't edit this section. Run M-x
+markdown-toc-refresh-toc --> **Table of Contents**
 
 - [ShrikeVim](#shrikevim)
 - [Why another Vim distribution](#why-another-vim-distribution)
@@ -36,53 +36,51 @@ actually replace some base plugins.
 
 ## What is ShrikeVim
 
-ShrikeVim is meant to be simple. It uses vim-plug as plugin manager, which
-is also wrapped in shrike#add, shrike#remove and shrike#init functions,
-which allows full control over what plugins from base set are actually
-used.
+ShrikeVim is meant to be simple. It uses vim-plug as plugin manager, which is
+also wrapped in shrike#add, shrike#remove and shrike#init functions, which
+allows full control over what plugins from base set are actually used.
 
-ShrikeVim comes with sane (or maybe opinionated?) defaults and utilities to
-make your vimrc as small and readable as possible.
+ShrikeVim comes with sane (or maybe opinionated?) defaults and utilities to make
+your vimrc as small and readable as possible.
 
-ShrikeVim comes with kyotonight.vim theme, which might easily be changed to
-any theme of your choice. There is also a plan of adding a possibility
-to create your own colorscheme providing just color palette.
+ShrikeVim comes with kyotonight.vim theme, which might easily be changed to any
+theme of your choice. There is also a plan of adding a possibility to create
+your own colorscheme providing just color palette.
 
 ShrikeVim uses fzf which powers all the fuzzy finding in the default config.
 Check the recommended config section for FZF.
 
-ShrikeVim uses nnn as file picker and file browser in place of netrw, it
-also doesn't provide any file-tree plugin.
+ShrikeVim uses nnn as file picker and file browser in place of netrw, it also
+doesn't provide any file-tree plugin.
 
-Rationale for this choices is just... keeping it simple. Use the same
-tools inside of Vim which you would use outside of Vim. Fzf is great all
-around fuzzy finder. Nnn is a full blown, fully functional file manager.
-No file browser plugin can compare with that. And again, it's a tool
-for everyday use, not just in Vim.
+Rationale for this choices is just... keeping it simple. Use the same tools
+inside of Vim which you would use outside of Vim. Fzf is great all around fuzzy
+finder. Nnn is a full blown, fully functional file manager.  No file browser
+plugin can compare with that. And again, it's a tool for everyday use, not just
+in Vim.
 
-If you prefer different workflow, replacing nnn.vim with a file-tree
-plugin of choice is just removing one plugin, adding another one, and
-replacing 2 remaps. You can also add a file-tree plugin on top of nnn,
-so you might just want to replace only one remap, `<C-n>` with toggling
-your file-tree.
+If you prefer different workflow, replacing nnn.vim with a file-tree plugin of
+choice is just removing one plugin, adding another one, and replacing 2 remaps.
+You can also add a file-tree plugin on top of nnn, so you might just want to
+replace only one remap, `<C-n>` with toggling your file-tree.
 
-ShrikeVim comes with vim-fugitive, but it's solely for hunks in lightline. Intended
-git workflow is using lazygit in a kitty, tmux or Vim terminal pane opened by
-`<leader>gg` keybinding. It follows the same rationale of using tools usable
-outside of Vim, but you can easily install / use your preferred plugin for git,
-as the actual lazygit integration in ShrikeVim is this single keybinding for opening
-lazygit in current working directory. There's no plugin for that in the base set.
+ShrikeVim comes with vim-fugitive, but it's solely for hunks in lightline.
+Intended git workflow is using lazygit in a kitty, tmux or Vim terminal pane
+opened by `<leader>gg` keybinding. It follows the same rationale of using tools
+usable outside of Vim, but you can easily install / use your preferred plugin
+for git, as the actual lazygit integration in ShrikeVim is this single
+keybinding for opening lazygit in current working directory. There's no plugin
+for that in the base set.
 
-In the end, you might always take parts of ShrikeVimRc as inspiration for
-making your own config, which is also a valid use case for this little
-project. :)
+In the end, you might always take parts of ShrikeVimRc as inspiration for making
+your own config, which is also a valid use case for this little project. :)
 
 ## Dependencies
 
 - [NerdFont](https://github.com/ryanoasis/nerd-fonts)
 - [Fzf](https://github.com/junegunn/fzf) (All the fuzzy finding)
-- [ripgrep](https://github.com/BurntSushi/ripgrep) (For Fzf default
-    config in ShrikeVim)
+- [ripgrep](https://github.com/BurntSushi/ripgrep) (For Fzf default config in
+    ShrikeVim)
 - [fd](https://github.com/sharkdp/fd) (Also for Fzf)
 - [npm](https://github.com/npm/cli) (For coc.nvim)
 - [kitty](https://github.com/kovidgoyal/kitty) or
@@ -129,18 +127,17 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#a9b1d6,bg:#1a1b26,hl:#7aa
 You should put it in your shell configuration (.bashrc/.zshrc or
 .profile/.zshenv)
 
-If Vim is started by `-e` option of terminal emulator, it might not
-inherit your shell env, so you might need to add the same options in
-your .vimrc:
+If Vim is started by `-e` option of terminal emulator, it might not inherit your
+shell env, so you might need to add the same options in your .vimrc:
 
 ```vim
 let $FZF_DEFAULT_COMMAND = "rg -g '!{.git,node_modules,.composer}/' --hidden --no-ignore -l ''"
 let $FZF_DEFAULT_OPTS = '--color=fg:#a9b1d6,bg:#1a1b26,hl:#7aa2f7 --color=fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff --color=info:#cfc9c2,prompt:#f7768e,pointer:#bb9af7 --color=marker:#9ece6a,spinner:#bb9af7,header:#73daca'
 ```
 
-Should you want to customize your fzf theme, e.g. to match colorscheme
-you've chosen instead of the default kyotonight.vim (why would you do
-that? :( ) check out [this site](https://minsw.github.io/fzf-color-picker/).
+Should you want to customize your fzf theme, e.g. to match colorscheme you've
+chosen instead of the default kyotonight.vim (why would you do that? :( ) check
+out [this site](https://minsw.github.io/fzf-color-picker/).
 
 ### lazygit
 
@@ -150,8 +147,7 @@ keybinding pulls up a pane with lazygit in current working directory.
 ### Overriding configuration
 
 To override default ShrikeVim configuration... just set your configuration
-changes after calling shrike#init function. That includes plugin
-configurations.
+changes after calling shrike#init function. That includes plugin configurations.
 
 ### Plugins
 
@@ -171,10 +167,10 @@ These functions need to be called **BEFORE** *shrike#init*.
 
 ### Extra functions
 
-- shrike#run - opens a split in kitty or tmux, running a supplied
-    command in current working directory, or if no command is supplied it
-    just opens the terminal. If Vim is run in an unsupported terminal, it
-    just opens Vim terminal
+- shrike#run - opens a split in kitty or tmux, running a supplied command in
+    current working directory, or if no command is supplied it just opens the
+    terminal. If Vim is run in an unsupported terminal, it just opens Vim
+    terminal
 
 1. Examples
 
@@ -187,8 +183,8 @@ These functions need to be called **BEFORE** *shrike#init*.
 
 ### LSP
 
-ShrikeVim provides a choice to include CoC.
-To use it, put this **BEFORE** calling `shrike#init` function:
+ShrikeVim provides a choice to include CoC.  To use it, put this **BEFORE**
+calling `shrike#init` function:
 
 ```vim
 let g:shrike#use_coc = 1
@@ -222,9 +218,9 @@ ShrikeVim also provides its custom CoC diagnostics support for lightline.
 
 ## Keybindings
 
-Check [shrike#mappings()](https://github.com/shrikecode/shrike.vim/blob/master/autoload/shrike.vim#L47)
-function, and also review some of the default mappings of listed
-plugins.
+Check
+[shrike#mappings()](https://github.com/shrikecode/shrike.vim/blob/master/autoload/shrike.vim#L47)
+function, and also review some of the default mappings of listed plugins.
 
 Some of them might've been borrowed from NvChad or ThePrimeagen.
 
@@ -252,9 +248,9 @@ Some of them might've been borrowed from NvChad or ThePrimeagen.
 
 ### Cursor line gets lost
 
-For some reason `nocursorline` option gets set **sometimes**. I
-haven't tracked the issue yet. A workaround (if you want cursorline
-that is) is adding following autocmd to your init.vim:
+For some reason `nocursorline` option gets set **sometimes**. I haven't tracked
+the issue yet. A workaround (if you want cursorline that is) is adding following
+autocmd to your init.vim:
 
 ```vim
 autocmd FileType * if &ft != 'startify' && &ft != 'dashboard' | :set cursorline | endif
@@ -264,11 +260,11 @@ autocmd FileType * if &ft != 'startify' && &ft != 'dashboard' | :set cursorline 
 
 - [x] Add screenshots
 - [x] Documentation (and default keybindings info)
-- [x] Figure out a way for vim-plug to manage ShrikeVimRc or let it
-    manage itself
+- [x] Figure out a way for vim-plug to manage ShrikeVimRc or let it manage
+    itself
 - [x] Features explanation
 - [x] Add vim-signify / gitsigns support for lightline
 - [ ] Dynamic theme plugin
-- [x] New installation method (bootstrap ShrikeVim and let vim-plug
-    manage the full plugin)
+- [x] New installation method (bootstrap ShrikeVim and let vim-plug manage the
+    full plugin)
 - [x] Remove all Neovim specific stuff
