@@ -83,8 +83,6 @@ function! shrike#mappings()
     nnoremap <leader>gl <Cmd>BLines<CR>
     nnoremap <leader>km <Cmd>Maps<CR>
 
-    noremap <C-n> <Cmd>NnnPicker %:p:h<CR>
-
     if $TERM != 'xterm-kitty'
         nnoremap <silent><leader>gg <Cmd>call shrike#run("lazygit")<C-j><CR>
     else
